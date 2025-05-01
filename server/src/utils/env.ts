@@ -20,4 +20,4 @@ export const isEnvValid = (requiredEnvVars: string[]): boolean => {
 
   console.success(`All required environment variables validated successfully`)
   return true;
-}
+};

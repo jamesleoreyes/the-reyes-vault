@@ -38,7 +38,7 @@ const formatLog = (type: string, message: string): string => {
     hour12: true
   });
   return `${timestamp} [${type.toUpperCase()}] ${dashes}> ${message}`;
-}
+};
 
 
 // Prevent infinite loop when logging

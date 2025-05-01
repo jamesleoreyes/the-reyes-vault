@@ -10,7 +10,7 @@ const startServer = () => {
 
   app.listen(appConfig.port, () => {
     console.log(`Express app is listening on port [${appConfig.port}]`)
-  })
+  });
 };
 
 startServer();
