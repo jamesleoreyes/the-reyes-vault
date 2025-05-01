@@ -1,0 +1,15 @@
+# Dependencies
+package-lock.json
+node_modules
+
+# Environment variables
+.env
+
+# Build files
+dist/
+
+# Logs
+logs/
+
+# Coverage files
+coverage/

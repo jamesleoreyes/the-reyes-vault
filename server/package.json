@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
