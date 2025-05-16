@@ -1,25 +1,31 @@
 {
-  "name": "server",
-  "private": true,
-  "version": "0.0.0",
-  "main": "dist/server.js",
-  "scripts": {
-    "dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/node": "^22.15.3",
-    "typescript": "^5.8.3"
-  }
+	"name": "server",
+	"private": true,
+	"version": "0.0.0",
+	"main": "dist/server.js",
+	"scripts": {
+		"dev": "nodemon",
+		"lint": "eslint .",
+		"pretty": "prettier . --write",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.1",
+		"@types/node": "^22.15.18",
+		"eslint": "^9.26.0",
+		"nodemon": "^3.1.10",
+		"prettier": "3.5.3",
+		"tsx": "^4.19.4",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.32.1"
+	}
 }

@@ -1,42 +1,55 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
-		"module": "commonjs",
-		"lib": [
-			"es2017",
-			"esnext.asynciterable"
-		],
-		"typeRoots": [
-			"./node_modules/@types",
-			"./src/types"
-		],
-		"allowJs": true,
-		"outDir": "dist",
+		/* Language and Environment */
+		"target": "es2022",
+		"lib": ["es2022"],
+
+		/* Modules */
+		"module": "ES2022",
+		"moduleResolution": "node",
 		"rootDir": "src",
+		"baseUrl": "./",
+		"resolveJsonModule": true,
+		"allowJs": false,
+		"checkJs": false,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+
+		/* Emit */
+		"outDir": "./dist",
+		"removeComments": false,
+		"importHelpers": true,
+		"verbatimModuleSyntax": true,
+
+		/* Interop Constraints */
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+
+		/* Type Checking */
 		"strict": true,
 		"noImplicitAny": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/*": [
-				"src/*"
-			],
-			"@config/*": [
-				"src/config/*"
-			],
-		},
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"useUnknownInCatchVariables": true,
+		"alwaysStrict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+
+		/* Completeness */
+		"skipLibCheck": true
 	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"dist"
-	]
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist"]
 }

@@ -1,13 +1,22 @@
-import app from "./app";
-import appConfig from "./config/app";
-import { isEnvValid, requiredEnvVars } from "./utils/env";
+import app from './app';
+import appConfig from './configs/config';
+import { isEnvValid, requiredEnvVars } from './utils/env.utils';
 
-const startServer = () => {
-  if (!isEnvValid(requiredEnvVars)) process.exitCode = 1;
+const { port, env } = appConfig;
 
-  app.listen(appConfig.port, () => {
-    console.log(`Express app is listening on port [${appConfig.port}]`)
-  });
+const startServer = (): void => {
+	try {
+		if (!isEnvValid(requiredEnvVars)) process.exit(1);
+
+		app.listen(port, () => {
+			console.log(
+				`Express app is listening on port [${port.toFixed(0)}] in [${env}]`,
+			);
+		});
+	} catch (error) {
+		console.error('Failed to start the server:', error);
+		process.exit(1);
+	}
 };
 
 startServer();
