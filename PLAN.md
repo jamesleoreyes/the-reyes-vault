@@ -47,15 +47,15 @@
 
 ### Phase 1: Project Setup & Core Infrastructure (Estimated: 1-2 weeks)
 
-* **Step 1.1: Initialize Next.js Project**
-  * `create-next-app` with TypeScript, ESLint, Tailwind CSS.
-  * Set up project structure (e.g., `src/app`, `src/components`, `src/lib`, `src/utils`).
-* **Step 1.2: Set Up Version Control**
-  * Initialize Git repository.
-  * Push to GitHub.
+* ~~**Step 1.1: Initialize Next.js Project**~~
+  * ~~`create-next-app` with TypeScript, ESLint, Tailwind CSS.~~
+  * ~~Set up project structure (e.g., `src/app`, `src/components`, `src/lib`, `src/utils`).~~
+* ~~**Step 1.2: Set Up Version Control**~~
+  * ~~Initialize Git repository.~~
+  * ~~Push to GitHub.~~
 * **Step 1.3: Supabase Project Setup**
-  * Create a new Supabase project.
-  * Note down API keys and database connection strings.
+  * ~~Create a new Supabase project.~~
+  * ~~Note down API keys and database connection strings.~~
   * Design initial database schema for:
     * `users` (leveraging Supabase Auth users table, potentially adding custom profile table linked via user ID)
     * `memories` (id, user_id, title, description, date, type, storage_url, created_at, updated_at)
@@ -64,19 +64,19 @@
     * `albums` (id, user_id, name, description)
     * Junction tables: `memory_tags`, `memory_people`, `album_memories`.
 * **Step 1.4: Cloudflare R2 Setup**
-  * Create a Cloudflare R2 bucket.
-  * Configure public access settings as appropriate (or use signed URLs).
-  * Note down access keys and endpoint.
+  * ~~Create a Cloudflare R2 bucket.~~
+  * ~~Configure public access settings as appropriate (or use signed URLs).~~
+  * ~~Note down access keys and endpoint.~~
 * **Step 1.5: Vercel Project Setup**
-  * Connect GitHub repository to Vercel.
+  * ~~Connect GitHub repository to Vercel.~~
   * Configure environment variables (Supabase keys, R2 keys, etc.).
-  * Verify basic deployment pipeline is working.
+  * ~~Verify basic deployment pipeline is working.~~
 * **Step 1.6: Basic Layout & UI Shell**
   * Implement main application layout using Next.js App Router (`layout.tsx`).
   * Integrate shadcn/ui: `npx shadcn-ui@latest init`.
   * Set up basic navigation (e.g., placeholder links for Home, Upload, Albums).
 * **Step 1.7: Environment Configuration**
-  * Set up `.env.local` for development.
+  * ~~Set up `.env.local` for development.~~
   * Ensure Vercel environment variables are correctly configured for production/preview.
 * **Step 1.8: TypeScript Configuration**
   * Review and enforce strict `tsconfig.json` settings.
