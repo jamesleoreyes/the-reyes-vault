@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   eslint: {
-    dirs: ['./src']
+    dirs: ['./app']
   },
   compiler: {
     removeConsole: true,
