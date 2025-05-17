@@ -47,6 +47,8 @@
 
 ### Phase 1: Project Setup & Core Infrastructure (Estimated: 1-2 weeks)
 
+[![Phase 1 Progress](https://geps.dev/progress/85?title=Phase%201)](PLAN.md#phase-1-project-setup--core-infrastructure-estimated-1-2-weeks)
+
 - ~~**Step 1.1: Initialize Next.js Project**~~
   - ~~`create-next-app` with TypeScript, ESLint, Tailwind CSS.~~
   - ~~Set up project structure (e.g., `src/app`, `src/components`, `src/lib`, `src/utils`).~~
@@ -86,6 +88,8 @@
 
 ### Phase 2: User Authentication & Authorization (Estimated: 1-2 weeks)
 
+[![Phase 2 Progress](https://geps.dev/progress/75?title=Phase%202)](PLAN.md#phase-2-user-authentication--authorization-estimated-1-2-weeks)
+
 - **Step 2.1: Integrate Supabase Auth with Next.js**
   - ~~Use Supabase helper libraries for Next.js (e.g., `@supabase/auth-helpers-nextjs` or the latest recommended package).~~
   - ~~Implement login page/component (email/password).~~
@@ -103,6 +107,8 @@
 ---
 
 ### Phase 3: Admin User Management (Estimated: 1-2 weeks)
+
+[![Phase 3 Progress](https://geps.dev/progress/0?title=Phase%203)](PLAN.md#phase-3-admin-user-management-estimated-1-2-weeks)
 
 - **Step 3.1: Design Admin UI Layout**
   - Create a distinct layout for admin section routes (e.g., `/admin/*`).
@@ -124,6 +130,8 @@
 ---
 
 ### Phase 4: Core "Memory" Management (Upload, View, Metadata) (Estimated: 2-3 weeks)
+
+[![Phase 4 Progress](https://geps.dev/progress/0?title=Phase%204)](PLAN.md#phase-4-core-memory-management-upload-view-metadata-estimated-2-3-weeks)
 
 - **Step 4.1: File Upload Component**
   - Create a React component for file uploads (drag-and-drop, file selector).
@@ -151,6 +159,8 @@
 
 ### Phase 5: Search & Organization (Estimated: 1-2 weeks)
 
+[![Phase 5 Progress](https://geps.dev/progress/0?title=Phase%205)](PLAN.md#phase-5-search--organization-estimated-1-2-weeks)
+
 - **Step 5.1: Basic Search Input**
   - Add a search bar to the UI.
 - **Step 5.2: Backend Search Logic**
@@ -175,6 +185,8 @@
 
 ### Phase 6: UI/UX Polish & Basic Styling (Estimated: 1 week - ongoing)
 
+[![Phase 6 Progress](https://geps.dev/progress/0?title=Phase%206)](PLAN.md#phase-6-uiux-polish--basic-styling-estimated-1-week---ongoing)
+
 - **Step 6.1: Apply shadcn/ui & Tailwind CSS Consistently**
   - Ensure all components use the chosen UI library and styling conventions.
   - Focus on a clean, intuitive, and responsive user interface.
@@ -188,6 +200,8 @@
 ---
 
 ### Phase 7: Deployment & Testing (Estimated: 1 week - ongoing)
+
+[![Phase 7 Progress](https://geps.dev/progress/0?title=Phase%207)](PLAN.md#phase-7-deployment--testing-estimated-1-week---ongoing)
 
 - **Step 7.1: Comprehensive Manual Testing**
   - Test all user flows: signup (admin-driven), login, upload, view, metadata editing, search, album creation, admin functions.
@@ -208,6 +222,8 @@
 ---
 
 ### Phase 8: Pre-Launch Checklist & Go-Live (Estimated: 1-2 days)
+
+[![Phase 8 Progress](https://geps.dev/progress/0?title=Phase%208)](PLAN.md#phase-8-pre-launch-checklist--go-live-estimated-1-2-days)
 
 - **Step 8.1: Data Backup Check (Supabase & R2)**
   - Understand and confirm the backup policies of Supabase and Cloudflare R2 for their free/chosen tiers.
