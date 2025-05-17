@@ -69,7 +69,7 @@
   * ~~Note down access keys and endpoint.~~
 * **Step 1.5: Vercel Project Setup**
   * ~~Connect GitHub repository to Vercel.~~
-  * Configure environment variables (Supabase keys, R2 keys, etc.).
+  * ~~Configure environment variables (Supabase keys, R2 keys, etc.).~~
   * ~~Verify basic deployment pipeline is working.~~
 * **Step 1.6: Basic Layout & UI Shell**
   * Implement main application layout using Next.js App Router (`layout.tsx`).
