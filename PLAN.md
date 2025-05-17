@@ -87,15 +87,15 @@
 ### Phase 2: User Authentication & Authorization (Estimated: 1-2 weeks)
 
 * **Step 2.1: Integrate Supabase Auth with Next.js**
-  * Use Supabase helper libraries for Next.js (e.g., `@supabase/auth-helpers-nextjs` or the latest recommended package).
-  * Implement login page/component (email/password).
-  * Implement logout functionality.
-  * Set up session management (Supabase handles much of this).
+  *~~ Use Supabase helper libraries for Next.js (e.g., `@supabase/auth-helpers-nextjs` or the latest recommended package).~~
+  * ~~Implement login page/component (email/password).~~
+  * ~~Implement logout functionality.~~
+  * ~~Set up session management (Supabase handles much of this).~~
 * **Step 2.2: Create Protected Routes**
-  * Implement logic (e.g., in Middleware or Layouts/Pages) to protect routes that require authentication.
-  * Redirect unauthenticated users to the login page.
+  * ~~Implement logic (e.g., in Middleware or Layouts/Pages) to protect routes that require authentication.~~
+  * ~~Redirect unauthenticated users to the login page.~~
 * **Step 2.3: User Profile Management (Basic)**
-  * Create a simple user profile page where a logged-in user can see their email (no editing needed for MVP, as users are admin-managed).
+  * ~~Create a simple user profile page where a logged-in user can see their email (no editing needed for MVP, as users are admin-managed).~~
 * **Step 2.4: Define User Roles**
   * Establish a simple role system (e.g., `user`, `admin`). This can be stored in Supabase (e.g., in `auth.users` metadata or a separate `profiles` table).
   * Ensure the primary admin account has the `admin` role.
