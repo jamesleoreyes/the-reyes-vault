@@ -1,6 +1,7 @@
 import { Geist } from "next/font/google";
 import { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next"
 import NavBar from "@/components/navbar";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
               <NavBar />
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
+                <Analytics />
               </div>
             </div>
           </main>
