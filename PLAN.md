@@ -1,12 +1,12 @@
 # PLAN.MD: The Reyes Vault - MVP Development
 
-## 1. Introduction & Goals
+## Introduction & Goals
 
 **Application:** The Reyes Vault - A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.
 
 **MVP Goal:** To launch a functional and secure web application that allows a designated admin to manage users, and for authorized users to upload, view, organize, and search their digitized family memories (photos, videos, audio). The MVP will prioritize robust storage, ease of use for core features, and a foundation for future enhancements. This project also serves as a learning opportunity for full-stack Next.js development.
 
-## 2. Core MVP Features
+## Core MVP Features
 
 - **User Accounts:**
   - Login for authorized users (email/username + password).
@@ -32,7 +32,7 @@
 - **Search:**
   - Users can search memories by titles, dates, descriptions, tags, and people.
 
-## 3. Technology Stack
+## Technology Stack
 
 - **Framework:** Next.js (App Router, Full-Stack: Frontend, API Route Handlers, Server Actions)
 - **Language:** TypeScript (with strict typing)
@@ -43,7 +43,7 @@
 - **Hosting & CI/CD:** Vercel (with GitHub integration for automated builds and deployments)
 - **Styling:** Tailwind CSS
 
-## 4. Development Phases & Steps
+## Development Phases & Steps
 
 ### Phase 1: Project Setup & Core Infrastructure (Estimated: 1-2 weeks)
 
@@ -240,7 +240,7 @@
 
 ---
 
-## 5. Key Architectural Decisions (Summary)
+## Key Architectural Decisions (Summary)
 
 - **Full-Stack Next.js:** Leveraging Next.js for both frontend and backend (API Route Handlers & Server Actions) simplifies development and aligns with learning goals.
 - **Supabase for BaaS:** Utilizes Supabase for PostgreSQL database hosting and authentication, streamlining backend setup.
@@ -249,7 +249,7 @@
 - **Integrated Admin UI:** Admin functionalities are part of the main application, protected by role-based access, rather than a separate application/subdomain for MVP simplicity.
 - **Strict Typing & Modern UI:** Emphasis on TypeScript for reliability and shadcn/ui + Tailwind for a modern, maintainable UI.
 
-## 6. Future Considerations (Post-MVP)
+## Future Considerations (Post-MVP)
 
 - **Advanced Search:** Implement PostgreSQL full-text search, AI-powered tagging/search (e.g., image recognition).
 - **Social Logins:** Add options for social logins (Google, etc.), while maintaining the allowlist approach.
@@ -262,7 +262,7 @@
 - **Detailed Audit Logs:** More comprehensive logging for admin actions and user activity.
 - **Two-Factor Authentication (2FA).**
 
-## 7. Development Best Practices
+## Development Best Practices
 
 - **TypeScript First:** Utilize strict TypeScript for all code.
 - **Regular Commits:** Meaningful, atomic commits to Git.
