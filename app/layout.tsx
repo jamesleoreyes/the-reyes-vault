@@ -9,11 +9,33 @@ const defaultUrl = process.env["VERCEL_URL"]
   ? `https://${process.env["VERCEL_URL"]}`
   : "http://localhost:3000";
 
+interface Meta {
+  title: string;
+  description: string;
+  siteName: string;
+}
+
+const meta: Meta = {
+  title: 'The Reyes Vault',
+  description: "Digital vault for preserving family memories. Forever, searchable, and safe in the cloud.",
+  siteName: 'The Reyes Vault'
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "The Reyes Vault",
-  description: "Digital vault for preserving family memories. Forever, searchable, and safe in the cloud.",
-  applicationName: "The Reyes Vault"
+  title: meta.title,
+  description: meta.description,
+  applicationName: "The Reyes Vault",
+  openGraph: {
+    type: 'website',
+    title: meta.title,
+    siteName: meta.siteName,
+    description: meta.description,
+  },
+  twitter: {
+    title: meta.title,
+    description: meta.description,
+  },
 };
 
 const geistSans = Geist({
