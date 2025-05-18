@@ -25,14 +25,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: meta.title,
   description: meta.description,
-  applicationName: "The Reyes Vault",
+  applicationName: meta.siteName,
   openGraph: {
     type: 'website',
     title: meta.title,
     siteName: meta.siteName,
     description: meta.description,
+    url: defaultUrl,
   },
   twitter: {
+    card: 'summary_large_image',
     title: meta.title,
     description: meta.description,
   },
