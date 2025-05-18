@@ -1,5 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  ROOT_PATH,
+  SIGN_IN_PATH,
+  DASHBOARD_PATH,
+  PROTECTED_APP_PATHS,
+  AUTH_FLOW_PAGES,
+} from "@/lib/authPaths";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -35,33 +42,20 @@ export const updateSession = async (request: NextRequest) => {
   const isUserAuthenticated = authInfo.data.user !== null && authInfo.error === null;
   const currentPath = request.nextUrl.pathname;
 
-  const rootPath = '/';
-  const signInPath = '/sign-in';
-  const dashboardPath = '/dashboard';
-  const protectedAppPaths = [
-    dashboardPath,
-    '/profile',
-    '/upload',
-    '/albums',
-    '/reset-password'
-  ];
-
-  const authFlowPages = [signInPath, '/forgot-password'];
-
-  if (currentPath === rootPath) {
+  if (currentPath === ROOT_PATH) {
     if (isUserAuthenticated) {
-      return NextResponse.redirect(new URL(dashboardPath, request.url));
+      return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
     } else {
-      return NextResponse.redirect(new URL(signInPath, request.url));
+      return NextResponse.redirect(new URL(SIGN_IN_PATH, request.url));
     }
   }
 
-  if (!isUserAuthenticated && protectedAppPaths.some(path => currentPath.startsWith(path))) {
-    return NextResponse.redirect(new URL(signInPath, request.url));
+  if (!isUserAuthenticated && PROTECTED_APP_PATHS.some(path => currentPath.startsWith(path))) {
+    return NextResponse.redirect(new URL(SIGN_IN_PATH, request.url));
   }
 
-  if (isUserAuthenticated && authFlowPages.includes(currentPath)) {
-    return NextResponse.redirect(new URL(dashboardPath, request.url));
+  if (isUserAuthenticated && AUTH_FLOW_PAGES.includes(currentPath)) {
+    return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
   }
 
   return response;
