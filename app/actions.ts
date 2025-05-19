@@ -5,7 +5,14 @@ import { headers } from "next/headers";
 import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
 
-export const logInAction = async (formData: FormData) => {
+export interface ActionErrorState {
+  error?: string;
+}
+
+export const logInAction = async (
+  _prevState: ActionErrorState | undefined,
+  formData: FormData
+) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = await createClient();
@@ -15,19 +22,28 @@ export const logInAction = async (formData: FormData) => {
     password,
   });
 
+  if (error?.message === 'Invalid login credentials') {
+    console.error(`actions.ts --> logInAction() --> ${error.message}`)
+    return { error: `${error.message}. Please try again.` };
+  }
+
   if (error) {
-    return encodedRedirect("error", "/login", error.message);
+    console.error(`actions.ts --> logInAction() --> ${error.message}`)
+    return { error: error.message };
   }
 
   return redirect("/dashboard");
 };
 
-export const anonymousLogInAction = async (formData: FormData) => {
+export const anonymousLogInAction = async (
+  _prevState: ActionErrorState | undefined,
+  formData: FormData
+) => {
   const captchaToken = formData.get('cf-turnstile-response') as string;
   console.log(`Turnstile server token received: ${captchaToken}`);
 
   if (!captchaToken) {
-    return encodedRedirect('error', '/login', 'CAPTCHA token missing. Please try again.');
+    return { error: 'CAPTCHA response missing. Please try again.' };
   }
 
   const supabase = await createClient();
@@ -37,7 +53,7 @@ export const anonymousLogInAction = async (formData: FormData) => {
 
   if (error) {
     console.error(`Supabase anonymous sign-in error: ${error.message}`);
-    return encodedRedirect('error', '/login', `Login failed: ${error.message}`);
+    return { error: `Login failed: ${error.message}` };
   }
 
   return redirect('/dashboard');
@@ -90,7 +106,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   const confirmPassword = formData.get("confirmPassword") as string;
 
   if (!password || !confirmPassword) {
-    encodedRedirect(
+    return encodedRedirect(
       "error",
       "/protected/reset-password",
       "Password and confirm password are required",
@@ -98,7 +114,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   }
 
   if (password !== confirmPassword) {
-    encodedRedirect(
+    return encodedRedirect(
       "error",
       "/protected/reset-password",
       "Passwords do not match",
@@ -110,12 +126,12 @@ export const resetPasswordAction = async (formData: FormData) => {
   });
 
   if (error) {
-    encodedRedirect(
+    return encodedRedirect(
       "error",
       "/protected/reset-password",
       "Password update failed",
     );
   }
 
-  encodedRedirect("success", "/protected/reset-password", "Password updated");
+  return encodedRedirect("success", "/protected/reset-password", "Password updated");
 };
