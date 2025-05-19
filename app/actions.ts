@@ -2,8 +2,6 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { validateTurnstileToken } from 'next-turnstile';
-import { v4 as uuidv4 } from 'uuid';
 import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
 
