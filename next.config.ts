@@ -4,9 +4,6 @@ const nextConfig: NextConfig = {
   eslint: {
     dirs: ['./app']
   },
-  compiler: {
-    removeConsole: true,
-  }
 };
 
 export default nextConfig;
