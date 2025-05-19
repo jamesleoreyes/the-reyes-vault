@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import NavBar from "@/components/navbar";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const defaultUrl = process.env["VERCEL_URL"]
   ? `https://${process.env["VERCEL_URL"]}`
@@ -70,6 +71,14 @@ export default function RootLayout({
               </div>
             </div>
           </main>
+          <Toaster
+            position="bottom-right"
+            duration={4000}
+            expand={false}
+            visibleToasts={5}
+            richColors
+            closeButton
+          />
         </ThemeProvider>
       </body>
     </html>
