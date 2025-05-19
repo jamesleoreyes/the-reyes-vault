@@ -1,11 +1,13 @@
 "use server";
 
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
+import { validateTurnstileToken } from 'next-turnstile';
+import { v4 as uuidv4 } from 'uuid';
 import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
-export const signInAction = async (formData: FormData) => {
+export const logInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = await createClient();
@@ -16,16 +18,37 @@ export const signInAction = async (formData: FormData) => {
   });
 
   if (error) {
-    return encodedRedirect("error", "/sign-in", error.message);
+    return encodedRedirect("error", "/login", error.message);
   }
 
   return redirect("/dashboard");
 };
 
-export const signOutAction = async () => {
+export const anonymousLogInAction = async (formData: FormData) => {
+  const captchaToken = formData.get('cf-turnstile-response') as string;
+  console.log(`Turnstile server token received: ${captchaToken}`);
+
+  if (!captchaToken) {
+    return encodedRedirect('error', '/login', 'CAPTCHA token missing. Please try again.');
+  }
+
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signInAnonymously({
+    options: { captchaToken }
+  });
+
+  if (error) {
+    console.error(`Supabase anonymous sign-in error: ${error.message}`);
+    return encodedRedirect('error', '/login', `Login failed: ${error.message}`);
+  }
+
+  return redirect('/dashboard');
+}
+
+export const logOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  return redirect("/login");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {

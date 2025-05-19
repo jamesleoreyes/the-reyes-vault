@@ -9,10 +9,6 @@ export default async function Page() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    return redirect('/sign-in');
-  }
-
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
       <div className="w-full">
@@ -23,8 +19,8 @@ export default async function Page() {
       </div>
       <div className="flex flex-col gap-2 items-start">
         <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <h2>Name: {user.user_metadata["firstName"]} {user.user_metadata["lastName"]}</h2>
-        <h2>Email: {user.email}</h2>
+        <h2>Name: {user?.user_metadata["firstName"]} {user?.user_metadata["lastName"]}</h2>
+        <h2>Email: {user?.email}</h2>
       </div>
     </div>
   );

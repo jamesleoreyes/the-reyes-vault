@@ -1,5 +1,5 @@
 export const ROOT_PATH = '/';
-export const SIGN_IN_PATH = '/sign-in';
+export const SIGN_IN_PATH = '/login';
 export const DASHBOARD_PATH = '/dashboard';
 
 export const PROTECTED_APP_PATHS = [
