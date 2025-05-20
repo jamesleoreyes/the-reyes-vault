@@ -93,15 +93,15 @@ export function LoginForm({
     <div className={cn('flex flex-col', className)} {...props}>
       <Card className='bg-background border-none shadow-none'>
         <CardHeader>
-          <CardTitle className='text-xl text-center'>Welcome to The Reyes Vault</CardTitle>
+          <CardTitle className='text-2xl text-center'>Welcome to The Reyes Vault</CardTitle>
           {isDemoMode && isDemoModeEnabled ? (
-            <CardDescription className='text-center text-sm'>
+            <CardDescription className='text-center text-base'>
               Complete the security check and click the anonymous log in button to enter
             </CardDescription>
           ) : isDemoMode && !isDemoModeEnabled ? (
             null
           ) : (
-            <CardDescription className='text-center text-sm'>
+            <CardDescription className='text-center text-base'>
               Enter your email below to login to your account
             </CardDescription>
           )}
@@ -171,12 +171,11 @@ export function LoginForm({
             <CardContent>
               <div className='flex flex-col gap-6'>
                 <div className='grid gap-2'>
-                  <Label htmlFor='email'>Email</Label>
+                  <Label htmlFor='email' className='text-base'>Email</Label>
                   <Input
                     id='email'
                     type='email'
                     name='email'
-                    placeholder='you@example.com'
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -184,10 +183,10 @@ export function LoginForm({
                 </div>
                 <div className='grid gap-2'>
                   <div className='flex items-center'>
-                    <Label htmlFor='password'>Password</Label>
+                    <Label htmlFor='password' className='text-base'>Password</Label>
                     <Link
                       href='/forgot-password'
-                      className='ml-auto inline-block text-sm underline-offset-4 hover:underline'
+                      className='ml-auto inline-block text-base underline-offset-4 hover:underline'
                     >
                       Forgot your password?
                     </Link>
@@ -196,7 +195,6 @@ export function LoginForm({
                     id='password'
                     type='password'
                     name='password'
-                    placeholder='Your password'
                     required
                   />
                 </div>
