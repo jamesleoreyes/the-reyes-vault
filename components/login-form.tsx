@@ -1,6 +1,6 @@
 'use client'
 
-import { LogIn, AlertCircle } from 'lucide-react';
+import { LogIn, AlertCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Turnstile } from 'next-turnstile';
 import { useState, useEffect, useActionState } from 'react';
@@ -90,18 +90,18 @@ export function LoginForm({
   const isNormalLoginDisabled = false;
 
   return (
-    <div className={cn('flex flex-col min-w-md', className)} {...props}>
-      <Card>
+    <div className={cn('flex flex-col', className)} {...props}>
+      <Card className='bg-background border-none shadow-none'>
         <CardHeader>
-          <CardTitle className='text-2xl'>Log in</CardTitle>
+          <CardTitle className='text-xl text-center'>Welcome to The Reyes Vault</CardTitle>
           {isDemoMode && isDemoModeEnabled ? (
-            <CardDescription >
+            <CardDescription className='text-center text-sm'>
               Complete the security check and click the anonymous log in button to enter
             </CardDescription>
           ) : isDemoMode && !isDemoModeEnabled ? (
             null
           ) : (
-            <CardDescription >
+            <CardDescription className='text-center text-sm'>
               Enter your email below to login to your account
             </CardDescription>
           )}
@@ -133,7 +133,9 @@ export function LoginForm({
                       </div>
                     )}
                     {(turnstileStatus === 'loading' && !turnstileError) && (
-                      <p className='text-sm text-muted-foreground'>Loading security check...</p>
+                      <p className='text-sm text-muted-foreground'>
+                        <Loader2 className='w-4 h-4 animate-spin' />
+                      </p>
                     )}
                   </div>
                 )}
@@ -151,7 +153,7 @@ export function LoginForm({
                 )}
               </div>
             </CardContent>
-            <CardFooter className='flex-col items-stretch mt-6 gap-4'>
+            <CardFooter className='flex-col items-stretch mt-6 gap-4 px-0'>
               {showAnonymousLoginButton && (
                 <SubmitButton
                   type='submit'
