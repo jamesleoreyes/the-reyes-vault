@@ -1,9 +1,6 @@
 import { Geist } from "next/font/google";
 import { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import NavBar from "@/components/navbar";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -61,16 +58,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen flex flex-col items-center">
-            <div className="flex-1 w-full flex flex-col items-center">
-              <NavBar />
-              <div className="flex flex-col gap-20 p-5">
-                {children}
-                <Analytics />
-                <SpeedInsights />
-              </div>
-            </div>
-          </main>
+          {children}
           <Toaster
             position="bottom-right"
             duration={4000}
