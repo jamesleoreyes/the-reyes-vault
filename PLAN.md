@@ -47,7 +47,7 @@
 
 ### Phase 1: Project Setup & Core Infrastructure (Estimated: 1-2 weeks)
 
-[![Phase 1 Progress](https://geps.dev/progress/85?title=Phase%201)](PLAN.md#phase-1-project-setup--core-infrastructure-estimated-1-2-weeks)
+[![Phase 1 Progress](https://geps.dev/progress/95?title=Phase%201)](PLAN.md#phase-1-project-setup--core-infrastructure-estimated-1-2-weeks)
 
 - ~~**Step 1.1: Initialize Next.js Project**~~
   - ~~`create-next-app` with TypeScript, ESLint, Tailwind CSS.~~
@@ -74,7 +74,7 @@
   - ~~Configure environment variables (Supabase keys, R2 keys, etc.).~~
   - ~~Verify basic deployment pipeline is working.~~
 - **Step 1.6: Basic Layout & UI Shell**
-  - Implement main application layout using Next.js App Router (`layout.tsx`).
+  - ~~Implement main application layout using Next.js App Router (`layout.tsx`).~~
   - ~~Integrate shadcn/ui: `npx shadcn-ui@latest init`.~~
   - ~~Set up basic navigation (e.g., placeholder links for Home, Upload, Albums).~~
 - **Step 1.7: Environment Configuration**
@@ -82,7 +82,7 @@
   - ~~Ensure Vercel environment variables are correctly configured for production/preview.~~
 - **Step 1.8: TypeScript Configuration**
   - ~~Review and enforce strict `tsconfig.json` settings.~~
-  - Set up ESLint and Prettier for code quality and consistency.
+  - ~~Set up ESLint and Prettier for code quality and consistency.~~
 
 ---
 
