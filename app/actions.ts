@@ -40,7 +40,7 @@ export const anonymousLogInAction = async (
   formData: FormData
 ) => {
   const captchaToken = formData.get('cf-turnstile-response') as string;
-  console.log(`Turnstile server token received: ${captchaToken}`);
+  console.log(`actions.ts --> anonymousLogInAction() --> Turnstile server token received: ${captchaToken}`);
 
   if (!captchaToken) {
     return { error: 'CAPTCHA response missing. Please try again.' };
@@ -52,7 +52,7 @@ export const anonymousLogInAction = async (
   });
 
   if (error) {
-    console.error(`Supabase anonymous sign-in error: ${error.message}`);
+    console.error(`actions.ts --> anonymousLogInAction() --> Supabase anonymous sign-in error: ${error.message}`);
     return { error: `Login failed: ${error.message}` };
   }
 
@@ -61,7 +61,13 @@ export const anonymousLogInAction = async (
 
 export const logOutAction = async () => {
   const supabase = await createClient();
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error(`actions.ts --> logOutAction() --> Failed to log out user: ${error}`);
+    return { error: `Failed to log out: ${error}` }
+  }
+
   return redirect("/login");
 };
 
