@@ -74,32 +74,32 @@ const data = {
 
 const navMain: INavMain[] = [
   {
-    title: "Photos",
-    url: "#",
+    title: 'Photos',
+    url: '/memories/photos',
     icon: Image,
     isActive: true,
   },
   {
     title: 'Videos',
-    url: '#',
+    url: '/memories/videos',
     icon: Video,
     isActive: false,
   },
   {
-    title: "VHS Tapes",
-    url: '#',
+    title: 'VHS Tapes',
+    url: '/memories/vhs',
     icon: Videotape,
     isActive: false,
   },
   {
     title: 'Music',
-    url: '#',
+    url: '/memories/music',
     icon: Music,
     isActive: false,
   },
   {
     title: 'Audio',
-    url: '#',
+    url: '/memories/audio',
     icon: AudioLines,
     isActive: false,
   }

@@ -3,7 +3,9 @@
 import {
   Bell,
   ChevronsUpDown,
+  Library,
   LogOut,
+  Sparkles,
   User,
 } from "lucide-react"
 
@@ -28,6 +30,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { logOutAction } from "@/app/actions";
+import Link from "next/link"
 
 export function SidebarUser({
   user,
@@ -80,13 +83,23 @@ export function SidebarUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <User size={16} className="mr-2" />
-                Profile
+              <DropdownMenuItem asChild>
+                <Link href='/profile' className="cursor-pointer">
+                  <User size={16} className="mr-2" />
+                  Profile
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell size={16} className="mr-2" />
-                Notifications
+              <DropdownMenuItem asChild>
+                <Link href='/memories' className="cursor-pointer">
+                  <Sparkles size={16} className="mr-2" />
+                  Memories
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href='/albums' className="cursor-pointer">
+                  <Library size={16} className="mr-2" />
+                  Albums
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
