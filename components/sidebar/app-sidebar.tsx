@@ -14,10 +14,10 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { SidebarMain } from "@/components/sidebar/sidebar-main"
+import { SidebarProjects } from "@/components/sidebar/sidebar-projects"
+import { SidebarUser } from "@/components/sidebar/sidebar-user"
+import { TeamSwitcher } from "@/components/sidebar/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -163,11 +163,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <SidebarMain items={data.navMain} />
+        <SidebarProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <SidebarUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
