@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { encodedRedirect } from "@/utils/utils";
-import { createClient } from "@/utils/supabase/server";
+import { createServerClient } from "@/utils/supabase/server";
 
 export interface ActionErrorState {
   error?: string;
@@ -15,7 +15,7 @@ export const logInAction = async (
 ) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
-  const supabase = await createClient();
+  const supabase = await createServerClient();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -46,7 +46,7 @@ export const anonymousLogInAction = async (
     return { error: 'CAPTCHA response missing. Please try again.' };
   }
 
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   const { error } = await supabase.auth.signInAnonymously({
     options: { captchaToken }
   });
@@ -60,7 +60,7 @@ export const anonymousLogInAction = async (
 }
 
 export const logOutAction = async () => {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   const { error } = await supabase.auth.signOut();
 
   if (error) {
@@ -73,7 +73,7 @@ export const logOutAction = async () => {
 
 export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   const origin = (await headers()).get("origin");
   const callbackUrl = formData.get("callbackUrl")?.toString();
 
@@ -106,7 +106,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
 };
 
 export const resetPasswordAction = async (formData: FormData) => {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
 
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
