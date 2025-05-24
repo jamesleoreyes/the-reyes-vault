@@ -54,6 +54,10 @@ export const metadata: Metadata = {
     title: meta.title,
     statusBarStyle: 'black-translucent',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  }
 };
 
 export const viewport: Viewport = {
