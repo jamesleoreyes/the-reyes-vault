@@ -1,10 +1,17 @@
-import { createServerClient } from '@supabase/ssr';
+import { createServerClient as supaServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
-export async function createClient() {
+/**
+ * Creates a Supabase server client with cookie handling for SSR.
+ * This client is intended for use in server components and API routes.
+ * It uses the public Supabase URL and anonymous key from environment variables.
+ *
+ * @returns A Supabase server client instance.
+ */
+export async function createServerClient() {
   const cookieStore = await cookies()
 
-  return createServerClient(
+  return supaServerClient(
     process.env['NEXT_PUBLIC_SUPABASE_URL']!,
     process.env['NEXT_PUBLIC_SUPABASE_ANON_KEY']!,
     {
