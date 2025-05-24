@@ -4,6 +4,12 @@ import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Forgot Password',
+  description: 'Forgot your password? Enter your email address and we will send you a password reset link.'
+}
 
 export default async function ForgotPassword(props: {
   searchParams: Promise<Message>;

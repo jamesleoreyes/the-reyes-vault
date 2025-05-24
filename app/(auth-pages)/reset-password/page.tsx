@@ -3,6 +3,11 @@ import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Reset Password'
+}
 
 export default async function ResetPassword(props: {
   searchParams: Promise<Message>;

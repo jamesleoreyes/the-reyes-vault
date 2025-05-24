@@ -1,8 +1,13 @@
-import { createClient } from "@/utils/supabase/server"
+import { createServerClient } from "@/utils/supabase/server"
 import { InfoIcon } from "lucide-react";
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Dashboard'
+}
 
 export default async function Page() {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
 
   const {
     data: { user },
