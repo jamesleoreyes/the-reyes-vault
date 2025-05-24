@@ -17,27 +17,36 @@ interface Meta {
 
 const meta: Meta = {
   title: 'The Reyes Vault',
-  description: "Digital vault for preserving family memories. Forever, searchable, and safe in the cloud.",
+  description: "A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.",
   siteName: 'The Reyes Vault',
   creator: 'James Reyes'
 }
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: meta.title,
+  title: {
+    template: `%s | ${meta.title}`,
+    default: meta.title
+  },
   description: meta.description,
   applicationName: meta.siteName,
   creator: meta.creator,
   openGraph: {
     type: 'website',
-    title: meta.title,
+    title: {
+      template: `%s | ${meta.title}`,
+      default: meta.title
+    },
     siteName: meta.siteName,
     description: meta.description,
     url: defaultUrl,
   },
   twitter: {
     card: 'summary_large_image',
-    title: meta.title,
+    title: {
+      template: `%s | ${meta.title}`,
+      default: meta.title
+    },
     description: meta.description,
   },
   appleWebApp: {
