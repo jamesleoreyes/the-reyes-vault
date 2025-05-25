@@ -23,7 +23,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/animate-ui/components/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -128,7 +128,10 @@ function SidebarProvider({
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <TooltipProvider delayDuration={0}>
+      <TooltipProvider
+        openDelay={0}
+        closeDelay={0}
+      >
         <div
           data-slot="sidebar-wrapper"
           style={
@@ -533,11 +536,12 @@ function SidebarMenuButton({
   }
 
   return (
-    <Tooltip>
+    <Tooltip
+      side="right"
+      align="center"
+    >
       <TooltipTrigger asChild>{button}</TooltipTrigger>
       <TooltipContent
-        side="right"
-        align="center"
         hidden={state !== "collapsed" || isMobile}
         {...tooltip}
       />

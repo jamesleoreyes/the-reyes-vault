@@ -4,7 +4,7 @@ import { LogIn, AlertCircle, Loader2 } from 'lucide-react';
 import { Turnstile } from 'next-turnstile';
 import { useState, useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
-import { isDemoMode } from '@/lib/config';
+import { config } from '@/lib/config';
 import { ActionErrorState, anonymousLogInAction } from '@/app/actions';
 import {
   CardContent,
@@ -60,7 +60,7 @@ export function AnonymousLoginForm({
     setTurnstileError(null);
   }
 
-  if (isDemoMode && isDemoModeEnabled && !siteKey) {
+  if (config.app.isDemoMode && isDemoModeEnabled && !siteKey) {
     console.error('Anonymous login is currently unavailable');
   }
 
