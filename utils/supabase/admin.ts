@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { urlConfig, supabaseConfig } from '@/lib/config';
 
 /**
  * Creates a Supabase admin client with service role key.
@@ -9,7 +10,7 @@ import { createClient } from '@supabase/supabase-js';
  */
 export async function createAdminClint() {
   return createClient(
-    process.env['NEXT_PUBLIC_SUPABASE_URL']!,
-    process.env['SUPABASE_SERVICE_ROLE_KEY']!
+    urlConfig.supabase,
+    supabaseConfig.serviceRoleKey,
   )
 }

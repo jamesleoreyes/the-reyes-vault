@@ -7,6 +7,7 @@ import {
   PROTECTED_APP_PATHS,
   AUTH_FLOW_PAGES,
 } from "@/lib/authPaths";
+import { supabaseConfig, urlConfig } from "@/lib/config";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -16,8 +17,8 @@ export const updateSession = async (request: NextRequest) => {
   });
 
   const supabase = createServerClient(
-    process.env["NEXT_PUBLIC_SUPABASE_URL"]!,
-    process.env["NEXT_PUBLIC_SUPABASE_ANON_KEY"]!,
+    urlConfig.supabase,
+    supabaseConfig.anonKey,
     {
       cookies: {
         getAll() {
