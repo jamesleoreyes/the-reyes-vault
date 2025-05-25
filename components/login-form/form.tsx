@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils';
-import { isDemoMode, isDemoModeEnabled } from '@/lib/config';
+import { config } from '@/lib/config';
 import { ActionErrorState } from '@/app/actions';
 import {
   Card,
@@ -22,29 +22,27 @@ export function LoginForm({
   className,
   ...props
 }: LoginFormProps) {
-  const siteKey = process.env['NEXT_PUBLIC_TURNSTILE_SITE_KEY'];
-
   return (
-    <div className={cn('flex flex-col', className)} {...props}>
-      <Card className='bg-background border-none shadow-none'>
+    <div className={cn('flex flex-col w-full max-w-lg', className)} {...props}>
+      <Card className='bg-transparent border-none shadow-none'>
         <CardHeader>
-          <CardTitle className='text-2xl text-center'>Welcome to The Reyes Vault</CardTitle>
-          {isDemoMode && isDemoModeEnabled ? (
-            <CardDescription className='text-center text-base'>
+          <CardTitle className='text-2xl text-center text-black'>Welcome to The Reyes Vault</CardTitle>
+          {config.app.isDemoMode && config.app.isDemoModeEnabled ? (
+            <CardDescription className='text-center text-base text-slate-600'>
               Complete the security check and click the anonymous log in button to enter
             </CardDescription>
-          ) : isDemoMode && !isDemoModeEnabled ? (
+          ) : config.app.isDemoMode && !config.app.isDemoModeEnabled ? (
             null
           ) : (
-            <CardDescription className='text-center text-base'>
+            <CardDescription className='text-center text-base text-muted'>
               Enter your email below to login to your account
             </CardDescription>
           )}
         </CardHeader>
-        {isDemoMode ? (
+        {config.app.isDemoMode ? (
           <AnonymousLoginForm
-            siteKey={siteKey}
-            isDemoModeEnabled={isDemoModeEnabled}
+            siteKey={config.url.turnstile.siteKey}
+            isDemoModeEnabled={config.app.isDemoModeEnabled}
             initialFormState={initialFormState}
           />
         ) : (
