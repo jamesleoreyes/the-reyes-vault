@@ -1,6 +1,10 @@
+<div align="center">
+  <img src="public/icon-192x192.png" alt="The Reyes Vault Logo" width="120" height="120">
+  
 # The Reyes Vault
-
-**A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.**
+  
+  **A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.**
+</div>
 
 This project is a full-stack Next.js application aimed at creating a secure and user-friendly platform for uploading, viewing, organizing, and searching digitized family memories like photos, videos, and audio recordings.
 
@@ -89,4 +93,4 @@ To run this project locally:
 
 This is currently a personal learning project. However, suggestions and feedback are welcome! Please feel free to open an issue for bugs or feature ideas.
 
-*This README will be updated as the project progresses.*
+_This README will be updated as the project progresses._
