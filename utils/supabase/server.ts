@@ -1,5 +1,6 @@
 import { createServerClient as supaServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { supabaseConfig, urlConfig } from '@/lib/config';
 
 /**
  * Creates a Supabase server client with cookie handling for SSR.
@@ -12,8 +13,8 @@ export async function createServerClient() {
   const cookieStore = await cookies()
 
   return supaServerClient(
-    process.env['NEXT_PUBLIC_SUPABASE_URL']!,
-    process.env['NEXT_PUBLIC_SUPABASE_ANON_KEY']!,
+    urlConfig.supabase,
+    supabaseConfig.anonKey,
     {
       cookies: {
         getAll() {
