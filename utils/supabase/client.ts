@@ -1,11 +1,13 @@
 import { createBrowserClient as supaBrowserClient } from "@supabase/ssr";
+import { urlConfig, supabaseConfig } from '@/lib/config';
 
 /**
  * Creates a Supabase browser client using environment variables.
  * @returns A Supabase browser client instance.
  */
-export const createBrowserClient = () =>
+export function createBrowserClient() {
   supaBrowserClient(
-    process.env["NEXT_PUBLIC_SUPABASE_URL"]!,
-    process.env["NEXT_PUBLIC_SUPABASE_ANON_KEY"]!,
+    urlConfig.supabase,
+    supabaseConfig.anonKey,
   );
+}

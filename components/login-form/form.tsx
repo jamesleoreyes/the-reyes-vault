@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils';
-import { config } from '@/lib/config';
+import { appConfig, cloudflareConfig } from '@/lib/config';
 import { ActionErrorState } from '@/app/actions';
 import {
   Card,
@@ -27,11 +27,11 @@ export function LoginForm({
       <Card className='bg-transparent border-none shadow-none'>
         <CardHeader>
           <CardTitle className='text-2xl text-center text-black'>Welcome to The Reyes Vault</CardTitle>
-          {config.app.isDemoMode && config.app.isDemoModeEnabled ? (
+          {appConfig.isDemoMode && appConfig.isDemoModeEnabled ? (
             <CardDescription className='text-center text-base text-slate-600'>
               Complete the security check and click the anonymous log in button to enter
             </CardDescription>
-          ) : config.app.isDemoMode && !config.app.isDemoModeEnabled ? (
+          ) : appConfig.isDemoMode && !appConfig.isDemoModeEnabled ? (
             null
           ) : (
             <CardDescription className='text-center text-base text-muted'>
@@ -39,10 +39,10 @@ export function LoginForm({
             </CardDescription>
           )}
         </CardHeader>
-        {config.app.isDemoMode ? (
+        {appConfig.isDemoMode ? (
           <AnonymousLoginForm
-            siteKey={config.url.turnstile.siteKey}
-            isDemoModeEnabled={config.app.isDemoModeEnabled}
+            siteKey={cloudflareConfig.turnstile.siteKey}
+            isDemoModeEnabled={appConfig.isDemoModeEnabled}
             initialFormState={initialFormState}
           />
         ) : (

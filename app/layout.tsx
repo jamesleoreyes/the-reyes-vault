@@ -3,9 +3,10 @@ import { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { urlConfig } from "@/lib/config";
 
-const defaultUrl = process.env["VERCEL_URL"]
-  ? `https://${process.env["VERCEL_URL"]}`
+const defaultUrl = urlConfig.app
+  ? `https://${urlConfig.app}`
   : "http://localhost:3000";
 
 interface Meta {
