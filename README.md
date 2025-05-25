@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icon-192x192.png" alt="The Reyes Vault Logo" width="192" height="192">
+  <img src="public/icon-512x512.png" alt="The Reyes Vault Logo" width="192" height="192">
   
 # **The Reyes Vault**
   
