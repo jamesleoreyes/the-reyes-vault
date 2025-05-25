@@ -15,7 +15,7 @@ interface Meta {
   creator: string;
 }
 
-export const meta: Meta = {
+const meta: Meta = {
   title: 'The Reyes Vault',
   description: "A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.",
   siteName: 'The Reyes Vault',
