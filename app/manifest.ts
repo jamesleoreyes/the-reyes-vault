@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'The Reyes Vault',
-    short_name: 'ReyesVault',
+    short_name: 'The Reyes Vault',
     description: 'A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.',
     start_url: '/',
     display: 'standalone',
