@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/icon-192x192.png" alt="The Reyes Vault Logo" width="120" height="120">
   
-# The Reyes Vault
+# **The Reyes Vault**
   
   **A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.**
 </div>
