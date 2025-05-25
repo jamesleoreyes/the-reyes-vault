@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { meta } from "./layout";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: meta.siteName,
+    name: 'The Reyes Vault',
     short_name: 'ReyesVault',
-    description: meta.description,
+    description: 'A digital vault for preserving family memories. Forever, searchable, and safe in the cloud.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
