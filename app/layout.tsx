@@ -54,6 +54,7 @@ export const metadata: Metadata = {
     capable: true,
     title: meta.title,
     statusBarStyle: 'black-translucent',
+    startupImage: '/apple-touch-icon.png'
   },
   icons: {
     icon: '/favicon.ico',
