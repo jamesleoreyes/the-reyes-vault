@@ -14,17 +14,17 @@ import {
   Videotape,
 } from "lucide-react"
 
-import { SidebarMain } from "@/src/components/sidebar/sidebar-main"
-import { SidebarAlbums } from "@/src/components/sidebar/sidebar-albums"
-import { SidebarUser } from "@/src/components/sidebar/sidebar-user"
-import { TeamSwitcher } from "@/src/components/sidebar/team-switcher"
+import { SidebarMain } from "@/components/sidebar/sidebar-main"
+import { SidebarAlbums } from "@/components/sidebar/sidebar-albums"
+import { SidebarUser } from "@/components/sidebar/sidebar-user"
+import { TeamSwitcher } from "@/components/sidebar/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/src/components/ui/sidebar"
+} from "@/components/ui/sidebar"
 
 export interface INavMain {
   title: string;

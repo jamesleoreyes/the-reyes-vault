@@ -1,6 +1,6 @@
 import { createServerClient as supaServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { supabaseConfig, urlConfig } from '@/src/lib/config';
+import { supabaseConfig, urlConfig } from '@/lib/config';
 
 /**
  * Creates a Supabase server client with cookie handling for SSR.

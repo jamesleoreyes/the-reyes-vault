@@ -2,8 +2,8 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { encodedRedirect } from "@/src/utils/utils";
-import { createServerClient } from "@/src/utils/supabase/server";
+import { encodedRedirect } from "@/utils/utils";
+import { createServerClient } from "@/utils/supabase/server";
 
 export interface ActionErrorState {
   error?: string;

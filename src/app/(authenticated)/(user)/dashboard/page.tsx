@@ -1,4 +1,4 @@
-import { createServerClient } from "@/src/utils/supabase/server"
+import { createServerClient } from "@/utils/supabase/server"
 import { InfoIcon } from "lucide-react";
 import type { Metadata } from "next"
 

@@ -6,8 +6,8 @@ import {
   DASHBOARD_PATH,
   PROTECTED_APP_PATHS,
   AUTH_FLOW_PAGES,
-} from "@/src/lib/authPaths";
-import { supabaseConfig, urlConfig } from "@/src/lib/config";
+} from "@/lib/authPaths";
+import { supabaseConfig, urlConfig } from "@/lib/config";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({

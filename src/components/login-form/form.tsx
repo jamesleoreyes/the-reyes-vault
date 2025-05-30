@@ -1,14 +1,14 @@
 'use client'
 
-import { cn } from '@/src/lib/utils';
-import { appConfig, cloudflareConfig } from '@/src/lib/config';
+import { cn } from '@/lib/utils';
+import { appConfig, cloudflareConfig } from '@/lib/config';
 import { ActionErrorState } from '@/app/actions';
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/src/components/ui/card';
+} from '@/components/ui/card';
 import { AnonymousLoginForm } from './anonymous-form';
 import { DefaultLoginForm } from './default-form';
 

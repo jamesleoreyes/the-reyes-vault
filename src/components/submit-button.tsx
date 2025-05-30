@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { type ComponentProps } from "react";
 import { useFormStatus } from "react-dom";
 import { Loader2 } from "lucide-react";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 type Props = ComponentProps<typeof Button> & {
   pendingText?: string;

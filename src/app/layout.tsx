@@ -2,8 +2,8 @@ import { Geist } from "next/font/google";
 import { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import { Toaster } from "@/src/components/ui/sonner";
-import { urlConfig } from "@/src/lib/config";
+import { Toaster } from "@/components/ui/sonner";
+import { urlConfig } from "@/lib/config";
 
 const defaultUrl = urlConfig.app
   ? `https://${urlConfig.app}`

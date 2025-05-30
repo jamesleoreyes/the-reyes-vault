@@ -4,12 +4,12 @@ import { LogIn, AlertCircle, Loader2 } from 'lucide-react';
 import { Turnstile } from 'next-turnstile';
 import { useState, useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
-import { appConfig } from '@/src/lib/config';
+import { appConfig } from '@/lib/config';
 import { ActionErrorState, anonymousLogInAction } from '@/app/actions';
 import {
   CardContent,
   CardFooter,
-} from '@/src/components/ui/card';
+} from '@/components/ui/card';
 import { SubmitButton } from '../submit-button';
 
 interface AnonymousLoginFormProps {
