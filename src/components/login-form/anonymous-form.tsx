@@ -43,7 +43,7 @@ export function AnonymousLoginForm({
     setTurnstileError(null);
   };
 
-  const handleTurnstileError = (err?: any) => {
+  const handleTurnstileError = () => {
     setTurnstileToken(null);
     setTurnstileStatus('error');
     setTurnstileError('Security check failed. Please try refreshing the page.');

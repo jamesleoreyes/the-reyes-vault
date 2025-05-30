@@ -60,7 +60,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               type='password'
               name='password'
               required
-              className='bg-accent-foreground text-black border-gray-300 shadow-2xs hover:shadow-md transition duration-100'            />
+              className='bg-accent-foreground text-black border-gray-300 shadow-2xs hover:shadow-md transition duration-100' />
           </div>
         </div>
       </CardContent>

@@ -12,7 +12,7 @@ import {
 import { AnonymousLoginForm } from './anonymous-form';
 import { DefaultLoginForm } from './default-form';
 
-interface LoginFormProps extends React.ComponentPropsWithoutRef<'div'> { }
+type LoginFormProps = React.ComponentPropsWithoutRef<'div'>
 
 const initialFormState: ActionErrorState = {
   error: undefined,

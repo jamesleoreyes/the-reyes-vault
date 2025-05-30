@@ -2,22 +2,14 @@
 
 import * as React from "react"
 import {
-  Album,
   AudioLines,
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
   Image,
   Library,
   LucideIcon,
-  Map,
   Music,
-  PieChart,
-  Settings2,
-  SquareTerminal,
   Video,
   Videotape,
 } from "lucide-react"
