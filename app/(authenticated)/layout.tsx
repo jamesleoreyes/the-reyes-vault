@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/sidebar/app-sidebar"
+import { AppSidebar } from "@/src/components/sidebar/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,13 +6,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/src/components/ui/breadcrumb"
+import { Separator } from "@/src/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/src/components/ui/sidebar"
 
 export default function MainAppLayout({
   children,
