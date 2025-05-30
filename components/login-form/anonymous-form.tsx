@@ -72,7 +72,7 @@ export function AnonymousLoginForm({
   return (
     <form action={anonymousLoginActionTrigger}>
       <CardContent>
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col items-center gap-6'>
           {isDemoModeEnabled && siteKey && (
             <div className='flex flex-col items-center gap-4'>
               <Turnstile
@@ -116,10 +116,11 @@ export function AnonymousLoginForm({
           )}
         </div>
       </CardContent>
-      <CardFooter className='flex-col items-stretch mt-6 gap-4 px-0'>
+      <CardFooter className='flex-col items-stretch mt-6 gap-4'>
         {showAnonymousLoginButton && (
           <SubmitButton
             type='submit'
+            variant={'outline'}
             className='w-full'
             disabled={isAnonymousLoginButtonDisabled}
             pendingText='Logging In...'
