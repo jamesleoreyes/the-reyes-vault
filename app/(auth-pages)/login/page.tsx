@@ -9,10 +9,8 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-    <GradientBackground>
-      <div className="relative z-10 flex min-h-svh w-full flex-col items-center justify-center p-4 sm:p-6 md:p-10">
-        <LoginForm />
-      </div>
-    </GradientBackground >
+    <div className="bg-[#99DFFD] relative z-10 flex min-h-svh w-full flex-col items-center justify-center p-4 sm:p-6 md:p-10">
+      <LoginForm />
+    </div>
   )
 }

@@ -47,7 +47,7 @@
 
 ### Phase 1: Project Setup & Core Infrastructure (Estimated: 1-2 weeks)
 
-[![Phase 1 Progress](https://geps.dev/progress/95?title=Phase%201)](PLAN.md#phase-1-project-setup--core-infrastructure-estimated-1-2-weeks)
+[![Phase 1 Progress](https://geps.dev/progress/100?title=Phase%201)](PLAN.md#phase-1-project-setup--core-infrastructure-estimated-1-2-weeks)
 
 - ~~**Step 1.1: Initialize Next.js Project**~~
   - ~~`create-next-app` with TypeScript, ESLint, Tailwind CSS.~~
@@ -55,32 +55,32 @@
 - ~~**Step 1.2: Set Up Version Control**~~
   - ~~Initialize Git repository.~~
   - ~~Push to GitHub.~~
-- **Step 1.3: Supabase Project Setup**
+- ~~**Step 1.3: Supabase Project Setup**~~
   - ~~Create a new Supabase project.~~
   - ~~Note down API keys and database connection strings.~~
-  - Design initial database schema for:
-    - `users` (leveraging Supabase Auth users table, potentially adding custom profile table linked via user ID)
-    - `memories` (id, user_id, title, description, date, type, storage_url, created_at, updated_at)
-    - `tags` (id, name)
-    - `people` (id, name)
-    - `albums` (id, user_id, name, description)
-    - Junction tables: `memory_tags`, `memory_people`, `album_memories`.
-- **Step 1.4: Cloudflare R2 Setup**
+  - ~~Design initial database schema for:~~
+    - ~~`users` (leveraging Supabase Auth users table, potentially adding custom profile table linked via user ID)~~
+    - ~~`memories` (id, user_id, title, description, date, type, storage_url, created_at, updated_at)~~
+    - ~~`tags` (id, name)~~
+    - ~~`people` (id, name)~~
+    - ~~`albums` (id, user_id, name, description)~~
+    - ~~Junction tables: `memory_tags`, `memory_people`, `album_memories`.~~
+- ~~**Step 1.4: Cloudflare R2 Setup**~~
   - ~~Create a Cloudflare R2 bucket.~~
   - ~~Configure public access settings as appropriate (or use signed URLs).~~
   - ~~Note down access keys and endpoint.~~
-- **Step 1.5: Vercel Project Setup**
+- ~~**Step 1.5: Vercel Project Setup**~~
   - ~~Connect GitHub repository to Vercel.~~
   - ~~Configure environment variables (Supabase keys, R2 keys, etc.).~~
   - ~~Verify basic deployment pipeline is working.~~
-- **Step 1.6: Basic Layout & UI Shell**
+- ~~**Step 1.6: Basic Layout & UI Shell**~~
   - ~~Implement main application layout using Next.js App Router (`layout.tsx`).~~
   - ~~Integrate shadcn/ui: `npx shadcn-ui@latest init`.~~
   - ~~Set up basic navigation (e.g., placeholder links for Home, Upload, Albums).~~
-- **Step 1.7: Environment Configuration**
+- ~~**Step 1.7: Environment Configuration**~~
   - ~~Set up `.env.local` for development.~~
   - ~~Ensure Vercel environment variables are correctly configured for production/preview.~~
-- **Step 1.8: TypeScript Configuration**
+- ~~**Step 1.8: TypeScript Configuration**~~
   - ~~Review and enforce strict `tsconfig.json` settings.~~
   - ~~Set up ESLint and Prettier for code quality and consistency.~~
 
@@ -90,15 +90,15 @@
 
 [![Phase 2 Progress](https://geps.dev/progress/75?title=Phase%202)](PLAN.md#phase-2-user-authentication--authorization-estimated-1-2-weeks)
 
-- **Step 2.1: Integrate Supabase Auth with Next.js**
+- ~~**Step 2.1: Integrate Supabase Auth with Next.js**~~
   - ~~Use Supabase helper libraries for Next.js (e.g., `@supabase/auth-helpers-nextjs` or the latest recommended package).~~
   - ~~Implement login page/component (email/password).~~
   - ~~Implement logout functionality.~~
   - ~~Set up session management (Supabase handles much of this).~~
-- **Step 2.2: Create Protected Routes**
+- ~~**Step 2.2: Create Protected Routes**~~
   - ~~Implement logic (e.g., in Middleware or Layouts/Pages) to protect routes that require authentication.~~
   - ~~Redirect unauthenticated users to the login page.~~
-- **Step 2.3: User Profile Management (Basic)**
+- ~~**Step 2.3: User Profile Management (Basic)**~~
   - ~~Create a simple user profile page where a logged-in user can see their email (no editing needed for MVP, as users are admin-managed).~~
 - **Step 2.4: Define User Roles**
   - Establish a simple role system (e.g., `user`, `admin`). This can be stored in Supabase (e.g., in `auth.users` metadata or a separate `profiles` table).

@@ -23,21 +23,22 @@ export function LoginForm({
   ...props
 }: LoginFormProps) {
   return (
-    <div className={cn('flex flex-col w-full max-w-lg', className)} {...props}>
+    <div className={cn('flex flex-col w-full max-w-xl', className)} {...props}>
       <Card className='bg-transparent border-none shadow-none'>
-        <CardHeader>
+        <CardHeader className='px-0'>
           <CardTitle className='text-2xl text-center text-black'>Welcome to The Reyes Vault</CardTitle>
-          {appConfig.isDemoMode && appConfig.isDemoModeEnabled ? (
+          {appConfig.isDemoMode && appConfig.isDemoModeEnabled && cloudflareConfig.turnstile.siteKey ? (
             <CardDescription className='text-center text-base text-slate-600'>
               Complete the security check and click the anonymous log in button to enter
             </CardDescription>
           ) : appConfig.isDemoMode && !appConfig.isDemoModeEnabled ? (
             null
-          ) : (
+          ) : !appConfig.isDemoMode ? (
             <CardDescription className='text-center text-base text-muted'>
               Enter your email below to login to your account
             </CardDescription>
-          )}
+          ) : null
+          }
         </CardHeader>
         {appConfig.isDemoMode ? (
           <AnonymousLoginForm

@@ -8,9 +8,9 @@
 
 This project is a full-stack Next.js application aimed at creating a secure and user-friendly platform for uploading, viewing, organizing, and searching digitized family memories like photos, videos, and audio recordings.
 
-## 🚀 MVP Progress: 25%
+## 🚀 MVP Progress: 34%
 
-[![Progress](https://geps.dev/progress/23?title=MVP)](https://github.com/jameslreyes/the-reyes-vault/blob/main/PLAN.md)
+[![Progress](https://geps.dev/progress/34?title=MVP)](https://github.com/jameslreyes/the-reyes-vault/blob/main/PLAN.md)
 
 I am currently in the early stages of development, focusing on core infrastructure, user authentication, and basic application setup.
 
