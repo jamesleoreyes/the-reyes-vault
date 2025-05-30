@@ -1,4 +1,3 @@
-import { GradientBackground } from "@/components/animate-ui/backgrounds/gradient";
 import { LoginForm } from "@/components/login-form/form";
 import type { Metadata } from "next"
 
