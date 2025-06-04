@@ -6,7 +6,7 @@ import { urlConfig, supabaseConfig } from '@/lib/config';
  * @returns A Supabase browser client instance.
  */
 export function createBrowserClient() {
-  supaBrowserClient(
+  return supaBrowserClient(
     urlConfig.supabase,
     supabaseConfig.anonKey,
   );
