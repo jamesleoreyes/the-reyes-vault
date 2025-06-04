@@ -8,7 +8,7 @@ import { urlConfig, supabaseConfig } from '@/lib/config';
  *
  * @returns A Supabase admin client instance.
  */
-export async function createAdminClint() {
+export async function createAdminClient() {
   return createClient(
     urlConfig.supabase,
     supabaseConfig.serviceRoleKey,
