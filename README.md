@@ -89,6 +89,10 @@ To run this project locally:
 
    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## 🤝 Contributing
 
 This is currently a personal learning project. However, suggestions and feedback are welcome! Please feel free to open an issue for bugs or feature ideas.
