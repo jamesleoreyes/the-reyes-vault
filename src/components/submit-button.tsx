@@ -24,7 +24,7 @@ export function SubmitButton({
       aria-disabled={pending}
       {...props}
       className={cn(
-        'flex items-center rounded-none',
+        'flex items-center',
         { 'cursor-pointer': !pending }
       )}>
       {pending ? (
