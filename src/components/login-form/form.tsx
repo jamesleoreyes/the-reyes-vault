@@ -3,15 +3,6 @@
 import { cn } from '@/lib/utils';
 import { appConfig, cloudflareConfig } from '@/lib/config';
 import { ActionErrorState } from '@/app/actions';
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { AnonymousLoginForm } from './anonymous-form';
 import { DefaultLoginForm } from './default-form';
 
@@ -31,7 +22,7 @@ export function LoginForm({
         {appConfig.isDemoMode && appConfig.isDemoModeEnabled && cloudflareConfig.turnstile.siteKey ? (
           <>
             <h1 className="text-2xl font-light">Log in to anonymous account</h1>
-            <p className="text-muted-foreground text-sm text-balance font-extralight">
+            <p className="text-muted-foreground text-sm text-balance font-light">
               Complete the security check and click the anonymous log in button to enter
             </p>
           </>
@@ -40,7 +31,7 @@ export function LoginForm({
         ) : !appConfig.isDemoMode ? (
           <>
             <h1 className="text-2xl font-light">Log in to your account</h1>
-            <p className="text-muted-foreground text-sm text-balance font-extralight">
+            <p className="text-muted-foreground text-sm text-balance font-light">
               Enter your email below to log in to your account
             </p>
           </>
