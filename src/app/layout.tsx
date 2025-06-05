@@ -91,8 +91,7 @@ export default function RootLayout({
           {children}
           <Toaster
             position="bottom-right"
-            duration={4000}
-            expand={false}
+            duration={5000}
             visibleToasts={5}
             richColors
             closeButton

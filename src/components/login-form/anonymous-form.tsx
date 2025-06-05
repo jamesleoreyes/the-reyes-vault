@@ -69,47 +69,53 @@ export function AnonymousLoginForm({
   const showDemoModeDisabledMessage = !isDemoModeEnabled;
   const isAnonymousLoginButtonDisabled = showAnonymousLoginButton && (turnstileStatus !== 'success' || !turnstileToken);
 
+  const showTurnstileSkeleton =
+    turnstileStatus === 'loading' ||
+    turnstileStatus === 'expired'
+
   return (
     <form action={anonymousLoginActionTrigger}>
       <CardContent>
         <div className='flex flex-col items-center gap-6'>
           {isDemoModeEnabled && siteKey && (
             <div className='flex flex-col items-center gap-4'>
-              <Turnstile
-                siteKey={siteKey}
-                onVerify={handleTurnstileVerify}
-                onError={handleTurnstileError}
-                onExpire={handleTurnstileExpire}
-                onLoad={handleTurnstileLoad}
-                retry='auto'
-                refreshExpired='auto'
-                sandbox={process.env.NODE_ENV === 'development'}
-                className='mx-auto'
-              />
-              {turnstileError && (
-                <div
-                  className='flex items-center gap-2 text-red-500 text-sm'
-                  aria-live='polite'
-                >
-                  <AlertCircle size={16} />
-                  <span>{turnstileError}</span>
+              <div style={{ width: '300px', height: '65px' }}>
+                {showTurnstileSkeleton && (
+                  <div
+                    className="flex justify-center items-center bg-[#232323] border border-[#797979]"
+                    style={{ width: '100%', height: '100%' }}
+                    aria-label='Loading security check...'
+                  >
+                    <Loader2 className='animate-spin mr-2' />
+                  </div>
+                )}
+                <div style={{ display: showTurnstileSkeleton ? 'none' : 'block', width: '100%', height: '100%' }}>
+                  <Turnstile
+                    siteKey={siteKey}
+                    onVerify={handleTurnstileVerify}
+                    onError={handleTurnstileError}
+                    onExpire={handleTurnstileExpire}
+                    onLoad={handleTurnstileLoad}
+                    retry='never'
+                    refreshExpired='auto'
+                    theme='auto'
+                    appearance='always'
+                    sandbox={process.env.NODE_ENV === 'development'}
+                    className='mx-auto'
+                  />
                 </div>
-              )}
-              {(turnstileStatus === 'loading' && !turnstileError) && (
-                <p className='text-sm text-muted-foreground'>
-                  <Loader2 className='w-4 h-4 animate-spin' />
-                </p>
-              )}
+              </div>
+              {turnstileError && toast.error(turnstileError)}
             </div>
           )}
           {showAnonymousLoginUnavailableMessage && (
-            <div className='flex items-center gap-2 text-red-500 text-sm' aria-live='polite'>
+            <div className='flex items-center gap-2 text-base font-bold' aria-live='polite'>
               <AlertCircle size={16} />
               <span>Anonymous login is currently unavailable</span>
             </div>
           )}
           {showDemoModeDisabledMessage && (
-            <div className='flex items-center gap-2 text-orange-500 text-sm' aria-live='polite'>
+            <div className='flex items-center gap-2 text-base font-bold' aria-live='polite'>
               <AlertCircle size={16} />
               <span>Anonymous login is temporarily disabled</span>
             </div>
@@ -120,7 +126,6 @@ export function AnonymousLoginForm({
         {showAnonymousLoginButton && (
           <SubmitButton
             type='submit'
-            variant={'outline'}
             className='w-full'
             disabled={isAnonymousLoginButtonDisabled}
             pendingText='Logging In...'
