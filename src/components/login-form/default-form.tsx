@@ -40,7 +40,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               type='email'
               name='email'
               required
-              placeholder="m@example.com"
+              placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
