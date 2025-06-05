@@ -13,10 +13,6 @@ import { SendIcon } from "lucide-react";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
-interface ForgotPasswordFormProps {
-  initialFormState: ActionState;
-}
-
 const initialFormState: ActionState = {
   error: undefined,
 }
