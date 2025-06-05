@@ -30,7 +30,7 @@ export function LoginForm({
       <div className="flex flex-col items-center gap-2 text-center">
         {appConfig.isDemoMode && appConfig.isDemoModeEnabled && cloudflareConfig.turnstile.siteKey ? (
           <>
-            <h1 className="text-2xl font-light">Login to anonymous account</h1>
+            <h1 className="text-2xl font-light">Log in to anonymous account</h1>
             <p className="text-muted-foreground text-sm text-balance font-extralight">
               Complete the security check and click the anonymous log in button to enter
             </p>
@@ -39,9 +39,9 @@ export function LoginForm({
           null
         ) : !appConfig.isDemoMode ? (
           <>
-            <h1 className="text-2xl font-light">Login to your account</h1>
+            <h1 className="text-2xl font-light">Log in to your account</h1>
             <p className="text-muted-foreground text-sm text-balance font-extralight">
-              Enter your email below to login to your account
+              Enter your email below to log in to your account
             </p>
           </>
         ) : null}
