@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/sidebar"
 import { logOutAction } from "@/app/actions";
 import Link from "next/link"
+import { toast } from "sonner"
 
 export function SidebarUser({
   user,
@@ -40,7 +41,12 @@ export function SidebarUser({
     avatar: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+
+  const handleLogOut = async () => {
+    await logOutAction();
+    toast.success('You have been logged out successfully');
+  }
 
   return (
     <SidebarMenu>
@@ -103,7 +109,7 @@ export function SidebarUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onSelect={async () => await logOutAction()}
+              onClick={handleLogOut}
               className="cursor-pointer"
             >
               <LogOut size={16} className="mr-2" />

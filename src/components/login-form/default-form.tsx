@@ -32,25 +32,25 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
   return (
     <form action={normalLoginAction}>
       <CardContent>
-        <div className='flex flex-col gap-6'>
-          <div className='grid gap-2'>
-            <Label htmlFor='email' className='text-base text-black'>Email</Label>
+        <div className='grid gap-6'>
+          <div className='grid gap-3'>
+            <Label htmlFor="email">Email</Label>
             <Input
               id='email'
               type='email'
               name='email'
               required
+              placeholder="m@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className='bg-accent-foreground text-black border-gray-300 shadow-2xs hover:shadow-md transition duration-100'
             />
           </div>
-          <div className='grid gap-2'>
+          <div className='grid gap-3'>
             <div className='flex items-center'>
-              <Label htmlFor='password' className='text-base text-black'>Password</Label>
+              <Label htmlFor="password">Password</Label>
               <Link
                 href='/forgot-password'
-                className='ml-auto inline-block text-base text-muted underline-offset-4 hover:underline'
+                className="ml-auto text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline"
               >
                 Forgot your password?
               </Link>
@@ -60,7 +60,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               type='password'
               name='password'
               required
-              className='bg-accent-foreground text-black border-gray-300 shadow-2xs hover:shadow-md transition duration-100' />
+            />
           </div>
         </div>
       </CardContent>
@@ -68,9 +68,8 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
         <SubmitButton
           type='submit'
           className='w-full'
-          pendingText='Logging In...'
+          pendingText='Logging in...'
           disabled={isNormalLoginDisabled}
-          variant={'secondary'}
         >
           <LogIn className='w-4 h-4 mr-2' /> Log in
         </SubmitButton>
