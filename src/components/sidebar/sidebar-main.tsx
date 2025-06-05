@@ -20,7 +20,7 @@ export function SidebarMain({ items }: { items: INavMain[] }) {
             key={item.title}
           >
             <Link href={item.url}>
-              <SidebarMenuButton tooltip={item.title} className="cursor-pointer">
+              <SidebarMenuButton tooltip={item.title} className="cursor-pointer rounded-none">
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>

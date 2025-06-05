@@ -34,7 +34,7 @@ export function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
       <SidebarMenu>
         {albums.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
+            <SidebarMenuButton asChild className="rounded-none">
               <a href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
@@ -48,22 +48,22 @@ export function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-48 rounded-lg"
+                className="w-48 shadow-lg"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
                 <DropdownMenuItem>
                   <Folder size={16} className="text-muted-foreground mr-2" />
-                  <span>View Project</span>
+                  <span>View Album</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Forward size={16} className="text-muted-foreground mr-2" />
-                  <span>Share Project</span>
+                  <span>Share Album</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Trash2 size={16} className="text-muted-foreground mr-2" />
-                  <span>Delete Project</span>
+                  <span>Delete Album</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
