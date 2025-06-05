@@ -5,7 +5,7 @@ import { Turnstile } from 'next-turnstile';
 import { useState, useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
 import { appConfig } from '@/lib/config';
-import { ActionErrorState, anonymousLogInAction } from '@/app/actions';
+import { ActionState, anonymousLogInAction } from '@/app/actions';
 import {
   CardContent,
   CardFooter,
@@ -15,7 +15,7 @@ import { SubmitButton } from '../submit-button';
 interface AnonymousLoginFormProps {
   siteKey: string | undefined;
   isDemoModeEnabled: boolean;
-  initialFormState: ActionErrorState;
+  initialFormState: ActionState;
 }
 
 export function AnonymousLoginForm({
@@ -29,7 +29,7 @@ export function AnonymousLoginForm({
   >('loading');
   const [turnstileError, setTurnstileError] = useState<string | null>(null);
 
-  const [anonymousLoginState, anonymousLoginActionTrigger] = useActionState(anonymousLogInAction, initialFormState);
+  const [anonymousLoginState, anonymousLoginActionTrigger] = useActionState<ActionState, FormData>(anonymousLogInAction, initialFormState);
 
   useEffect(() => {
     if (anonymousLoginState?.error) {

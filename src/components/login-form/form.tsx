@@ -2,13 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import { appConfig, cloudflareConfig } from '@/lib/config';
-import { ActionErrorState } from '@/app/actions';
+import { ActionState } from '@/app/actions';
 import { AnonymousLoginForm } from './anonymous-form';
 import { DefaultLoginForm } from './default-form';
 
 type LoginFormProps = React.ComponentPropsWithoutRef<'div'>
 
-const initialFormState: ActionErrorState = {
+const initialFormState: ActionState = {
   error: undefined,
 }
 
