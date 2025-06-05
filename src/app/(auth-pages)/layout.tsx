@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Vault } from "lucide-react";
 
 export default function AuthLayout({
@@ -22,7 +23,7 @@ export default function AuthLayout({
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
+        <Image
           src="/placeholder.svg"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
