@@ -10,7 +10,7 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { SubmitButton } from '../submit-button';
+import { SubmitButton } from '../ui/submit-button';
 
 interface AnonymousLoginFormProps {
   siteKey: string | undefined;
