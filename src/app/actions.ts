@@ -5,12 +5,13 @@ import { headers } from "next/headers";
 import { encodedRedirect } from "@/utils/utils";
 import { createServerClient } from "@/utils/supabase/server";
 
-export interface ActionErrorState {
+export interface ActionState {
   error?: string;
+  message?: string;
 }
 
 export const logInAction = async (
-  _prevState: ActionErrorState | undefined,
+  _prevState: ActionState | undefined,
   formData: FormData
 ) => {
   const email = formData.get("email") as string;
@@ -36,7 +37,7 @@ export const logInAction = async (
 };
 
 export const anonymousLogInAction = async (
-  _prevState: ActionErrorState | undefined,
+  _prevState: ActionState | undefined,
   formData: FormData
 ) => {
   const captchaToken = formData.get('cf-turnstile-response') as string;
@@ -71,14 +72,16 @@ export const logOutAction = async () => {
   return redirect("/login");
 };
 
-export const forgotPasswordAction = async (formData: FormData) => {
+export const forgotPasswordAction = async (
+  _prevState: ActionState | undefined,
+  formData: FormData
+) => {
   const email = formData.get("email")?.toString();
   const supabase = await createServerClient();
   const origin = (await headers()).get("origin");
-  const callbackUrl = formData.get("callbackUrl")?.toString();
 
   if (!email) {
-    return encodedRedirect("error", "/forgot-password", "Email is required");
+    return { error: "Email is required" };
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -87,22 +90,10 @@ export const forgotPasswordAction = async (formData: FormData) => {
 
   if (error) {
     console.error(error.message);
-    return encodedRedirect(
-      "error",
-      "/forgot-password",
-      "Could not reset password",
-    );
+    return { error: error.message }
   }
 
-  if (callbackUrl) {
-    return redirect(callbackUrl);
-  }
-
-  return encodedRedirect(
-    "success",
-    "/forgot-password",
-    "Check your email for a link to reset your password.",
-  );
+  return { message: "Check your email for a link to reset your password." };
 };
 
 export const resetPasswordAction = async (formData: FormData) => {
