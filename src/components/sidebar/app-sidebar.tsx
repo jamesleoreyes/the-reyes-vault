@@ -17,7 +17,6 @@ import {
 import { SidebarMain } from "@/components/sidebar/sidebar-main"
 import { SidebarAlbums } from "@/components/sidebar/sidebar-albums"
 import { SidebarUser } from "@/components/sidebar/sidebar-user"
-import { TeamSwitcher } from "@/components/sidebar/team-switcher"
 import {
   Sidebar,
   SidebarContent,
