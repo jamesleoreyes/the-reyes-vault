@@ -19,7 +19,7 @@ interface DefaultLoginFormProps {
 
 export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
   const [email, setEmail] = useState('');
-  const [normalLoginState, normalLoginAction] = useActionState<ActionState, FormData>(logInAction, initialFormState);
+  const [normalLoginState, normalLoginAction, isPending] = useActionState<ActionState, FormData>(logInAction, initialFormState);
 
   useEffect(() => {
     if (normalLoginState?.error) {
@@ -41,6 +41,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               name='email'
               required
               placeholder="you@example.com"
+              disabled={isPending}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -60,6 +61,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               type='password'
               name='password'
               required
+              disabled={isPending}
             />
           </div>
         </div>
