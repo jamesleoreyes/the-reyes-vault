@@ -17,7 +17,11 @@ interface ForgotPasswordFormProps {
   initialFormState: ActionState;
 }
 
-export function ForgotPasswordForm({ initialFormState }: ForgotPasswordFormProps) {
+const initialFormState: ActionState = {
+  error: undefined,
+}
+
+export function ForgotPasswordForm() {
   const [normalForgotPasswordState, normalForgotPasswordAction] = useActionState(forgotPasswordAction, initialFormState);
 
   useEffect(() => {
