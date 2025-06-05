@@ -4,7 +4,7 @@ import { LogIn } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
-import { ActionErrorState, logInAction } from '@/app/actions';
+import { ActionState, logInAction } from '@/app/actions';
 import {
   CardContent,
   CardFooter,
@@ -14,12 +14,12 @@ import { Label } from '@/components/ui/label';
 import { SubmitButton } from '../submit-button';
 
 interface DefaultLoginFormProps {
-  initialFormState: ActionErrorState;
+  initialFormState: ActionState;
 }
 
 export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
   const [email, setEmail] = useState('');
-  const [normalLoginState, normalLoginAction] = useActionState(logInAction, initialFormState);
+  const [normalLoginState, normalLoginAction] = useActionState<ActionState, FormData>(logInAction, initialFormState);
 
   useEffect(() => {
     if (normalLoginState?.error) {
@@ -31,7 +31,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
 
   return (
     <form action={normalLoginAction}>
-      <CardContent>
+      <CardContent className="p-0">
         <div className='grid gap-6'>
           <div className='grid gap-3'>
             <Label htmlFor="email">Email</Label>
@@ -64,7 +64,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
           </div>
         </div>
       </CardContent>
-      <CardFooter className='flex-col items-stretch mt-6 gap-4'>
+      <CardFooter className='flex-col items-stretch mt-6 gap-4 p-0'>
         <SubmitButton
           type='submit'
           className='w-full'
