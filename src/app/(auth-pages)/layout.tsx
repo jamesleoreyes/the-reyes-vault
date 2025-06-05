@@ -25,6 +25,8 @@ export default function AuthLayout({
       <div className="bg-muted relative hidden lg:block">
         <Image
           src="/placeholder.svg"
+          width={100}
+          height={100}
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />

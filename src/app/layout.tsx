@@ -95,6 +95,11 @@ export default function RootLayout({
             visibleToasts={5}
             richColors
             closeButton
+            toastOptions={{
+              classNames: {
+                toast: '!rounded-none',
+              },
+            }}
           />
         </ThemeProvider>
       </body>

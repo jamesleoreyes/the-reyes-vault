@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { SubmitButton } from '../submit-button';
+import { SubmitButton } from '@/components/ui/submit-button';
 
 interface DefaultLoginFormProps {
   initialFormState: ActionState;
