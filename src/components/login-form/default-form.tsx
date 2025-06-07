@@ -51,7 +51,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
               <Label htmlFor="password">Password</Label>
               <Link
                 href='/forgot-password'
-                className="ml-auto text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline"
+                className={`ml-auto text-sm ${isPending ? 'opacity-50 pointer-events-none' : 'text-muted-foreground hover:text-foreground underline-offset-4 hover:underline'}`}
               >
                 Forgot your password?
               </Link>
