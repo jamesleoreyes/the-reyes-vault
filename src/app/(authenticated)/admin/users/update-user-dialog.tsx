@@ -110,7 +110,7 @@ export function UpdateUserDialog({
         <DialogHeader>
           <DialogTitle>Edit User</DialogTitle>
           <DialogDescription>
-            Make changes to the user's profile. Click save when you're done.
+            Make changes to the user&apos;s profile. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <form action={handleSubmit}>

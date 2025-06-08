@@ -1,5 +1,6 @@
 'use server';
 
+import { ActionState } from "@/app/actions";
 import { Family, Role } from "@/types/enums";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { createServerClient } from "@/utils/supabase/server";
@@ -25,7 +26,7 @@ const UpdateUserSchema = z.object({
   family: z.nativeEnum(Family),
 });
 
-export async function createUser(prevState: any, formData: FormData) {
+export async function createUser(prevState: ActionState, formData: FormData) {
   const validatedFields = UserSchema.safeParse(
     Object.fromEntries(formData.entries()),
   );
@@ -83,7 +84,7 @@ export async function createUser(prevState: any, formData: FormData) {
   return { message: `Successfully created user ${email}.` };
 }
 
-export async function updateUser(prevState: any, formData: FormData) {
+export async function updateUser(prevState: ActionState, formData: FormData) {
   const validatedFields = UpdateUserSchema.safeParse(
     Object.fromEntries(formData.entries()),
   );
