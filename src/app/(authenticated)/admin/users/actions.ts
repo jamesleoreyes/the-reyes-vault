@@ -16,6 +16,14 @@ const UserSchema = z.object({
   family: z.nativeEnum(Family),
 });
 
+const UpdateUserSchema = z.object({
+  id: z.string().uuid({ message: "Invalid user ID." }),
+  first_name: z.string().min(1, { message: 'First name is required.' }),
+  last_name: z.string().min(1, { message: 'Last name is required.' }),
+  role: z.nativeEnum(Role),
+  family: z.nativeEnum(Family),
+});
+
 export async function createUser(prevState: any, formData: FormData) {
   const validatedFields = UserSchema.safeParse(
     Object.fromEntries(formData.entries()),
@@ -72,4 +80,52 @@ export async function createUser(prevState: any, formData: FormData) {
 
   revalidatePath('/admin/users');
   return { message: `Successfully created user ${email}.` };
+}
+
+export async function updateUser(prevState: any, formData: FormData) {
+  const validatedFields = UpdateUserSchema.safeParse(
+    Object.fromEntries(formData.entries()),
+  );
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Error: Please check the form fields.',
+    };
+  }
+
+  const { id, ...profileData } = validatedFields.data;
+  const fullName = `${profileData.first_name} ${profileData.last_name}`;
+  const supabaseAdmin = await createAdminClient();
+
+  const { error } = await supabaseAdmin
+    .from('profiles')
+    .update(profileData)
+    .eq('id', id);
+
+  if (error) {
+    console.error(`Error updating profile: ${error}`);
+    return { message: `Error updating profile: ${error.message}` };
+  }
+
+  revalidatePath('/admin/users');
+  return { message: `Successfully updated user ${fullName}` }
+}
+
+export async function deleteUser(formData: FormData) {
+  const id = formData.get('id') as string;
+  if (!id) {
+    return { message: 'Error: User ID is missing.' };
+  }
+
+  const supabaseAdmin = await createAdminClient();
+
+  const { error } = await supabaseAdmin.auth.admin.deleteUser(id);
+  if (error) {
+    console.error(`Error deleting user: ${error}`);
+    return { message: `Error deleting user: ${error.message}` };
+  }
+
+  revalidatePath('/admin/users');
+  return { message: `Successfully deleted user.` }
 }

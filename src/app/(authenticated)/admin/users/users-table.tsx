@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/table';
 import { Profile } from '@/types/Profiles';
 import { Badge } from '@/components/ui/badge';
+import { UserActions } from './user-actions';
 
 interface UsersTableProps {
   profiles: Profile[];
@@ -25,6 +26,9 @@ export function UsersTable({ profiles }: UsersTableProps) {
           <TableHead>Role</TableHead>
           <TableHead>Family</TableHead>
           <TableHead>Joined At</TableHead>
+          <TableHead>
+            <span className="sr-only">Actions</span>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -44,6 +48,9 @@ export function UsersTable({ profiles }: UsersTableProps) {
             <TableCell>{profile.family[0]?.toUpperCase() + profile.family.slice(1)}</TableCell>
             <TableCell>
               {new Date(profile.created_at).toLocaleDateString()}
+            </TableCell>
+            <TableCell>
+              <UserActions profile={profile} />
             </TableCell>
           </TableRow>
         ))}
