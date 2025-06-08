@@ -8,9 +8,10 @@ import {
   AUTH_FLOW_PAGES,
   isAdminPath,
 } from "@/lib/authPaths";
-import { supabaseConfig, urlConfig } from "@/lib/config";
+import { appConfig, supabaseConfig, urlConfig } from "@/lib/config";
 import { Profile } from "@/types/Profiles";
 import { Role } from "@/types/enums";
+import { getUserProfile } from "../utils";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -18,6 +19,13 @@ export const updateSession = async (request: NextRequest) => {
       headers: request.headers,
     },
   });
+
+  const currentPath = request.nextUrl.pathname;
+
+  // Block ALL admin routes in demo mode - no exceptions
+  if (appConfig.isDemoMode && isAdminPath(currentPath)) {
+    return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
+  }
 
   const supabase = createServerClient(
     urlConfig.supabase,
@@ -44,7 +52,6 @@ export const updateSession = async (request: NextRequest) => {
 
   const { data: { user }, error } = await supabase.auth.getUser();
   const isUserAuthenticated = user !== null && error === null;
-  const currentPath = request.nextUrl.pathname;
 
   if (currentPath === ROOT_PATH) {
     if (isUserAuthenticated) {
@@ -63,13 +70,8 @@ export const updateSession = async (request: NextRequest) => {
       return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
     }
 
-    if (isAdminPath(currentPath)) {
-      const { data: userProfile } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single() as { data: Profile };
-
+    if (!appConfig.isDemoMode && isAdminPath(currentPath)) {
+      const userProfile = await getUserProfile(supabase, user.id);
       if (userProfile?.role !== Role.ADMIN) {
         return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
       }
