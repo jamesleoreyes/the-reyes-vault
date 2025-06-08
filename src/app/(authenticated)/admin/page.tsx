@@ -7,13 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { CreateUserDialog } from "./users/create-user-dialog";
 
 export default async function AdminUsersPage() {
   const supabase = await createServerClient();
 
   const { data: profiles, error } = await supabase
     .from('profiles')
-    .select('*');
+    .select('*')
+    .order('created_at', { ascending: false });
 
   if (error) {
     console.error(`Error fetching profiles: ${error}`);
@@ -24,10 +26,13 @@ export default async function AdminUsersPage() {
     <div className="p-4 sm:p-6">
       <Card>
         <CardHeader>
-          <CardTitle>User Management</CardTitle>
-          <CardDescription>
-            View, create, and manage user accounts.
-          </CardDescription>
+          <div>
+            <CardTitle>User Management</CardTitle>
+            <CardDescription>
+              View, create, and manage user accounts.
+            </CardDescription>
+          </div>
+          <CreateUserDialog />
         </CardHeader>
         <CardContent>
           <UsersTable profiles={profiles ?? []} />
