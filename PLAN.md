@@ -116,10 +116,9 @@
 - ~~**Step 3.2: User Listing Page (Admin)**~~
   - ~~Display a table of all registered users (from Supabase Auth).~~
   - ~~Show key information (email, user ID, role, creation date).~~
-- **Step 3.3: Create User Functionality (Admin)**
-  - Form for admin to create new users (email, password, assign role - default to `user`).
-  - Logic to interact with Supabase Auth to create users.
-  - Implement allowlist check (e.g., admin adds email to an "approved list" in the DB or config before creating the user, or user creation implies they are allowed).
+- ~~**Step 3.3: Create User Functionality (Admin)**~~
+  - ~~Form for admin to create new users (email, password, assign role - default to `member`).~~
+  - ~~Logic to interact with Supabase Auth to create users.~~
 - **Step 3.4: Update User Functionality (Admin - Basic)**
   - Ability for admin to change a user's role.
   - (Optional for MVP, can defer: Reset password, change email).
