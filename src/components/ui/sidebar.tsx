@@ -261,7 +261,7 @@ function SidebarTrigger({
   const { toggleSidebar, state } = useSidebar()
 
   return (
-    <Tooltip delayDuration={200}>
+    <Tooltip delayDuration={100}>
       <TooltipTrigger asChild>
         <Button
           data-sidebar="trigger"
@@ -290,16 +290,16 @@ function SidebarTrigger({
 }
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, state } = useSidebar()
 
   return (
     <button
       data-sidebar="rail"
       data-slot="sidebar-rail"
-      aria-label="Toggle Sidebar"
+      aria-label={state === 'expanded' ? 'Collapse sidebar' : 'Expand sidebar'}
       tabIndex={-1}
       onClick={toggleSidebar}
-      title="Toggle Sidebar"
+      title={state === 'expanded' ? 'Collapse sidebar' : 'Expand sidebar'}
       className={cn(
         "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex",
         "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",

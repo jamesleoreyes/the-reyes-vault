@@ -23,6 +23,7 @@ import {
 import { createUser } from './actions';
 import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { Loader2, UserPlus } from 'lucide-react';
 
 const initialState = {
   message: '',
@@ -31,7 +32,12 @@ const initialState = {
 
 function SubmitButton() {
   const { pending } = useFormStatus();
-  return <Button type="submit" disabled={pending}>{pending ? 'Creating...' : 'Create User'}</Button>;
+  return <>
+    <Button type="submit" disabled={pending}>
+      {pending ? <Loader2 className='w-4 h-4 mr-2 animate-spin' /> : <UserPlus className='w-4 h-4 mr-2' />}
+      {pending ? 'Creating...' : 'Create User'}
+    </Button>
+  </>
 }
 
 export function CreateUserDialog() {
@@ -52,7 +58,9 @@ export function CreateUserDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>Create User</Button>
+        <Button>
+          <UserPlus className='w-4 h-4 mr-2' /> Create User
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
