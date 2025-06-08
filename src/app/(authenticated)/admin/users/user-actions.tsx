@@ -28,12 +28,12 @@ export function UserActions({ profile }: UserActionsProps) {
       <UpdateUserDialog
         profile={profile}
         isOpen={isUpdateOpen}
-        setIsOpen={setIsUpdateOpen}
+        setIsOpenAction={setIsUpdateOpen}
       />
       <DeleteUserAlert
         profileId={profile.id}
         isOpen={isDeleteOpen}
-        setIsOpen={setIsDeleteOpen}
+        setIsOpenAction={setIsDeleteOpen}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

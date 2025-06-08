@@ -16,13 +16,13 @@ import { toast } from 'sonner';
 interface DeleteUserAlertProps {
   profileId: string;
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpenAction: (isOpen: boolean) => void;
 }
 
 export function DeleteUserAlert({
   profileId,
   isOpen,
-  setIsOpen,
+  setIsOpenAction,
 }: DeleteUserAlertProps) {
   const handleDelete = async () => {
     const formData = new FormData();
@@ -36,7 +36,7 @@ export function DeleteUserAlert({
   };
 
   return (
-    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+    <AlertDialog open={isOpen} onOpenChange={setIsOpenAction}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

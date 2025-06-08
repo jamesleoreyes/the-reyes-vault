@@ -42,13 +42,13 @@ function SubmitButton({ disabled }: { disabled: boolean }) {
 interface UpdateUserDialogProps {
   profile: Profile;
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpenAction: (isOpen: boolean) => void;
 }
 
 export function UpdateUserDialog({
   profile,
   isOpen,
-  setIsOpen,
+  setIsOpenAction,
 }: UpdateUserDialogProps) {
   const [state, formAction] = useActionState(updateUser, initialState);
   const [formData, setFormData] = useState(profile);
@@ -77,17 +77,17 @@ export function UpdateUserDialog({
         toast.error(state.message);
       } else {
         toast.success(state.message);
-        setIsOpen(false);
+        setIsOpenAction(false);
       }
     }
-  }, [state, isOpen, setIsOpen]);
+  }, [state, isOpen, setIsOpenAction]);
 
   useEffect(() => {
     setFormData(profile);
   }, [profile]);
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpenAction}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Edit User</DialogTitle>
