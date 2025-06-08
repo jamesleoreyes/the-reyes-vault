@@ -8,22 +8,21 @@
 
 This project is a full-stack Next.js application aimed at creating a secure and user-friendly platform for uploading, viewing, organizing, and searching digitized family memories like photos, videos, and audio recordings.
 
-## 🚀 MVP Progress: 27%
+## 🚀 MVP Progress: 36%
 
-[![Progress](https://geps.dev/progress/27?title=MVP)](https://github.com/jameslreyes/the-reyes-vault/blob/main/PLAN.md)
-
-I am currently in the early stages of development, focusing on core infrastructure, user authentication, and basic application setup.
+[![Progress](https://geps.dev/progress/36?title=MVP)](https://github.com/jameslreyes/the-reyes-vault/blob/main/PLAN.md)
 
 **Completed Milestones:**
 
-- Project Initialization & Core Infrastructure (Next.js, Supabase, Cloudflare R2, Vercel integration)
-- User Authentication & Authorization (Sign-in, Sign-out, Protected Routes, Basic Session Management)
+- ✅ Project Initialization & Core Infrastructure (Next.js, Supabase, Cloudflare R2, Vercel integration)
+- ✅ User Authentication & Authorization (Sign-in, Sign-out, Protected Routes, Session Management)
+- ✅ Admin User Management (CRUD operations, role-based access, safety features) - 90% complete
 
 **Next Up:**
 
-- Defining User Roles (Admin/User)
-- Admin User Management UI & Functionality
-- Core Memory Upload & Viewing Features
+- Core Memory Upload & Viewing Features (Phase 4)
+- File storage integration with Cloudflare R2
+- Memory metadata management
 
 For a detailed breakdown, see the [PLAN.md](PLAN.md).
 

@@ -115,7 +115,11 @@ const albums: IAlbum[] = [
   },
 ]
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  isAdmin?: boolean;
+}
+
+export function AppSidebar({ isAdmin = false, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -126,7 +130,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarAlbums albums={albums} />
       </SidebarContent>
       <SidebarFooter>
-        <SidebarUser user={data.user} />
+        <SidebarUser user={data.user} isAdmin={isAdmin} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
