@@ -1,20 +1,10 @@
-enum Role {
-  ADMIN = 'admin',
-  MEMBER = 'member',
-}
+const roles = ['admin', 'member'] as const;
+const family = ['reyes', 'conklin', 'all'] as const;
+const memory = ['photo', 'video', 'vhs', 'audio', 'music'] as const;
 
-enum Family {
-  REYES = 'reyes',
-  CONKLIN = 'conklin',
-  ALL = 'all',
-}
+type RolesType = (typeof roles)[number];
+type FamilyType = (typeof family)[number];
+type MemoryType = (typeof memory)[number];
 
-enum Memory {
-  PHOTO = 'photo',
-  VIDEO = 'video',
-  VHS = 'vhs',
-  AUDIO = 'audio',
-  MUSIC = 'music',
-}
-
-export { Role, Family, Memory }
+export { roles, family, memory }
+export type { RolesType, FamilyType, MemoryType }
