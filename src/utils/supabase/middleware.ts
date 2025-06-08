@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextRequest, NextResponse } from "next/server";
 import {
   ROOT_PATH,
-  SIGN_IN_PATH,
+  LOGIN_PATH,
   DASHBOARD_PATH,
   PROTECTED_APP_PATHS,
   AUTH_FLOW_PAGES,
@@ -10,6 +10,7 @@ import {
 } from "@/lib/authPaths";
 import { supabaseConfig, urlConfig } from "@/lib/config";
 import { Profile } from "@/types/Profiles";
+import { Role } from "@/types/enums";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -49,12 +50,12 @@ export const updateSession = async (request: NextRequest) => {
     if (isUserAuthenticated) {
       return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
     } else {
-      return NextResponse.redirect(new URL(SIGN_IN_PATH, request.url));
+      return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
     }
   }
 
   if (!isUserAuthenticated && PROTECTED_APP_PATHS.some(path => currentPath.startsWith(path))) {
-    return NextResponse.redirect(new URL(SIGN_IN_PATH, request.url));
+    return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
   }
 
   if (isUserAuthenticated) {
@@ -69,9 +70,7 @@ export const updateSession = async (request: NextRequest) => {
         .eq('id', user.id)
         .single() as { data: Profile };
 
-      console.debug(`supabase/middleware.ts -> userProfile:\n${JSON.stringify(userProfile, null, 2)}`)
-
-      if (userProfile?.role !== 'admin') {
+      if (userProfile?.role !== Role.ADMIN) {
         return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
       }
     }

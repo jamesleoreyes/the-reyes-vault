@@ -1,6 +1,6 @@
 'use server';
 
-import { family, roles } from "@/types/enums";
+import { Family, Role } from "@/types/enums";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { revalidatePath } from "next/cache";
 import { z } from 'zod';
@@ -12,8 +12,8 @@ const UserSchema = z.object({
     .min(8, { message: 'Password must be at least 8 characters long.' }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.enum(roles),
-  family: z.enum(family),
+  role: z.nativeEnum(Role),
+  family: z.nativeEnum(Family),
 });
 
 export async function createUser(prevState: any, formData: FormData) {

@@ -8,6 +8,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CreateUserDialog } from "./users/create-user-dialog";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Admin'
+}
 
 export default async function AdminUsersPage() {
   const supabase = await createServerClient();

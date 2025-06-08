@@ -258,24 +258,34 @@ function SidebarTrigger({
   onClick,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, state } = useSidebar()
 
   return (
-    <Button
-      data-sidebar="trigger"
-      data-slot="sidebar-trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("size-7 cursor-pointer", className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <PanelLeftIcon size={16} />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+    <Tooltip delayDuration={200}>
+      <TooltipTrigger asChild>
+        <Button
+          data-sidebar="trigger"
+          data-slot="sidebar-trigger"
+          variant="ghost"
+          size="icon"
+          className={cn("size-7 cursor-pointer", className)}
+          onClick={(event) => {
+            onClick?.(event)
+            toggleSidebar()
+          }}
+          {...props}
+        >
+          <PanelLeftIcon size={16} />
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent
+        side="right"
+        align="center"
+      >
+        {state === 'expanded' ? 'Collapse sidebar' : 'Expand sidebar'}
+      </TooltipContent>
+    </Tooltip>
   )
 }
 
