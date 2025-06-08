@@ -4,6 +4,7 @@ import {
   ChevronsUpDown,
   Library,
   LogOut,
+  Settings,
   Sparkles,
   User,
 } from "lucide-react"
@@ -31,15 +32,18 @@ import {
 import { logOutAction } from "@/app/actions";
 import Link from "next/link"
 import { toast } from "sonner"
+import { DemoAwareNav } from "@/components/demo-aware-nav"
 
 export function SidebarUser({
   user,
+  isAdmin = false,
 }: {
   user: {
     name: string
     email: string
     avatar: string
   }
+  isAdmin?: boolean
 }) {
   const { isMobile } = useSidebar();
 
@@ -107,6 +111,24 @@ export function SidebarUser({
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
+
+            {/* Admin Section - Only show for admin users and when admin features are enabled */}
+            <DemoAwareNav adminOnly>
+              {isAdmin && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem asChild>
+                      <Link href='/admin' className="cursor-pointer">
+                        <Settings size={16} className="mr-2" />
+                        Admin
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </>
+              )}
+            </DemoAwareNav>
+
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleLogOut}

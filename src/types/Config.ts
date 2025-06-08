@@ -1,6 +1,11 @@
 interface IAppConfg {
   isDemoMode: boolean;
   isDemoModeEnabled: boolean;
+  demoFeatures?: {
+    hideAdminRoutes: boolean;
+    generateFakeUserData: boolean;
+    limitFileUploads: boolean;
+  };
 }
 
 interface IUrlConfig {
