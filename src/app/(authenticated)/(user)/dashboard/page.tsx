@@ -24,7 +24,7 @@ export default async function Page() {
         <div className="bg-accent text-sm p-3 px-5 text-foreground flex gap-3 items-center">
           <InfoIcon size={16} strokeWidth={2} />
           {appConfig.isDemoMode ? (
-            <>This is a demo environment. You're logged in anonymously with limited features.</>
+            <>This is a demo environment. You&apos;re logged in anonymously with limited features.</>
           ) : (
             <>This is the protected dashboard page that you can only see as an authenticated user.</>
           )}
