@@ -108,14 +108,14 @@
 
 ### Phase 3: Admin User Management (Estimated: 1-2 weeks)
 
-[![Phase 3 Progress](https://geps.dev/progress/0?title=Phase%203)](PLAN.md#phase-3-admin-user-management-estimated-1-2-weeks)
+[![Phase 3 Progress](https://geps.dev/progress/36?title=Phase%203)](PLAN.md#phase-3-admin-user-management-estimated-1-2-weeks)
 
-- **Step 3.1: Design Admin UI Layout**
-  - Create a distinct layout for admin section routes (e.g., `/admin/*`).
+- ~~**Step 3.1: Design Admin UI Layout**~~
+  - ~~Create a distinct layout for admin section routes (e.g., `/admin/*`).~~
   - ~~Ensure this layout is protected and only accessible to users with the `admin` role.~~
-- **Step 3.2: User Listing Page (Admin)**
-  - Display a table of all registered users (from Supabase Auth).
-  - Show key information (email, user ID, role, creation date).
+- ~~**Step 3.2: User Listing Page (Admin)**~~
+  - ~~Display a table of all registered users (from Supabase Auth).~~
+  - ~~Show key information (email, user ID, role, creation date).~~
 - **Step 3.3: Create User Functionality (Admin)**
   - Form for admin to create new users (email, password, assign role - default to `user`).
   - Logic to interact with Supabase Auth to create users.
