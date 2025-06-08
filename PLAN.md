@@ -112,7 +112,7 @@
 
 - **Step 3.1: Design Admin UI Layout**
   - Create a distinct layout for admin section routes (e.g., `/admin/*`).
-  - Ensure this layout is protected and only accessible to users with the `admin` role.
+  - ~~Ensure this layout is protected and only accessible to users with the `admin` role.~~
 - **Step 3.2: User Listing Page (Admin)**
   - Display a table of all registered users (from Supabase Auth).
   - Show key information (email, user ID, role, creation date).
