@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import {
   Dialog,
   DialogContent,
@@ -20,10 +20,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { updateUser } from './actions';
-import { useEffect, useState, useMemo, useActionState } from 'react';
+import { useEffect, useState, useMemo, useActionState, useRef } from 'react';
 import { toast } from 'sonner';
 import { Profile } from '@/types/Profiles';
-import { Family, Role } from '@/types/enums';
+import { Family } from '@/types/enums';
+import { RoleSelect } from './role-select';
+import { Loader2, Save } from 'lucide-react';
 
 const initialState = {
   message: '',
@@ -34,7 +36,8 @@ function SubmitButton({ disabled }: { disabled: boolean }) {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending || disabled}>
-      {pending ? 'Updating...' : 'Save Changes'}
+      {pending ? <Loader2 className='w-4 h-4 mr-2 animate-spin' /> : <Save className='w-4 h-4 mr-2' />}
+      {pending ? 'Saving...' : 'Save Changes'}
     </Button>
   );
 }
@@ -43,15 +46,19 @@ interface UpdateUserDialogProps {
   profile: Profile;
   isOpen: boolean;
   setIsOpenAction: (isOpen: boolean) => void;
+  currentUserId?: string;
 }
 
 export function UpdateUserDialog({
   profile,
   isOpen,
   setIsOpenAction,
+  currentUserId,
 }: UpdateUserDialogProps) {
   const [state, formAction] = useActionState(updateUser, initialState);
   const [formData, setFormData] = useState(profile);
+  const shouldProcessState = useRef(false);
+  const isCurrentUser = profile.id === currentUserId;
 
   const hasChanged = useMemo(() => {
     return (
@@ -72,7 +79,10 @@ export function UpdateUserDialog({
 
   useEffect(() => {
     if (!isOpen) return;
-    if (state.message) {
+
+    if (state.message && shouldProcessState.current) {
+      shouldProcessState.current = false;
+
       if (state.errors) {
         toast.error(state.message);
       } else {
@@ -83,8 +93,16 @@ export function UpdateUserDialog({
   }, [state, isOpen, setIsOpenAction]);
 
   useEffect(() => {
-    setFormData(profile);
-  }, [profile]);
+    if (isOpen) {
+      setFormData(profile);
+      shouldProcessState.current = false;
+    }
+  }, [isOpen, profile]);
+
+  const handleSubmit = (formData: FormData) => {
+    shouldProcessState.current = true;
+    formAction(formData);
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpenAction}>
@@ -95,7 +113,7 @@ export function UpdateUserDialog({
             Make changes to the user's profile. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
-        <form action={formAction}>
+        <form action={handleSubmit}>
           <input type="hidden" name="id" value={profile.id} />
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
@@ -126,19 +144,11 @@ export function UpdateUserDialog({
               <Label htmlFor="role" className="text-right">
                 Role
               </Label>
-              <Select
-                name="role"
-                value={formData.role}
+              <RoleSelect
+                role={formData.role}
                 onValueChange={handleSelectChange('role')}
-              >
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select a role" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value={Role.MEMBER}>Member</SelectItem>
-                  <SelectItem value={Role.ADMIN}>Admin</SelectItem>
-                </SelectContent>
-              </Select>
+                disabled={isCurrentUser}
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="family" className="text-right">

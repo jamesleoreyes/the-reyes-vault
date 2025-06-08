@@ -58,7 +58,7 @@ export function CreateUserDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className='w-fit' size='sm'>
           <UserPlus className='w-4 h-4 mr-2' /> Create User
         </Button>
       </DialogTrigger>

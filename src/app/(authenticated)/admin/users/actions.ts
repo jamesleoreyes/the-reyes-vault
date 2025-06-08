@@ -2,6 +2,7 @@
 
 import { Family, Role } from "@/types/enums";
 import { createAdminClient } from "@/utils/supabase/admin";
+import { createServerClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { z } from 'zod';
 
@@ -88,6 +89,7 @@ export async function updateUser(prevState: any, formData: FormData) {
   );
 
   if (!validatedFields.success) {
+    console.error(`Validation failed: ${JSON.stringify(validatedFields.error.flatten().fieldErrors, null, 2)}`)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: 'Error: Please check the form fields.',
@@ -95,8 +97,33 @@ export async function updateUser(prevState: any, formData: FormData) {
   }
 
   const { id, ...profileData } = validatedFields.data;
-  const fullName = `${profileData.first_name} ${profileData.last_name}`;
   const supabaseAdmin = await createAdminClient();
+  const supabaseServer = await createServerClient();
+
+  const { data: { user: authUser } } = await supabaseServer.auth.getUser();
+
+  if (authUser && authUser.id === id && profileData.role !== Role.ADMIN) {
+    const { data: userToUpdate } = await supabaseAdmin
+      .from('profiles')
+      .select('role')
+      .eq('id', id)
+      .single();
+
+    if (userToUpdate?.role === Role.ADMIN) {
+      const { count } = await supabaseAdmin
+        .from('profiles')
+        .select('*', { count: 'exact', head: true })
+        .eq('role', Role.ADMIN);
+
+      if (count === 1) {
+        return {
+          message: 'Error: Cannot revoke privileges from the only admin account.',
+        };
+      }
+    }
+  }
+
+  const fullName = `${profileData.first_name} ${profileData.last_name}`;
 
   const { error } = await supabaseAdmin
     .from('profiles')

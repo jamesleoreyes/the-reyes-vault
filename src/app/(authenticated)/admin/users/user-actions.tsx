@@ -4,7 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
@@ -14,14 +13,32 @@ import { Profile } from '@/types/Profiles';
 import { UpdateUserDialog } from './update-user-dialog';
 import { DeleteUserAlert } from './delete-user-alert';
 import { useState } from 'react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface UserActionsProps {
   profile: Profile;
+  currentUserId?: string;
 }
 
-export function UserActions({ profile }: UserActionsProps) {
+export function UserActions({ profile, currentUserId }: UserActionsProps) {
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const isCurrentUser = profile.id === currentUserId;
+
+  const handleDeleteClick = () => {
+    if (isCurrentUser) return;
+    setIsDeleteOpen(true);
+  }
+
+  const DeleteMenuItem = (
+    <DropdownMenuItem
+      variant="destructive"
+      onClick={handleDeleteClick}
+      disabled={isCurrentUser}
+    >
+      Delete
+    </DropdownMenuItem>
+  );
 
   return (
     <>
@@ -29,6 +46,7 @@ export function UserActions({ profile }: UserActionsProps) {
         profile={profile}
         isOpen={isUpdateOpen}
         setIsOpenAction={setIsUpdateOpen}
+        currentUserId={currentUserId}
       />
       <DeleteUserAlert
         profileId={profile.id}
@@ -47,12 +65,18 @@ export function UserActions({ profile }: UserActionsProps) {
             Edit
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            variant='destructive'
-            onClick={() => setIsDeleteOpen(true)}          
-          >
-            Delete
-          </DropdownMenuItem>
+          {isCurrentUser ? (
+            <Tooltip delayDuration={200}>
+              <TooltipTrigger asChild>
+                <span className="w-full">{DeleteMenuItem}</span>
+              </TooltipTrigger>
+              <TooltipContent side='left' sideOffset={5}>
+                <p>You cannot delete your own account.</p>
+              </TooltipContent>
+            </Tooltip>
+          ) : (
+            DeleteMenuItem
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </>

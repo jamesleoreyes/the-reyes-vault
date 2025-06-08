@@ -42,13 +42,13 @@ export function DeleteUserAlert({
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete the user
-            and all of their associated data from our servers.
+            and all of their associated data.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            className="bg-red-500 hover:bg-red-400"
+            className="bg-red-500 hover:bg-red-400 text-white"
             onClick={handleDelete}
           >
             Continue

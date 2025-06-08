@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default async function AdminUsersPage() {
   const supabase = await createServerClient();
 
+  const { data: { user } } = await supabase.auth.getUser();
   const { data: profiles, error } = await supabase
     .from('profiles')
     .select('*')
@@ -30,7 +31,7 @@ export default async function AdminUsersPage() {
   return (
     <div className="p-4 sm:p-6">
       <Card>
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <div>
             <CardTitle>User Management</CardTitle>
             <CardDescription>
@@ -40,7 +41,7 @@ export default async function AdminUsersPage() {
           <CreateUserDialog />
         </CardHeader>
         <CardContent>
-          <UsersTable profiles={profiles ?? []} />
+          <UsersTable profiles={profiles ?? []} currentUserId={user?.id} />
         </CardContent>
       </Card>
     </div>

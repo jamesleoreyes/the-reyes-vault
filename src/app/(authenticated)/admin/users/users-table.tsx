@@ -14,9 +14,10 @@ import { UserActions } from './user-actions';
 
 interface UsersTableProps {
   profiles: Profile[];
+  currentUserId?: string;
 }
 
-export function UsersTable({ profiles }: UsersTableProps) {
+export function UsersTable({ profiles, currentUserId }: UsersTableProps) {
   return (
     <Table>
       <TableHeader>
@@ -50,7 +51,7 @@ export function UsersTable({ profiles }: UsersTableProps) {
               {new Date(profile.created_at).toLocaleDateString()}
             </TableCell>
             <TableCell>
-              <UserActions profile={profile} />
+              <UserActions profile={profile} currentUserId={currentUserId} />
             </TableCell>
           </TableRow>
         ))}
