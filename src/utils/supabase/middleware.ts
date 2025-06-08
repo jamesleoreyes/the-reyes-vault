@@ -9,7 +9,6 @@ import {
   isAdminPath,
 } from "@/lib/authPaths";
 import { appConfig, supabaseConfig, urlConfig } from "@/lib/config";
-import { Profile } from "@/types/Profiles";
 import { Role } from "@/types/enums";
 import { getUserProfile } from "../utils";
 
