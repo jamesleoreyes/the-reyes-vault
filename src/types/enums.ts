@@ -15,6 +15,7 @@ enum Memory {
   VHS = 'vhs',
   AUDIO = 'audio',
   MUSIC = 'music',
+  NOTE = 'note',
 }
 
 export { Role, Family, Memory }
