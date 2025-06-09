@@ -2,7 +2,7 @@
   "name": "the-reyes-vault",
   "private": true,
   "license": "MIT",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
