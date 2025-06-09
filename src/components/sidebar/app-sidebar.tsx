@@ -3,13 +3,11 @@
 import * as React from "react"
 import {
   AudioLines,
-  AudioWaveform,
-  Command,
-  GalleryVerticalEnd,
   Image,
   Library,
   LucideIcon,
   Music,
+  NotebookText,
   Video,
   Videotape,
 } from "lucide-react"
@@ -25,6 +23,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { SidebarLogo } from "./sidebar-logo"
+import { Profile } from "@/types/Profiles"
+import { User } from "@supabase/supabase-js"
 
 export interface INavMain {
   title: string;
@@ -37,31 +37,6 @@ export interface IAlbum {
   name: string;
   url: string;
   icon: LucideIcon;
-}
-
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
 }
 
 const navMain: INavMain[] = [
@@ -94,6 +69,12 @@ const navMain: INavMain[] = [
     url: '/memories/audio',
     icon: AudioLines,
     isActive: false,
+  },
+  {
+    title: 'Notes',
+    url: '/memories/notes',
+    icon: NotebookText,
+    isActive: false,
   }
 ]
 
@@ -117,9 +98,16 @@ const albums: IAlbum[] = [
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   isAdmin?: boolean;
+  user: User;
+  profile: Profile;
 }
 
-export function AppSidebar({ isAdmin = false, ...props }: AppSidebarProps) {
+export function AppSidebar({
+  isAdmin = false,
+  user,
+  profile,
+  ...props
+}: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -130,7 +118,7 @@ export function AppSidebar({ isAdmin = false, ...props }: AppSidebarProps) {
         <SidebarAlbums albums={albums} />
       </SidebarContent>
       <SidebarFooter>
-        <SidebarUser user={data.user} isAdmin={isAdmin} />
+        <SidebarUser user={user} profile={profile} isAdmin={isAdmin} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
