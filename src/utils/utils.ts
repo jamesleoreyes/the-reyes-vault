@@ -28,10 +28,10 @@ export function encodedRedirect(
  * 
  * @param {SupabaseClient} supabase - The Supabase client instance
  * @param {string} userId - The user's ID
- * @returns {Promise<Profile | null>} The user's profile or null if not found
+ * @returns {Promise<Profile>} The user's profile
  * @see {@link generateDemoProfile} for demo profile generation
  */
-export async function getUserProfile(supabase: SupabaseClient, userId: string): Promise<Profile | null> {
+export async function getUserProfile(supabase: SupabaseClient, userId: string): Promise<Profile> {
   if (appConfig.isDemoMode) {
     return generateDemoProfile(userId);
   }
