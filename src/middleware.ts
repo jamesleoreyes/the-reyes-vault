@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data:",
-    "connect-src 'self' https://*.supabase.co https://api.dicebear.com https://vercel.live",
+    "connect-src 'self' https://*.supabase.co https://api.dicebear.com https://vercel.live https://challenges.cloudflare.com",
     "frame-src 'self' https://challenges.cloudflare.com",
     "object-src 'none'",
     "base-uri 'self'",
