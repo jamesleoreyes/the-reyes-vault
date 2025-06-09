@@ -1,15 +1,8 @@
-import { AppSidebar } from "@/components/sidebar/app-sidebar"
 import { createServerClient } from "@/utils/supabase/server"
+import { appConfig } from "@/lib/config"
 import { getUserProfile } from "@/utils/utils"
 import { Role } from "@/types/enums"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { AppSidebar } from "@/components/sidebar/app-sidebar"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
@@ -23,17 +16,30 @@ export default async function AuthenticatedLayout({
   children: React.ReactNode
 }) {
   const supabase = await createServerClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  let { data: { user } } = await supabase.auth.getUser()
 
+  if (!user) {
+    console.error('AuthenticationLayout: No user found - middleware should prevent this')
+    return <div>Authentication error. Please try logging in again.</div>
+  }
+
+  const profile = await getUserProfile(supabase, user.id)
+  
   let isAdmin = false
   if (user) {
-    const userProfile = await getUserProfile(supabase, user.id)
-    isAdmin = userProfile?.role === Role.ADMIN
+    isAdmin = profile?.role === Role.ADMIN
+  }
+
+  if (appConfig.isDemoMode) {
+    user = {
+      ...user,
+      email: 'demo@thereyesvault.com'
+    }
   }
 
   return (
     <SidebarProvider>
-      <AppSidebar isAdmin={isAdmin} />
+      <AppSidebar isAdmin={isAdmin} user={user} profile={profile} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
@@ -42,19 +48,6 @@ export default async function AuthenticatedLayout({
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -62,5 +55,5 @@ export default async function AuthenticatedLayout({
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

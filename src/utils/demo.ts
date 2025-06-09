@@ -2,18 +2,21 @@ import { appConfig } from '@/lib/config';
 import { Profile } from '@/types/Profiles';
 import { Family, Role } from '@/types/enums';
 
-interface DemoName {
-  first: string;
-  last: string;
-}
-
 export function generateDemoProfile(userId?: string): Profile {
-  const demoNames: DemoName[] = [
-    { first: 'Alex', last: 'Demo' },
-    { first: 'Jordan', last: 'Visitor' },
-    { first: 'Casey', last: 'Guest' },
-    { first: 'Taylor', last: 'Explorer' },
-    { first: 'Morgan', last: 'User' },
+  const demoNames: Pick<Profile, 'first_name' | 'last_name' | 'avatar_url'>[] = [
+    { first_name: 'Mark', last_name: 'S', avatar_url: '' },
+    { first_name: 'Gemma', last_name: 'Scout', avatar_url: '' },
+    { first_name: 'Ms.', last_name: 'Casey', avatar_url: '' },
+    { first_name: 'Dylan', last_name: 'G', avatar_url: '' },
+    { first_name: 'Helena', last_name: 'Eagan', avatar_url: '' },
+    { first_name: 'Helly', last_name: 'R', avatar_url: '' },
+    { first_name: 'Irving', last_name: 'B', avatar_url: '' },
+    { first_name: 'Eustice', last_name: 'Huang', avatar_url: '' },
+    { first_name: 'Harmony', last_name: 'Cobel', avatar_url: '' },
+    { first_name: 'Mr.', last_name: 'Drummond', avatar_url: '' },
+    { first_name: 'Seth', last_name: 'Milkshake', avatar_url: '' },
+    { first_name: 'Natalie', last_name: 'Kalen', avatar_url: '' },
+    { first_name: 'The', last_name: 'Board', avatar_url: '' },
   ];
 
   // Use userId to consistently generate the same name for the same user
@@ -22,14 +25,15 @@ export function generateDemoProfile(userId?: string): Profile {
     Math.floor(Math.random() * demoNames.length);
 
   // Ensure we always have a valid name with fallback
-  const selectedName = demoNames[nameIndex] || demoNames[0] as DemoName;
+  const selectedName = demoNames[nameIndex] || demoNames[0] as Pick<Profile, 'first_name' | 'last_name'>;
 
   return {
     id: userId || 'demo-user',
-    first_name: selectedName.first,
-    last_name: selectedName.last,
-    role: Role.MEMBER,
-    family: Family.ALL,
+    first_name: selectedName.first_name,
+    last_name: selectedName.last_name,
+    role: Role.DEMO,
+    family: Family.DEMO,
+    avatar_url: `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${userId}`,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   };
