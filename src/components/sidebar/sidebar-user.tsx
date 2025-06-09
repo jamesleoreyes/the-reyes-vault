@@ -8,6 +8,9 @@ import {
   Sparkles,
   User,
 } from "lucide-react"
+import Link from "next/link"
+import { toast } from "sonner"
+import { User as SupaUser } from "@supabase/supabase-js"
 
 import {
   Avatar,
@@ -30,22 +33,21 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { logOutAction } from "@/app/actions";
-import Link from "next/link"
-import { toast } from "sonner"
 import { DemoAwareNav } from "@/components/demo-aware-nav"
+import { Profile } from "@/types/Profiles"
 
 export function SidebarUser({
   user,
+  profile,
   isAdmin = false,
 }: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
+  user: SupaUser,
+  profile: Profile,
   isAdmin?: boolean
 }) {
   const { isMobile } = useSidebar();
+  const fullName = `${profile.first_name} ${profile.last_name}`
+  const initials = `${profile.first_name[0]?.toUpperCase()}${profile.last_name[0]?.toUpperCase()}`
 
   const handleLogOut = async () => {
     await logOutAction();
@@ -61,12 +63,12 @@ export function SidebarUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer rounded-none"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={profile.avatar_url!} alt={fullName} />
+                <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
+                <span className="truncate font-medium">{fullName}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
@@ -80,12 +82,12 @@ export function SidebarUser({
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src={profile.avatar_url!} alt={fullName} />
+                  <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
+                  <span className="truncate font-medium">{fullName}</span>
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
               </div>
