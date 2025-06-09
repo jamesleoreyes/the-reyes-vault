@@ -1,4 +1,3 @@
-import { User } from "@supabase/supabase-js"
 import { createServerClient } from "@/utils/supabase/server"
 import { appConfig } from "@/lib/config"
 import { getUserProfile } from "@/utils/utils"
