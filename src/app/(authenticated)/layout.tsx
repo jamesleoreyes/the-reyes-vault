@@ -19,7 +19,12 @@ export default async function AuthenticatedLayout({
   const supabase = await createServerClient()
   let { data: { user } } = await supabase.auth.getUser()
 
-  const profile = await getUserProfile(supabase, user!.id) // User profile will always exist if this layout is reached - either real or demo
+  if (!user) {
+    console.error('AuthenticationLayout: No user found - middleware should prevent this')
+    return <div>Authentication error. Please try logging in again.</div>
+  }
+
+  const profile = await getUserProfile(supabase, user.id)
   
   let isAdmin = false
   if (user) {
@@ -30,12 +35,12 @@ export default async function AuthenticatedLayout({
     user = {
       ...user,
       email: 'demo@thereyesvault.com'
-    } as User;
+    }
   }
 
   return (
     <SidebarProvider>
-      <AppSidebar isAdmin={isAdmin} user={user!} profile={profile} />
+      <AppSidebar isAdmin={isAdmin} user={user} profile={profile} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
