@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: meta.title,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     startupImage: '/apple-touch-icon.png'
   },
   icons: {

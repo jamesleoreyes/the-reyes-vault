@@ -21,8 +21,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-slot'
     ],
   },
-  // Minimize JavaScript
-  swcMinify: true,
   // Optimize images
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -32,12 +30,6 @@ const nextConfig: NextConfig = {
   compress: true,
   // Modern JavaScript target
   transpilePackages: [],
-  // Additional optimizations
-  modularizeImports: {
-    'lucide-react': {
-      transform: 'lucide-react/dist/esm/icons/{{member}}',
-    },
-  },
 };
 
 export default nextConfig;
