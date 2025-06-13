@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { urlConfig } from "@/lib/config";
+import { DynamicThemeColor } from "@/components/dynamic-theme-color";
 
 const defaultUrl = urlConfig.app
   ? `https://${urlConfig.app}`
@@ -92,6 +93,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <DynamicThemeColor />
           {children}
           <Analytics />
           <SpeedInsights />
