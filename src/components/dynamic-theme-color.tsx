@@ -19,7 +19,7 @@ export function DynamicThemeColor() {
 
     // Set color based on theme
     if (resolvedTheme === 'dark') {
-      meta.content = '#242424';
+      meta.content = '#09090b';
     } else {
       meta.content = '#ffffff';
     }
