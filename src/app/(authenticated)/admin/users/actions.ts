@@ -1,7 +1,7 @@
 'use server';
 
 import { ActionState } from "@/app/actions";
-import { Family, Role } from "@/types/enums";
+import { FamilyEnum, RoleEnum } from "@/types/enums";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { createServerClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
@@ -14,16 +14,16 @@ const UserSchema = z.object({
     .min(8, { message: 'Password must be at least 8 characters long.' }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.nativeEnum(Role),
-  family: z.nativeEnum(Family),
+  role: z.nativeEnum(RoleEnum),
+  family: z.nativeEnum(FamilyEnum),
 });
 
 const UpdateUserSchema = z.object({
   id: z.string().uuid({ message: "Invalid user ID." }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.nativeEnum(Role),
-  family: z.nativeEnum(Family),
+  role: z.nativeEnum(RoleEnum),
+  family: z.nativeEnum(FamilyEnum),
 });
 
 export async function createUser(prevState: ActionState, formData: FormData) {
@@ -103,18 +103,18 @@ export async function updateUser(prevState: ActionState, formData: FormData) {
 
   const { data: { user: authUser } } = await supabaseServer.auth.getUser();
 
-  if (authUser && authUser.id === id && profileData.role !== Role.ADMIN) {
+  if (authUser && authUser.id === id && profileData.role !== RoleEnum.ADMIN) {
     const { data: userToUpdate } = await supabaseAdmin
       .from('profiles')
       .select('role')
       .eq('id', id)
       .single();
 
-    if (userToUpdate?.role === Role.ADMIN) {
+    if (userToUpdate?.role === RoleEnum.ADMIN) {
       const { count } = await supabaseAdmin
         .from('profiles')
         .select('*', { count: 'exact', head: true })
-        .eq('role', Role.ADMIN);
+        .eq('role', RoleEnum.ADMIN);
 
       if (count === 1) {
         return {
