@@ -1,6 +1,8 @@
 import { Geist } from "next/font/google";
 import { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { urlConfig } from "@/lib/config";
@@ -91,6 +93,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
+          <SpeedInsights />
           <Toaster
             position="bottom-right"
             duration={5000}
