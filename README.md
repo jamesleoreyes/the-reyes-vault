@@ -54,7 +54,7 @@ To run this project locally:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/jameslreyes/the-reyes-vault.git
+   git clone https://github.com/jamesleoreyes/the-reyes-vault.git
    cd the-reyes-vault
    ```
 
@@ -70,15 +70,40 @@ To run this project locally:
 
 3. **Set up environment variables:**
 
-   - Create a `.env.local` file in the root of the project.
-   - Add your Supabase project URL and anon key:
+   - Copy the example environment file:
 
-     ```env
-     NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+     ```bash
+     cp .env.example .env.local
      ```
 
-   - You will also need to configure Cloudflare R2 credentials if you plan to work on file upload features.
+   - Update the `.env.local` file with your actual values:
+
+     ```bash
+     # Demo Mode
+     NEXT_PUBLIC_DEMO_MODE=false
+     NEXT_PUBLIC_DEMO_MODE_ENABLED=false
+
+     # Supabase
+     NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+     SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+     # Cloudflare
+     CLOUDFLARE_API_ENDPOINT=https://api.cloudflare.com/client/v4
+     CLOUDFLARE_ACCOUNT_ID=your-account-id
+
+     # Cloudflare Turnstile
+     NEXT_PUBLIC_TURNSTILE_SITE_KEY=your-site-key
+     TURNSTILE_SECRET_KEY=your-secret-key
+
+     # Cloudflare R2
+     CLOUDFLARE_R2_ENDPOINT=https://your-account-id.r2.cloudflarestorage.com
+     CLOUDFLARE_R2_TOKEN=your-access-token
+     CLOUDFLARE_R2_ACCESS_KEY_ID=your-access-key-id
+     CLOUDFLARE_R2_SECRET_ACCESS_KEY=your-secret-access-key
+     CLOUDFLARE_R2_BUCKET_NAME=your-bucket-name
+     CLOUDFLARE_R2_PUBLIC_URL=https://your-public-url.com
+     ```
 
 4. **Run the development server:**
 
