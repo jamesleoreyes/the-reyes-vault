@@ -6,12 +6,4 @@ interface Person {
   updated_at: string;
 }
 
-type CreatePersonInput = Omit<Person, 'id' | 'created_at' | 'updated_at'>;
-
-type UpdatePersonInput = Partial<Pick<Person, 'name'>>;
-
-export type {
-  Person,
-  CreatePersonInput,
-  UpdatePersonInput,
-}
+export type { Person }

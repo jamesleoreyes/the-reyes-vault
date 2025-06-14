@@ -5,12 +5,4 @@ interface MemoryTag {
   assigned_by: string;
 }
 
-type CreateMemoryTagInput = Omit<MemoryTag, 'assigned_at'>;
-
-type UpdateMemoryTagInput = Partial<Pick<MemoryTag, 'assigned_by'>>;
-
-export type {
-  MemoryTag,
-  CreateMemoryTagInput,
-  UpdateMemoryTagInput,
-}
+export type { MemoryTag }

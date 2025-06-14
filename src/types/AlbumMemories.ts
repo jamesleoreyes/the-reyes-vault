@@ -5,12 +5,4 @@ interface AlbumMemory {
   order: number | null;
 }
 
-type CreateAlbumMemoryInput = Omit<AlbumMemory, 'added_at'>;
-
-type UpdateAlbumMemoryInput = Partial<Pick<AlbumMemory, 'order'>>;
-
-export type {
-  AlbumMemory,
-  CreateAlbumMemoryInput,
-  UpdateAlbumMemoryInput,
-}
+export type { AlbumMemory }

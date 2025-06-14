@@ -6,12 +6,4 @@ interface Tag {
   updated_at: string;
 }
 
-type CreateTagInput = Omit<Tag, 'id' | 'created_at' | 'updated_at'>;
-
-type UpdateTagInput = Partial<Pick<Tag, 'name'>>;
-
-export type {
-  Tag,
-  CreateTagInput,
-  UpdateTagInput,
-}
+export type { Tag }

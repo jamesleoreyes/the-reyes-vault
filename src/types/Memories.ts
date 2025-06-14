@@ -15,12 +15,4 @@ interface Memory {
   updated_at: string;
 }
 
-type CreateMemoryInput = Omit<Memory, 'id' | 'user_id' | 'created_at' | 'updated_at'>;
-
-type UpdateMemoryInput = Partial<Pick<Memory, 'title' | 'description' | 'memory_date'>>;
-
-export type {
-  Memory,
-  CreateMemoryInput,
-  UpdateMemoryInput,
-}
+export type { Memory }

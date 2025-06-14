@@ -7,12 +7,4 @@ interface Album {
   updated_at: string;
 }
 
-type CreateAlbumInput = Omit<Album, 'id' | 'user_id' | 'created_at' | 'updated_at'>;
-
-type UpdateAlbumInput = Partial<Pick<Album, 'name' | 'description'>>;
-
-export type {
-  Album,
-  CreateAlbumInput,
-  UpdateAlbumInput,
-}
+export type { Album }

@@ -5,12 +5,4 @@ interface MemoryPerson {
   assigned_by: string;
 }
 
-type CreateMemoryPersonInput = Omit<MemoryPerson, 'assigned_at'>;
-
-type UpdateMemoryPersonInput = Partial<Pick<MemoryPerson, 'assigned_by'>>;
-
-export type {
-  MemoryPerson,
-  CreateMemoryPersonInput,
-  UpdateMemoryPersonInput,
-}
+export type { MemoryPerson }
