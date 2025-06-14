@@ -1,17 +1,17 @@
-enum Role {
+enum RoleEnum {
   ADMIN = 'admin',
   MEMBER = 'member',
   DEMO = 'demo',
 }
 
-enum Family {
+enum FamilyEnum {
   REYES = 'reyes',
   CONKLIN = 'conklin',
   ALL = 'all',
   DEMO = 'demo',
 }
 
-enum Memory {
+enum MemoryEnum {
   PHOTO = 'photo',
   VIDEO = 'video',
   VHS = 'vhs',
@@ -20,4 +20,4 @@ enum Memory {
   NOTE = 'note',
 }
 
-export { Role, Family, Memory }
+export { RoleEnum, FamilyEnum, MemoryEnum }

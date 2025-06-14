@@ -1,6 +1,6 @@
 import { appConfig } from '@/lib/config';
 import { Profile } from '@/types/Profiles';
-import { Family, Role } from '@/types/enums';
+import { FamilyEnum, RoleEnum } from '@/types/enums';
 
 export function generateDemoProfile(userId?: string): Profile {
   const demoNames: Pick<Profile, 'first_name' | 'last_name' | 'avatar_url'>[] = [
@@ -31,8 +31,8 @@ export function generateDemoProfile(userId?: string): Profile {
     id: userId || 'demo-user',
     first_name: selectedName.first_name,
     last_name: selectedName.last_name,
-    role: Role.DEMO,
-    family: Family.DEMO,
+    role: RoleEnum.DEMO,
+    family: FamilyEnum.DEMO,
     avatar_url: `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${userId}`,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),

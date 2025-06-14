@@ -24,6 +24,7 @@ import { createUser } from './actions';
 import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { Loader2, UserPlus } from 'lucide-react';
+import { FamilyEnum } from '@/types/enums';
 
 const initialState = {
   message: '',
@@ -118,9 +119,11 @@ export function CreateUserDialog() {
                   <SelectValue placeholder="Select a family" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="reyes">Reyes</SelectItem>
-                  <SelectItem value="conklin">Conklin</SelectItem>
-                  <SelectItem value="all">All</SelectItem>
+                  {Object.values(FamilyEnum).map(familyValue => (
+                    <SelectItem key={familyValue} value={familyValue}>
+                      {familyValue.charAt(0).toUpperCase() + familyValue.slice(1)}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
