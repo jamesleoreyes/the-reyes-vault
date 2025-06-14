@@ -27,6 +27,13 @@ interface ICloudflareConfig {
     secretKey: string;
   }
   accountId: string;
+  r2: {
+    endpoint: string;
+    accessKeyId: string;
+    secretAccessKey: string;
+    bucketName: string;
+    publicUrl: string;
+  };
 }
 
 export type {
