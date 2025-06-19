@@ -7,6 +7,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { urlConfig } from "@/lib/config";
 import { DynamicThemeColor } from "@/components/dynamic-theme-color";
+import { DynamicViewport } from "@/components/dynamic-viewport";
 
 const defaultUrl = urlConfig.app
   ? `https://${urlConfig.app}`
@@ -68,9 +69,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  maximumScale: 1,
   userScalable: true,
-};
+  viewportFit: 'cover',
+}
 
 const geistSans = Geist({
   display: "swap",
@@ -94,6 +96,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <DynamicThemeColor />
+          <DynamicViewport />
           {children}
           <Analytics />
           <SpeedInsights />
