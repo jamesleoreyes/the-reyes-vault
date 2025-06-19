@@ -15,7 +15,7 @@ export function DynamicViewport() {
     if (viewportMeta) {
       // Set userScalable based on PWA status
       const userScalable = isPWA ? 'no' : 'yes';
-      const viewportContent = `width=device-width, initial-scale=1, maximum-scale=5, user-scalable=${userScalable}, viewport-fit=cover`;
+      const viewportContent = `width=device-width, initial-scale=1, maximum-scale=5, user-scalable=${userScalable}, viewport-fit=contain`;
 
       viewportMeta.setAttribute('content', viewportContent);
     }
