@@ -1,6 +1,9 @@
 interface IAppConfg {
   isDemoMode: boolean;
   isDemoModeEnabled: boolean;
+  sentry: {
+    dsn: string;
+  }
   demoFeatures?: {
     hideAdminRoutes: boolean;
     generateFakeUserData: boolean;
