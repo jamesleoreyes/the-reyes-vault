@@ -3,6 +3,9 @@ import type { IAppConfg, IUrlConfig, ISupabaseConfig, ICloudflareConfig } from '
 export const appConfig: IAppConfg = {
   isDemoMode: process.env['NEXT_PUBLIC_DEMO_MODE']?.toLowerCase() === 'true',
   isDemoModeEnabled: process.env['NEXT_PUBLIC_DEMO_MODE_ENABLED']?.toLowerCase() === 'true',
+  sentry: {
+    dsn: process.env['SENTRY_DSN'] ?? '',
+  }
 }
 
 export const urlConfig: IUrlConfig = {
