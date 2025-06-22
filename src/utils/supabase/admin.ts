@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { urlConfig, supabaseConfig } from '@/lib/config';
+import { Database } from '@/types/Supabase';
 
 /**
  * Creates a Supabase admin client with service role key.
@@ -9,7 +10,7 @@ import { urlConfig, supabaseConfig } from '@/lib/config';
  * @returns A Supabase admin client instance.
  */
 export async function createAdminClient() {
-  return createClient(
+  return createClient<Database>(
     urlConfig.supabase,
     supabaseConfig.serviceRoleKey,
   )

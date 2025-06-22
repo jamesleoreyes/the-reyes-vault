@@ -11,6 +11,7 @@ import {
 import { appConfig, supabaseConfig, urlConfig } from "@/lib/config";
 import { RoleEnum } from "@/types/enums";
 import { getUserProfile } from "../utils";
+import { Database } from "@/types/Supabase";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -26,7 +27,7 @@ export const updateSession = async (request: NextRequest) => {
     return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
   }
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     urlConfig.supabase,
     supabaseConfig.anonKey,
     {
@@ -71,7 +72,7 @@ export const updateSession = async (request: NextRequest) => {
 
     if (!appConfig.isDemoMode && isAdminPath(currentPath)) {
       const userProfile = await getUserProfile(supabase, user.id);
-      if (userProfile?.role !== RoleEnum.ADMIN) {
+      if (userProfile.role !== RoleEnum.ADMIN) {
         return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
       }
     }
