@@ -23,7 +23,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { SidebarLogo } from "./sidebar-logo"
-import { Profile } from "@/types/Profiles"
+import { Profile } from "@/types"
 import { User } from "@supabase/supabase-js"
 
 export interface INavMain {

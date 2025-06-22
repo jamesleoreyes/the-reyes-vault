@@ -22,8 +22,7 @@ import {
 import { updateUser } from './actions';
 import { useEffect, useState, useMemo, useActionState, useRef } from 'react';
 import { toast } from 'sonner';
-import { Profile } from '@/types/Profiles';
-import { FamilyEnum } from '@/types/enums';
+import { Profile, Constants } from '@/types';
 import { RoleSelect } from './role-select';
 import { Loader2, Save } from 'lucide-react';
 
@@ -163,7 +162,7 @@ export function UpdateUserDialog({
                   <SelectValue placeholder="Select a family" />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.values(FamilyEnum).map(familyValue => (
+                  {Constants.public.Enums.family.map(familyValue => (
                     <SelectItem key={familyValue} value={familyValue}>
                       {familyValue.charAt(0).toUpperCase() + familyValue.slice(1)}
                     </SelectItem>

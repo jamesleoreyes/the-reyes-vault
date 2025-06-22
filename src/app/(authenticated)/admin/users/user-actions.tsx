@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
-import { Profile } from '@/types/Profiles';
+import { Profile } from '@/types';
 import { UpdateUserDialog } from './update-user-dialog';
 import { DeleteUserAlert } from './delete-user-alert';
 import { useState } from 'react';

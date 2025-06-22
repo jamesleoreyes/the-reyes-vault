@@ -1,6 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { RoleEnum } from "@/types/enums";
+import { Constants, RoleEnum } from "@/types";
 
 
 interface RoleSelectProps {
@@ -21,8 +21,11 @@ export function RoleSelect({ role, onValueChange, disabled }: RoleSelectProps) {
         <SelectValue placeholder="Select a role" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value={RoleEnum.MEMBER}>Member</SelectItem>
-        <SelectItem value={RoleEnum.ADMIN}>Admin</SelectItem>
+        {Constants.public.Enums.roles.map(roleValue => (
+          <SelectItem key={roleValue} value={roleValue}>
+            {roleValue.charAt(0).toUpperCase() + roleValue.slice(1)}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

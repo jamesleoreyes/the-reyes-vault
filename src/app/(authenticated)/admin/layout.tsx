@@ -2,7 +2,7 @@ import { createServerClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { DASHBOARD_PATH } from "@/lib/authPaths";
 import { Unauthorized } from "@/components/ui/unauthorized";
-import { Profile } from "@/types/Profiles";
+import { Profile } from "@/types";
 
 export default async function AdminLayout({
   children,

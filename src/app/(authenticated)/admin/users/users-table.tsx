@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Profile } from '@/types/Profiles';
+import { Profile } from '@/types';
 import { Badge } from '@/components/ui/badge';
 import { UserActions } from './user-actions';
 
