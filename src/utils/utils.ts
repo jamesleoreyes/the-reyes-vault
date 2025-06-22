@@ -1,9 +1,8 @@
 import { redirect } from "next/navigation";
 import { appConfig } from "@/lib/config";
-import { Profile } from "@/types/Profiles";
+import { Database, Profile } from "@/types";
 import { generateDemoProfile } from "./demo";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { Database } from "@/types/Supabase";
 
 /**
  * Redirects to a specified path with an encoded message as a query parameter.

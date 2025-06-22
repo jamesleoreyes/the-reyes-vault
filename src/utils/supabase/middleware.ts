@@ -9,9 +9,8 @@ import {
   isAdminPath,
 } from "@/lib/authPaths";
 import { appConfig, supabaseConfig, urlConfig } from "@/lib/config";
-import { RoleEnum } from "@/types/enums";
 import { getUserProfile } from "../utils";
-import { Database } from "@/types/Supabase";
+import { Database } from "@/types";
 
 export const updateSession = async (request: NextRequest) => {
   let response = NextResponse.next({
@@ -72,7 +71,7 @@ export const updateSession = async (request: NextRequest) => {
 
     if (!appConfig.isDemoMode && isAdminPath(currentPath)) {
       const userProfile = await getUserProfile(supabase, user.id);
-      if (userProfile.role !== RoleEnum.ADMIN) {
+      if (userProfile.role !== 'admin') {
         return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
       }
     }

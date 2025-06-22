@@ -275,9 +275,9 @@ export type Database = {
       }
     }
     Enums: {
-      family: "reyes" | "conklin" | "all"
+      family: "reyes" | "conklin" | "all" | "demo"
       memory: "photo" | "video" | "vhs" | "audio" | "music" | "note"
-      roles: "admin" | "member"
+      roles: "admin" | "member" | "demo"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -393,9 +393,9 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      family: ["reyes", "conklin", "all"],
+      family: ["reyes", "conklin", "all", "demo"],
       memory: ["photo", "video", "vhs", "audio", "music", "note"],
-      roles: ["admin", "member"],
+      roles: ["admin", "member", "demo"],
     },
   },
 } as const
