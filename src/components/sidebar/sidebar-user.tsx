@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/sidebar"
 import { logOutAction } from "@/app/actions";
 import { DemoAwareNav } from "@/components/demo-aware-nav"
-import { Profile } from "@/types/Profiles"
+import { Profile } from "@/types"
 
 export function SidebarUser({
   user,

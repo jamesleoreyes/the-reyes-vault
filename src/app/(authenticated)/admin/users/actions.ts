@@ -1,7 +1,7 @@
 'use server';
 
 import { ActionState } from "@/app/actions";
-import { FamilyEnum, RoleEnum } from "@/types/enums";
+import { Constants } from "@/types";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { createServerClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
@@ -14,16 +14,16 @@ const UserSchema = z.object({
     .min(8, { message: 'Password must be at least 8 characters long.' }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.nativeEnum(RoleEnum),
-  family: z.nativeEnum(FamilyEnum),
+  role: z.enum(Constants.public.Enums.roles),
+  family: z.enum(Constants.public.Enums.family),
 });
 
 const UpdateUserSchema = z.object({
   id: z.string().uuid({ message: "Invalid user ID." }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.nativeEnum(RoleEnum),
-  family: z.nativeEnum(FamilyEnum),
+  role: z.enum(Constants.public.Enums.roles),
+  family: z.enum(Constants.public.Enums.family),
 });
 
 export async function createUser(prevState: ActionState, formData: FormData) {
@@ -103,18 +103,18 @@ export async function updateUser(prevState: ActionState, formData: FormData) {
 
   const { data: { user: authUser } } = await supabaseServer.auth.getUser();
 
-  if (authUser && authUser.id === id && profileData.role !== RoleEnum.ADMIN) {
+  if (authUser && authUser.id === id && profileData.role !== 'admin') {
     const { data: userToUpdate } = await supabaseAdmin
       .from('profiles')
       .select('role')
       .eq('id', id)
       .single();
 
-    if (userToUpdate?.role === RoleEnum.ADMIN) {
+    if (userToUpdate?.role === 'admin') {
       const { count } = await supabaseAdmin
         .from('profiles')
         .select('*', { count: 'exact', head: true })
-        .eq('role', RoleEnum.ADMIN);
+        .eq('role', 'admin');
 
       if (count === 1) {
         return {

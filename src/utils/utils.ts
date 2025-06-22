@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { appConfig } from "@/lib/config";
-import { Profile } from "@/types/Profiles";
+import { Database, Profile } from "@/types";
 import { generateDemoProfile } from "./demo";
 import { SupabaseClient } from "@supabase/supabase-js";
 
@@ -31,7 +31,7 @@ export function encodedRedirect(
  * @returns {Promise<Profile>} The user's profile
  * @see {@link generateDemoProfile} for demo profile generation
  */
-export async function getUserProfile(supabase: SupabaseClient, userId: string): Promise<Profile> {
+export async function getUserProfile(supabase: SupabaseClient<Database>, userId: string): Promise<Profile> {
   if (appConfig.isDemoMode) {
     return generateDemoProfile(userId);
   }
@@ -40,7 +40,7 @@ export async function getUserProfile(supabase: SupabaseClient, userId: string): 
     .from('profiles')
     .select('*')
     .eq('id', userId)
-    .single() as { data: Profile };
+    .single();
 
-  return userProfile;
+  return userProfile as Profile;
 }

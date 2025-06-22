@@ -1,7 +1,6 @@
 import { createServerClient } from "@/utils/supabase/server"
 import { appConfig } from "@/lib/config"
 import { getUserProfile } from "@/utils/utils"
-import { RoleEnum } from "@/types/enums"
 import { AppSidebar } from "@/components/sidebar/app-sidebar"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -27,7 +26,7 @@ export default async function AuthenticatedLayout({
   
   let isAdmin = false
   if (user) {
-    isAdmin = profile?.role === RoleEnum.ADMIN
+    isAdmin = profile?.role === 'admin'
   }
 
   if (appConfig.isDemoMode) {

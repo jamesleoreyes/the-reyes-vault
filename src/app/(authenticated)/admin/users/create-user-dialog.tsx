@@ -24,7 +24,7 @@ import { createUser } from './actions';
 import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { Loader2, UserPlus } from 'lucide-react';
-import { FamilyEnum } from '@/types/enums';
+import { Constants } from '@/types';
 
 const initialState = {
   message: '',
@@ -105,8 +105,11 @@ export function CreateUserDialog() {
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="member">Member</SelectItem>
-                  <SelectItem value="admin">Admin</SelectItem>
+                  {Constants.public.Enums.roles.map(roleValue => (
+                    <SelectItem key={roleValue} value={roleValue}>
+                      {roleValue.charAt(0).toUpperCase() + roleValue.slice(1)}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -119,7 +122,7 @@ export function CreateUserDialog() {
                   <SelectValue placeholder="Select a family" />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.values(FamilyEnum).map(familyValue => (
+                  {Constants.public.Enums.family.map(familyValue => (
                     <SelectItem key={familyValue} value={familyValue}>
                       {familyValue.charAt(0).toUpperCase() + familyValue.slice(1)}
                     </SelectItem>
