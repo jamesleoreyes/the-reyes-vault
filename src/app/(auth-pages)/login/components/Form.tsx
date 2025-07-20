@@ -1,10 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils';
-import { appConfig, cloudflareConfig } from '@/lib/config';
+import { cn } from '@/lib/styles';
+import { appConfig, cloudflareConfig } from '@/configs/app';
 import { ActionState } from '@/app/actions';
-import { AnonymousLoginForm } from './anonymous-form';
-import { DefaultLoginForm } from './default-form';
+import AnonymousLoginForm from './AnonymousForm';
+import DefaultLoginForm from './DefaultForm';
 
 type LoginFormProps = React.ComponentPropsWithoutRef<'div'>
 
@@ -12,17 +12,17 @@ const initialFormState: ActionState = {
   error: undefined,
 }
 
-export function LoginForm({
+function LoginForm({
   className,
   ...props
 }: LoginFormProps) {
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <div className="flex flex-col items-center gap-2 text-center">
+    <div className={cn('flex flex-col gap-6', className)} {...props}>
+      <div className='flex flex-col items-center gap-2 text-center'>
         {appConfig.isDemoMode && appConfig.isDemoModeEnabled && cloudflareConfig.turnstile.siteKey ? (
           <>
-            <h1 className="text-2xl font-light">Log in to anonymous account</h1>
-            <p className="text-muted-foreground text-sm text-balance font-light">
+            <h1 className='text-2xl font-light'>Log in to anonymous account</h1>
+            <p className='text-muted-foreground text-sm text-balance font-light'>
               Complete the security check and click the anonymous log in button to enter
             </p>
           </>
@@ -30,8 +30,8 @@ export function LoginForm({
           null
         ) : !appConfig.isDemoMode ? (
           <>
-            <h1 className="text-2xl font-light">Log in to your account</h1>
-            <p className="text-muted-foreground text-sm text-balance font-light">
+            <h1 className='text-2xl font-light'>Log in to your account</h1>
+            <p className='text-muted-foreground text-sm text-balance font-light'>
               Enter your email below to log in to your account
             </p>
           </>
@@ -48,4 +48,6 @@ export function LoginForm({
       )}
     </div>
   );
-}
+};
+
+export default LoginForm;

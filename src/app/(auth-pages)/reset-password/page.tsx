@@ -1,15 +1,11 @@
 import { resetPasswordAction } from "@/app/actions";
-import { FormMessage, Message } from "@/components/form-message";
+import { FormMessage, Message } from "./components/FormMessage";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { Metadata } from "next"
+export { default as metadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: 'Reset Password'
-}
-
-export default async function ResetPassword(props: {
+async function ResetPassword(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
@@ -40,4 +36,6 @@ export default async function ResetPassword(props: {
       <FormMessage message={searchParams} />
     </form>
   );
-}
+};
+
+export default ResetPassword;

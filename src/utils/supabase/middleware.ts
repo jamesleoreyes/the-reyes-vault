@@ -1,18 +1,16 @@
-import { createServerClient } from "@supabase/ssr";
-import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from '@supabase/ssr';
+import { NextRequest, NextResponse } from 'next/server';
 import {
-  ROOT_PATH,
-  LOGIN_PATH,
-  DASHBOARD_PATH,
+  PATHS,
   PROTECTED_APP_PATHS,
   AUTH_FLOW_PAGES,
   isAdminPath,
-} from "@/lib/authPaths";
-import { appConfig, supabaseConfig, urlConfig } from "@/lib/config";
-import { getUserProfile } from "../utils";
-import { Database } from "@/types";
+} from '@/lib/paths';
+import { appConfig, supabaseConfig, urlConfig } from '@/configs/app';
+import { getUserProfile } from '../utils';
+import { Database } from '@/types';
 
-export const updateSession = async (request: NextRequest) => {
+async function updateSession(request: NextRequest) {
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -23,7 +21,7 @@ export const updateSession = async (request: NextRequest) => {
 
   // Block ALL admin routes in demo mode - no exceptions
   if (appConfig.isDemoMode && isAdminPath(currentPath)) {
-    return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
+    return NextResponse.redirect(new URL(PATHS.DASHBOARD, request.url));
   }
 
   const supabase = createServerClient<Database>(
@@ -52,30 +50,32 @@ export const updateSession = async (request: NextRequest) => {
   const { data: { user }, error } = await supabase.auth.getUser();
   const isUserAuthenticated = user !== null && error === null;
 
-  if (currentPath === ROOT_PATH) {
+  if (currentPath === PATHS.ROOT) {
     if (isUserAuthenticated) {
-      return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
+      return NextResponse.redirect(new URL(PATHS.DASHBOARD, request.url));
     } else {
-      return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
+      return NextResponse.redirect(new URL(PATHS.LOGIN, request.url));
     }
   }
 
   if (!isUserAuthenticated && PROTECTED_APP_PATHS.some(path => currentPath.startsWith(path))) {
-    return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
+    return NextResponse.redirect(new URL(PATHS.LOGIN, request.url));
   }
 
   if (isUserAuthenticated) {
-    if (AUTH_FLOW_PAGES.includes(currentPath)) {
-      return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
+    if (AUTH_FLOW_PAGES.includes(currentPath as typeof AUTH_FLOW_PAGES[number])) {
+      return NextResponse.redirect(new URL(PATHS.DASHBOARD, request.url));
     }
 
     if (!appConfig.isDemoMode && isAdminPath(currentPath)) {
       const userProfile = await getUserProfile(supabase, user.id);
       if (userProfile.role !== 'admin') {
-        return NextResponse.redirect(new URL(DASHBOARD_PATH, request.url));
+        return NextResponse.redirect(new URL(PATHS.DASHBOARD, request.url));
       }
     }
   }
 
   return response;
 };
+
+export { updateSession };

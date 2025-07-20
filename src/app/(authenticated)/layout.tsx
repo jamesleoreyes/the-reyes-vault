@@ -1,21 +1,21 @@
-import { createServerClient } from "@/utils/supabase/server"
-import { appConfig } from "@/lib/config"
-import { getUserProfile } from "@/utils/utils"
-import { AppSidebar } from "@/components/sidebar/app-sidebar"
-import { Separator } from "@/components/ui/separator"
+import { createServerClient } from '@/utils/supabase/server';
+import { appConfig } from '@/configs/app';
+import { getUserProfile } from '@/utils/utils';
+import AppSidebar from '@/components/sidebar/AppSidebar';
+import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from '@/components/ui/sidebar';
 
 export default async function AuthenticatedLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const supabase = await createServerClient()
-  let { data: { user } } = await supabase.auth.getUser()
+  const supabase = await createServerClient();
+  let { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
     console.error('AuthenticationLayout: No user found - middleware should prevent this')
@@ -23,7 +23,7 @@ export default async function AuthenticatedLayout({
   }
 
   const profile = await getUserProfile(supabase, user.id)
-  
+
   let isAdmin = false
   if (user) {
     isAdmin = profile?.role === 'admin'

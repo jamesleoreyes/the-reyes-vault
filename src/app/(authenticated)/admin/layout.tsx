@@ -1,6 +1,6 @@
 import { createServerClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { DASHBOARD_PATH } from "@/lib/authPaths";
+import { PATHS } from "@/lib/paths";
 import { Unauthorized } from "@/components/ui/unauthorized";
 import { Profile } from "@/types";
 
@@ -14,7 +14,7 @@ export default async function AdminLayout({
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect(DASHBOARD_PATH);
+    return redirect(PATHS.DASHBOARD);
   }
 
   const { data: userData } = await supabase

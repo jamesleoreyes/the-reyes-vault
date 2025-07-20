@@ -2,15 +2,17 @@
 
 import { LogIn, AlertCircle, Loader2 } from 'lucide-react';
 import { Turnstile } from 'next-turnstile';
-import { useState, useEffect, useActionState } from 'react';
+import { useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
-import { appConfig } from '@/lib/config';
-import { ActionState, anonymousLogInAction } from '@/app/actions';
+import { appConfig } from '@/configs/app';
+import { ActionState } from '@/app/actions';
+import { anonymousLogInAction } from '../actions';
 import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { SubmitButton } from '../ui/submit-button';
+import { SubmitButton } from '@/components/ui/submit-button';
+import { useTurnstile } from '@/hooks/useTurnstile';
 
 interface AnonymousLoginFormProps {
   siteKey: string | undefined;
@@ -18,17 +20,21 @@ interface AnonymousLoginFormProps {
   initialFormState: ActionState;
 }
 
-export function AnonymousLoginForm({
+function AnonymousLoginForm({
   siteKey,
   isDemoModeEnabled,
   initialFormState,
 }: AnonymousLoginFormProps) {
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [turnstileStatus, setTurnstileStatus] = useState<
-    'loading' | 'success' | 'error' | 'expired' | 'required'
-  >('loading');
-  const [turnstileError, setTurnstileError] = useState<string | null>(null);
-
+  const {
+    turnstileToken,
+    turnstileStatus,
+    turnstileError,
+    showTurnstileSkeleton,
+    verify,
+    error,
+    expire,
+    load,
+  } = useTurnstile();
   const [anonymousLoginState, anonymousLoginActionTrigger] = useActionState<ActionState, FormData>(anonymousLogInAction, initialFormState);
 
   useEffect(() => {
@@ -36,29 +42,6 @@ export function AnonymousLoginForm({
       toast.error(anonymousLoginState.error);
     }
   }, [anonymousLoginState]);
-
-  const handleTurnstileVerify = (token: string) => {
-    setTurnstileToken(token);
-    setTurnstileStatus('success');
-    setTurnstileError(null);
-  };
-
-  const handleTurnstileError = () => {
-    setTurnstileToken(null);
-    setTurnstileStatus('error');
-    setTurnstileError('Security check failed. Please try refreshing the page.');
-  };
-
-  const handleTurnstileExpire = () => {
-    setTurnstileToken(null);
-    setTurnstileStatus('expired');
-    setTurnstileError('Security check expired. Please verify again.');
-  };
-
-  const handleTurnstileLoad = () => {
-    setTurnstileStatus('required');
-    setTurnstileError(null);
-  }
 
   if (appConfig.isDemoMode && isDemoModeEnabled && !siteKey) {
     console.error('Anonymous login is currently unavailable');
@@ -68,10 +51,6 @@ export function AnonymousLoginForm({
   const showAnonymousLoginUnavailableMessage = isDemoModeEnabled && !siteKey;
   const showDemoModeDisabledMessage = !isDemoModeEnabled;
   const isAnonymousLoginButtonDisabled = showAnonymousLoginButton && (turnstileStatus !== 'success' || !turnstileToken);
-
-  const showTurnstileSkeleton =
-    turnstileStatus === 'loading' ||
-    turnstileStatus === 'expired'
 
   return (
     <form action={anonymousLoginActionTrigger}>
@@ -92,10 +71,10 @@ export function AnonymousLoginForm({
                 <div style={{ display: showTurnstileSkeleton ? 'none' : 'block', width: '100%', height: '100%' }}>
                   <Turnstile
                     siteKey={siteKey}
-                    onVerify={handleTurnstileVerify}
-                    onError={handleTurnstileError}
-                    onExpire={handleTurnstileExpire}
-                    onLoad={handleTurnstileLoad}
+                    onVerify={verify}
+                    onError={error}
+                    onExpire={expire}
+                    onLoad={load}
                     retry='never'
                     refreshExpired='auto'
                     theme='auto'
@@ -136,4 +115,6 @@ export function AnonymousLoginForm({
       </CardFooter>
     </form>
   );
-}
+};
+
+export default AnonymousLoginForm;

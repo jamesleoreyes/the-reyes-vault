@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import {
   SidebarGroup,
@@ -6,11 +6,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { INavMain } from "./app-sidebar"
-import Link from "next/link"
+} from '@/components/ui/sidebar'
+import { INavMain } from './AppSidebar'
+import Link from 'next/link'
 
-export function SidebarMain({ items }: { items: INavMain[] }) {
+function SidebarMain({ items }: { items: INavMain[] }) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Memories</SidebarGroupLabel>
@@ -20,7 +20,7 @@ export function SidebarMain({ items }: { items: INavMain[] }) {
             key={item.title}
           >
             <Link href={item.url}>
-              <SidebarMenuButton tooltip={item.title} className="cursor-pointer rounded-none">
+              <SidebarMenuButton tooltip={item.title} className='cursor-pointer rounded-none'>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>
@@ -30,4 +30,6 @@ export function SidebarMain({ items }: { items: INavMain[] }) {
       </SidebarMenu>
     </SidebarGroup>
   )
-}
+};
+
+export default SidebarMain;

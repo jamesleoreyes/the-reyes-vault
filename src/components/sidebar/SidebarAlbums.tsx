@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
 import {
   Folder,
   Forward,
   MoreHorizontal,
   Trash2,
-} from "lucide-react"
+} from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from '@/components/ui/dropdown-menu'
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -22,19 +22,19 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { IAlbum } from "./app-sidebar"
+} from '@/components/ui/sidebar'
+import { IAlbum } from './AppSidebar'
 
-export function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
+function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
   const { isMobile } = useSidebar()
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup className='group-data-[collapsible=icon]:hidden'>
       <SidebarGroupLabel>Albums</SidebarGroupLabel>
       <SidebarMenu>
         {albums.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild className="rounded-none">
+            <SidebarMenuButton asChild className='rounded-none'>
               <a href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
@@ -44,25 +44,25 @@ export function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover>
                   <MoreHorizontal />
-                  <span className="sr-only">More</span>
+                  <span className='sr-only'>More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-48 shadow-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
+                className='w-48 shadow-lg'
+                side={isMobile ? 'bottom' : 'right'}
+                align={isMobile ? 'end' : 'start'}
               >
                 <DropdownMenuItem>
-                  <Folder size={16} className="text-muted-foreground mr-2" />
+                  <Folder size={16} className='text-muted-foreground mr-2' />
                   <span>View Album</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Forward size={16} className="text-muted-foreground mr-2" />
+                  <Forward size={16} className='text-muted-foreground mr-2' />
                   <span>Share Album</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Trash2 size={16} className="text-muted-foreground mr-2" />
+                  <Trash2 size={16} className='text-muted-foreground mr-2' />
                   <span>Delete Album</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -72,4 +72,6 @@ export function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
       </SidebarMenu>
     </SidebarGroup>
   )
-}
+};
+
+export default SidebarAlbums;

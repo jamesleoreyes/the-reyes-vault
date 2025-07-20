@@ -1,23 +1,23 @@
 'use client'
 
-import { ActionState, forgotPasswordAction } from "@/app/actions";
-import { SubmitButton } from "@/components/ui/submit-button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { ActionState, forgotPasswordAction } from '@/app/actions';
+import { SubmitButton } from '@/components/ui/submit-button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { SendIcon } from "lucide-react";
-import { useActionState, useEffect } from "react";
-import { toast } from "sonner";
+import { SendIcon } from 'lucide-react';
+import { useActionState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 const initialFormState: ActionState = {
   error: undefined,
 }
 
-export function ForgotPasswordForm() {
+function ForgotPasswordForm() {
   const [normalForgotPasswordState, normalForgotPasswordAction] = useActionState(forgotPasswordAction, initialFormState);
 
   useEffect(() => {
@@ -30,12 +30,12 @@ export function ForgotPasswordForm() {
   }, [normalForgotPasswordState]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-light">Reset your Password</h1>
-        <p className="text-muted-foreground text-sm text-balance font-light">
-          Enter your email below to reset your password. If you remember it, you can{" "}
-          <Link className="text-primary hover:underline underline-offset-4" href="/login">
+    <div className='flex flex-col gap-6'>
+      <div className='flex flex-col items-center gap-2 text-center'>
+        <h1 className='text-2xl font-light'>Reset your Password</h1>
+        <p className='text-muted-foreground text-sm text-balance font-light'>
+          Enter your email below to reset your password. If you remember it, you can{' '}
+          <Link className='text-primary hover:underline underline-offset-4' href='/login'>
             log in here
           </Link>
           .
@@ -43,16 +43,16 @@ export function ForgotPasswordForm() {
       </div>
 
       <form action={normalForgotPasswordAction}>
-        <CardContent className="p-0">
+        <CardContent className='p-0'>
           <div className='grid gap-6'>
             <div className='grid gap-3'>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor='email'>Email</Label>
               <Input
                 id='email'
                 type='email'
                 name='email'
                 required
-                placeholder="you@example.com"
+                placeholder='you@example.com'
               />
             </div>
           </div>
@@ -69,5 +69,7 @@ export function ForgotPasswordForm() {
         </CardFooter>
       </form>
     </div>
-  )
-}
+  );
+};
+
+export { ForgotPasswordForm };

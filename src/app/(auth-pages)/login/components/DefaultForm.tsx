@@ -4,7 +4,8 @@ import { LogIn } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect, useActionState } from 'react';
 import { toast } from 'sonner';
-import { ActionState, logInAction } from '@/app/actions';
+import { ActionState } from '@/app/actions';
+import { logInAction } from '@/app/(auth-pages)/login/actions';
 import {
   CardContent,
   CardFooter,
@@ -17,7 +18,7 @@ interface DefaultLoginFormProps {
   initialFormState: ActionState;
 }
 
-export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
+function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
   const [email, setEmail] = useState('');
   const [normalLoginState, normalLoginAction, isPending] = useActionState<ActionState, FormData>(logInAction, initialFormState);
 
@@ -27,20 +28,19 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
     }
   }, [normalLoginState]);
 
-  const isNormalLoginDisabled = false;
 
   return (
     <form action={normalLoginAction}>
-      <CardContent className="p-0">
+      <CardContent className='p-0'>
         <div className='grid gap-6'>
           <div className='grid gap-3'>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor='email'>Email</Label>
             <Input
               id='email'
               type='email'
               name='email'
               required
-              placeholder="you@example.com"
+              placeholder='you@example.com'
               disabled={isPending}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,7 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
           </div>
           <div className='grid gap-3'>
             <div className='flex items-center'>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor='password'>Password</Label>
               <Link
                 href='/forgot-password'
                 className={`ml-auto text-sm ${isPending ? 'opacity-50 pointer-events-none' : 'text-muted-foreground hover:text-foreground underline-offset-4 hover:underline'}`}
@@ -71,11 +71,13 @@ export function DefaultLoginForm({ initialFormState }: DefaultLoginFormProps) {
           type='submit'
           className='w-full'
           pendingText='Logging in...'
-          disabled={isNormalLoginDisabled}
+          disabled={isPending}
         >
           <LogIn className='w-4 h-4 mr-2' /> Log in
         </SubmitButton>
       </CardFooter>
     </form>
   );
-}
+};
+
+export default DefaultLoginForm;

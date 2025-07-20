@@ -1,7 +1,7 @@
-import { type NextRequest, NextResponse } from "next/server";
-import { updateSession } from "@/utils/supabase/middleware";
+import { type NextRequest, NextResponse } from 'next/server';
+import { updateSession } from '@/utils/supabase/middleware';
 
-export async function middleware(request: NextRequest) {
+async function middleware(request: NextRequest) {
   const response = await updateSession(request);
   const headers = new Headers(response.headers);
 
@@ -37,9 +37,9 @@ export async function middleware(request: NextRequest) {
     statusText: response.statusText,
     headers,
   });
-}
+};
 
-export const config = {
+const config = {
   matcher: [
     /*
      * Match all request paths except:
@@ -48,6 +48,8 @@ export const config = {
      * - favicon.ico (favicon file)
      * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };
+
+export { middleware, config };

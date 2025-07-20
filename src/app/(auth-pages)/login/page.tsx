@@ -1,15 +1,12 @@
-import type { Metadata } from "next"
-import { LoginForm } from "@/components/login-form/form";
+import LoginForm from '@/app/(auth-pages)/login/components/Form';
+export { default as metadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Log in to your account to access your memories from The Reyes Vault.'
-}
-
-export default function LoginPage() {
+function LoginPage() {
   return (
-    <div className="w-full max-w-md">
+    <div className='w-full max-w-md'>
       <LoginForm />
     </div>
   );
-}
+};
+
+export default LoginPage;

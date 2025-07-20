@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
-import { ForgotPasswordForm } from "@/components/forgot-password-form";
+import { ForgotPasswordForm } from '@/app/(auth-pages)/forgot-password/components/ForgotPasswordForm';
+export { default as metadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: 'Forgot Password',
-  description: 'Forgot your password? Enter your email address and we will send you a password reset link.'
-}
-
-export default async function ForgotPasswordPage() {
+async function ForgotPasswordPage() {
   return (
-    <div className="w-full max-w-md">
+    <div className='w-full max-w-md'>
       <ForgotPasswordForm />
     </div>
   );
-}
+};
+
+export default ForgotPasswordPage;

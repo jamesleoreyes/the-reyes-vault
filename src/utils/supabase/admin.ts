@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { urlConfig, supabaseConfig } from '@/lib/config';
+import { urlConfig, supabaseConfig } from '@/configs/app';
 import { Database } from '@/types';
 
 /**
@@ -9,9 +9,11 @@ import { Database } from '@/types';
  *
  * @returns A Supabase admin client instance.
  */
-export async function createAdminClient() {
+async function createAdminClient() {
   return createClient<Database>(
     urlConfig.supabase,
     supabaseConfig.serviceRoleKey,
-  )
-}
+  );
+};
+
+export { createAdminClient };

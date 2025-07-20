@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from './card';
 import Link from "next/link";
 import { Button } from "./button";
-import { DASHBOARD_PATH } from "@/lib/authPaths";
+import { PATHS } from "@/lib/paths";
 
 export function Unauthorized() {
   return (
@@ -16,10 +16,10 @@ export function Unauthorized() {
             You do not have the necessary permissions to view this page.
           </p>
           <Button asChild>
-            <Link href={DASHBOARD_PATH}>Go to Dashboard</Link>
+            <Link href={PATHS.DASHBOARD}>Go to Dashboard</Link>
           </Button>
         </CardContent>
       </Card>
     </div>
   );
-}
+};

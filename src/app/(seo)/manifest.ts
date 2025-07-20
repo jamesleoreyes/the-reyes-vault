@@ -1,6 +1,7 @@
+import { assets } from "@/configs/app";
 import type { MetadataRoute } from "next";
 
-export default function manifest(): MetadataRoute.Manifest {
+function manifest(): MetadataRoute.Manifest {
   return {
     name: 'The Reyes Vault',
     short_name: 'The Reyes Vault',
@@ -10,15 +11,17 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: '#ffffff',
     icons: [
       {
-        src: '/icon-192x192.png',
+        src: assets.branding.icons['192'],
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/icon-512x512.png',
+        src: assets.branding.icons['512'],
         sizes: '512x512',
         type: 'image/png',
       },
     ],
   }
-}
+};
+
+export default manifest;

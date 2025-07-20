@@ -30,18 +30,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "album_memories_album_id_fkey"
-            columns: ["album_id"]
+            foreignKeyName: 'album_memories_album_id_fkey'
+            columns: ['album_id']
             isOneToOne: false
-            referencedRelation: "albums"
-            referencedColumns: ["id"]
+            referencedRelation: 'albums'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "album_memories_memory_id_fkey"
-            columns: ["memory_id"]
+            foreignKeyName: 'album_memories_memory_id_fkey'
+            columns: ['memory_id']
             isOneToOne: false
-            referencedRelation: "memories"
-            referencedColumns: ["id"]
+            referencedRelation: 'memories'
+            referencedColumns: ['id']
           },
         ]
       }
@@ -83,7 +83,7 @@ export type Database = {
           mime_type: string
           storage_path: string
           title: string | null
-          type: Database["public"]["Enums"]["memory"]
+          type: Database['public']['Enums']['memory']
           updated_at: string
           user_id: string
         }
@@ -97,7 +97,7 @@ export type Database = {
           mime_type: string
           storage_path: string
           title?: string | null
-          type: Database["public"]["Enums"]["memory"]
+          type: Database['public']['Enums']['memory']
           updated_at?: string
           user_id?: string
         }
@@ -111,7 +111,7 @@ export type Database = {
           mime_type?: string
           storage_path?: string
           title?: string | null
-          type?: Database["public"]["Enums"]["memory"]
+          type?: Database['public']['Enums']['memory']
           updated_at?: string
           user_id?: string
         }
@@ -138,18 +138,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "memory_people_memory_id_fkey"
-            columns: ["memory_id"]
+            foreignKeyName: 'memory_people_memory_id_fkey'
+            columns: ['memory_id']
             isOneToOne: false
-            referencedRelation: "memories"
-            referencedColumns: ["id"]
+            referencedRelation: 'memories'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "memory_people_person_id_fkey"
-            columns: ["person_id"]
+            foreignKeyName: 'memory_people_person_id_fkey'
+            columns: ['person_id']
             isOneToOne: false
-            referencedRelation: "people"
-            referencedColumns: ["id"]
+            referencedRelation: 'people'
+            referencedColumns: ['id']
           },
         ]
       }
@@ -174,18 +174,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "memory_tags_memory_id_fkey"
-            columns: ["memory_id"]
+            foreignKeyName: 'memory_tags_memory_id_fkey'
+            columns: ['memory_id']
             isOneToOne: false
-            referencedRelation: "memories"
-            referencedColumns: ["id"]
+            referencedRelation: 'memories'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "memory_tags_tag_id_fkey"
-            columns: ["tag_id"]
+            foreignKeyName: 'memory_tags_tag_id_fkey'
+            columns: ['tag_id']
             isOneToOne: false
-            referencedRelation: "tags"
-            referencedColumns: ["id"]
+            referencedRelation: 'tags'
+            referencedColumns: ['id']
           },
         ]
       }
@@ -214,31 +214,31 @@ export type Database = {
         Row: {
           avatar_url: string | null
           created_at: string
-          family: Database["public"]["Enums"]["family"]
+          family: Database['public']['Enums']['family']
           first_name: string
           id: string
           last_name: string
-          role: Database["public"]["Enums"]["roles"]
+          role: Database['public']['Enums']['roles']
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
           created_at?: string
-          family: Database["public"]["Enums"]["family"]
+          family: Database['public']['Enums']['family']
           first_name?: string
           id?: string
           last_name?: string
-          role: Database["public"]["Enums"]["roles"]
+          role: Database['public']['Enums']['roles']
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
           created_at?: string
-          family?: Database["public"]["Enums"]["family"]
+          family?: Database['public']['Enums']['family']
           first_name?: string
           id?: string
           last_name?: string
-          role?: Database["public"]["Enums"]["roles"]
+          role?: Database['public']['Enums']['roles']
           updated_at?: string
         }
         Relationships: []
@@ -275,9 +275,9 @@ export type Database = {
       }
     }
     Enums: {
-      family: "reyes" | "conklin" | "all" | "demo"
-      memory: "photo" | "video" | "vhs" | "audio" | "music" | "note"
-      roles: "admin" | "member" | "demo"
+      family: 'reyes' | 'conklin' | 'all' | 'demo'
+      memory: 'photo' | 'video' | 'vhs' | 'audio' | 'music' | 'note'
+      roles: 'admin' | 'member' | 'demo'
     }
     CompositeTypes: {
       [_ in never]: never
@@ -285,29 +285,29 @@ export type Database = {
   }
 }
 
-type DefaultSchema = Database[Extract<keyof Database, "public">]
+type DefaultSchema = Database[Extract<keyof Database, 'public'>]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
-    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof Database
   }
-    ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-        Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    ? keyof (Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
+        Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-      Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+  ? (Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
+      Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])[TableName] extends {
       Row: infer R
     }
     ? R
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
-        DefaultSchema["Views"])
-    ? (DefaultSchema["Tables"] &
-        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] &
+        DefaultSchema['Views'])
+    ? (DefaultSchema['Tables'] &
+        DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
         Row: infer R
       }
       ? R
@@ -316,21 +316,21 @@ export type Tables<
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema["Tables"]
+    | keyof DefaultSchema['Tables']
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof Database
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof Database[DefaultSchemaTableNameOrOptions['schema']]['Tables']
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+  ? Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
       Insert: infer I
     }
     ? I
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
-    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
+    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
         Insert: infer I
       }
       ? I
@@ -339,21 +339,21 @@ export type TablesInsert<
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema["Tables"]
+    | keyof DefaultSchema['Tables']
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof Database
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof Database[DefaultSchemaTableNameOrOptions['schema']]['Tables']
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+  ? Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
       Update: infer U
     }
     ? U
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
-    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
+    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
         Update: infer U
       }
       ? U
@@ -362,40 +362,40 @@ export type TablesUpdate<
 
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema["Enums"]
+    | keyof DefaultSchema['Enums']
     | { schema: keyof Database },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
     schema: keyof Database
   }
-    ? keyof Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    ? keyof Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
     : never = never,
 > = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
-    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+  ? Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
+    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
     : never
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema["CompositeTypes"]
+    | keyof DefaultSchema['CompositeTypes']
     | { schema: keyof Database },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
     schema: keyof Database
   }
-    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    ? keyof Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
     : never = never,
 > = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
-    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+  ? Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
+    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
     : never
 
 export const Constants = {
   public: {
     Enums: {
-      family: ["reyes", "conklin", "all", "demo"],
-      memory: ["photo", "video", "vhs", "audio", "music", "note"],
-      roles: ["admin", "member", "demo"],
+      family: ['reyes', 'conklin', 'all', 'demo'],
+      memory: ['photo', 'video', 'vhs', 'audio', 'music', 'note'],
+      roles: ['admin', 'member', 'demo'],
     },
   },
 } as const

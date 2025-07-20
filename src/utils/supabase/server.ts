@@ -1,6 +1,6 @@
 import { createServerClient as supaServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { supabaseConfig, urlConfig } from '@/lib/config';
+import { supabaseConfig, urlConfig } from '@/configs/app';
 import { Database } from '@/types';
 
 /**
@@ -10,7 +10,7 @@ import { Database } from '@/types';
  *
  * @returns A Supabase server client instance.
  */
-export async function createServerClient() {
+async function createServerClient() {
   const cookieStore = await cookies()
 
   return supaServerClient<Database>(
@@ -30,3 +30,5 @@ export async function createServerClient() {
     },
   );
 };
+
+export { createServerClient };

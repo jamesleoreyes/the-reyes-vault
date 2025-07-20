@@ -3,7 +3,7 @@ interface IAppConfg {
   isDemoModeEnabled: boolean;
   sentry: {
     dsn: string;
-  }
+  };
   demoFeatures?: {
     hideAdminRoutes: boolean;
     generateFakeUserData: boolean;
@@ -13,10 +13,11 @@ interface IAppConfg {
 
 interface IUrlConfig {
   app: string;
+  sitemap: string;
   supabase: string;
   cloudflare: {
     api: string;
-  }
+  };
 }
 
 interface ISupabaseConfig {
@@ -28,13 +29,29 @@ interface ICloudflareConfig {
   turnstile: {
     siteKey: string;
     secretKey: string;
-  }
+  };
   accountId: string;
 }
+
+interface IAssetsConfig {
+  branding: {
+    favicon: string;
+    icons: {
+      appleTouch: string;
+      '192': string;
+      '512': string;
+    };
+  };
+  images: {
+    og: string;
+    placeholder: string;
+  };
+};
 
 export type {
   IAppConfg,
   IUrlConfig,
   ISupabaseConfig,
-  ICloudflareConfig
+  ICloudflareConfig,
+  IAssetsConfig
 };

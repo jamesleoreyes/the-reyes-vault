@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import * as React from "react"
+import * as React from 'react'
 import {
   AudioLines,
   Image,
@@ -10,21 +10,20 @@ import {
   NotebookText,
   Video,
   Videotape,
-} from "lucide-react"
-
-import { SidebarMain } from "@/components/sidebar/sidebar-main"
-import { SidebarAlbums } from "@/components/sidebar/sidebar-albums"
-import { SidebarUser } from "@/components/sidebar/sidebar-user"
+} from 'lucide-react'
+import { User } from '@supabase/supabase-js'
+import SidebarMain from './SidebarMain'
+import SidebarAlbums from './SidebarAlbums'
+import SidebarUser from './SidebarUser'
+import SidebarLogo from './SidebarLogo'
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import { SidebarLogo } from "./sidebar-logo"
-import { Profile } from "@/types"
-import { User } from "@supabase/supabase-js"
+} from '@/components/ui/sidebar'
+import { Profile } from '@/types'
 
 export interface INavMain {
   title: string;
@@ -80,18 +79,18 @@ const navMain: INavMain[] = [
 
 const albums: IAlbum[] = [
   {
-    name: "Christmas 2025",
-    url: "#",
+    name: 'Christmas 2025',
+    url: '#',
     icon: Library
   },
   {
-    name: "Cousins Meetup",
-    url: "#",
+    name: 'Cousins Meetup',
+    url: '#',
     icon: Library
   },
   {
-    name: "Europe 2024",
-    url: "#",
+    name: 'Europe 2024',
+    url: '#',
     icon: Library
   },
 ]
@@ -102,14 +101,14 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   profile: Profile;
 }
 
-export function AppSidebar({
+function AppSidebar({
   isAdmin = false,
   user,
   profile,
   ...props
 }: AppSidebarProps) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible='icon' {...props}>
       <SidebarHeader>
         <SidebarLogo />
       </SidebarHeader>
@@ -122,5 +121,7 @@ export function AppSidebar({
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
-}
+  );
+};
+
+export default AppSidebar;

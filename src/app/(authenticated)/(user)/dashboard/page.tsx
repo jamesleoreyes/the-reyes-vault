@@ -1,9 +1,9 @@
 import { InfoIcon } from "lucide-react";
 import type { Metadata } from "next"
-import { appConfig } from "@/lib/config";
+import { appConfig } from "@/configs/app";
 import { createServerClient } from "@/utils/supabase/server"
 import { getUserProfile } from "@/utils/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/styles";
 
 export const metadata: Metadata = {
   title: 'Dashboard'
