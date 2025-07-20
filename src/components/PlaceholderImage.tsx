@@ -18,4 +18,4 @@ function PlaceholderImage({ className }: PlaceholderProps) {
   );
 };
 
-export default PlaceholderImage;
+export { PlaceholderImage };

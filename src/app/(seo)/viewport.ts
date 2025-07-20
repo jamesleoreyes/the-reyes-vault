@@ -5,7 +5,7 @@ const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: true,
-  viewportFit: 'contain',
+  viewportFit: 'cover',
 };
 
-export default viewport;
+export { viewport };

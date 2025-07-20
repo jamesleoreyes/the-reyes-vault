@@ -5,8 +5,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { DynamicThemeColor } from '@/components/DynamicThemeColor';
 import { DynamicViewport } from '@/components/DynamicViewport';
-export { default as viewport } from './(seo)/viewport';
-export { default as metadata } from './(seo)/metadata';
+export { viewport } from './(seo)/viewport';
+export { metadata } from './(seo)/metadata';
 
 const geistSans = Geist({
   display: 'swap',
@@ -22,7 +22,7 @@ function RootLayout({
 }>) {
   return (
     <html lang='en' className={geistSans.className} suppressHydrationWarning>
-      <body className='bg-background text-foreground antialiased'>
+      <body className='bg-background text-foreground antialiased min-h-dvh flex flex-col'>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

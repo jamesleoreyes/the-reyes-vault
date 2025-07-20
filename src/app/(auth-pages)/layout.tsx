@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Vault } from 'lucide-react';
-import PlaceholderImage from '@/components/PlaceholderImage';
+import { PlaceholderImage } from '@/components';
 
 function AuthLayout({
   children,
