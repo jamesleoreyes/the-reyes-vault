@@ -45,14 +45,21 @@ function SidebarUser({
   profile: Profile,
   isAdmin?: boolean
 }) {
-  const { isMobile } = useSidebar();
+  const { isMobile, setOpenMobile } = useSidebar();
   const fullName = `${profile.first_name} ${profile.last_name}`
   const initials = `${profile.first_name[0]?.toUpperCase()}${profile.last_name[0]?.toUpperCase()}`
 
   const handleLogOut = async () => {
+    handleNavigationClick();
     await logOutAction();
     toast.success('You have been logged out successfully');
-  }
+  };
+
+  const handleNavigationClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    };
+  };
 
   return (
     <SidebarMenu>
@@ -95,19 +102,19 @@ function SidebarUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href='/profile' className='cursor-pointer'>
+                <Link href='/profile' onClick={handleNavigationClick} className='cursor-pointer'>
                   <User size={16} className='mr-2' />
                   Profile
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href='/memories' className='cursor-pointer'>
+                <Link href='/memories' onClick={handleNavigationClick} className='cursor-pointer'>
                   <Sparkles size={16} className='mr-2' />
                   Memories
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href='/albums' className='cursor-pointer'>
+                <Link href='/albums' onClick={handleNavigationClick} className='cursor-pointer'>
                   <Library size={16} className='mr-2' />
                   Albums
                 </Link>
@@ -121,7 +128,7 @@ function SidebarUser({
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem asChild>
-                      <Link href='/admin' className='cursor-pointer'>
+                      <Link href='/admin' onClick={handleNavigationClick} className='cursor-pointer'>
                         <Settings size={16} className='mr-2' />
                         Admin
                       </Link>

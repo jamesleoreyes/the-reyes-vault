@@ -26,7 +26,13 @@ import {
 import { IAlbum } from './AppSidebar'
 
 function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
-  const { isMobile } = useSidebar()
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleNavigationClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>
@@ -71,7 +77,7 @@ function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 };
 
 export default SidebarAlbums;
