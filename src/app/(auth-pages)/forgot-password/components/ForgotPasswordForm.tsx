@@ -1,6 +1,7 @@
 'use client'
 
-import { ActionState, forgotPasswordAction } from '@/app/actions';
+import { ActionState } from '@/app/actions';
+import { forgotPasswordAction } from '../actions';
 import { SubmitButton } from '@/components/ui/submit-button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
