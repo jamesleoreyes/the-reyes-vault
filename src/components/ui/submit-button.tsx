@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@src/components/ui/button";
 import { type ComponentProps } from "react";
 import { useFormStatus } from "react-dom";
 import { Loader2 } from "lucide-react";
-import { cn } from "@/lib/styles";
+import { cn } from "@src/lib/styles";
 
 type Props = ComponentProps<typeof Button> & {
   pendingText?: string;
@@ -22,6 +22,7 @@ export function SubmitButton({
       type="submit"
       size={"sm"}
       aria-disabled={pending}
+      disabled={pending || props.disabled}
       {...props}
       className={cn(
         'flex items-center',

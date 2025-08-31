@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar'
+} from '@src/components/ui/sidebar'
 import { INavMain } from './AppSidebar'
 import Link from 'next/link'
 

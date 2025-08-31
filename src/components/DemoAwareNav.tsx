@@ -1,6 +1,6 @@
 'use client';
 
-import { isAdminFeaturesEnabled } from '@/utils/demo';
+import { isAdminFeaturesEnabled } from '@src/utils/demo';
 
 interface DemoAwareNavProps {
   children: React.ReactNode;

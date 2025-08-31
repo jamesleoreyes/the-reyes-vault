@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { assets } from "@/configs/app";
-import { cn } from "@/lib/styles";
+import { assets } from "@src/configs/app";
+import { cn } from "@src/lib/styles";
 
 interface PlaceholderProps {
   className?: string;

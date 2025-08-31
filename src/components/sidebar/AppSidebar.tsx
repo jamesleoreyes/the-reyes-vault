@@ -22,8 +22,8 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar'
-import { Profile } from '@/types'
+} from '@src/components/ui/sidebar'
+import { Profile } from '@src/types'
 
 export interface INavMain {
   title: string;

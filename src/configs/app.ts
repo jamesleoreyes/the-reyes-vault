@@ -1,4 +1,4 @@
-import type { IAppConfg, IUrlConfig, ISupabaseConfig, ICloudflareConfig, IAssetsConfig } from '@/types';
+import type { IAppConfg, IUrlConfig, ISupabaseConfig, ICloudflareConfig, IAssetsConfig } from '@src/types';
 
 const appConfig: IAppConfg = {
   isDemoMode: process.env['NEXT_PUBLIC_DEMO_MODE']?.toLowerCase() === 'true',

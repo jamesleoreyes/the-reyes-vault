@@ -6,7 +6,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar'
+} from '@src/components/ui/sidebar'
 import Link from 'next/link'
 
 function SidebarLogo() {

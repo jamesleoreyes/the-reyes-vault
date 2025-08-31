@@ -1,6 +1,22 @@
-import { appConfig } from '@/configs/app';
-import { Profile } from '@/types';
-
+import { appConfig } from '@src/configs/app';
+import { Profile } from '@src/types';
+/**
+ * Generates a consistent demo profile to enable application demonstration without requiring
+ * database setup, user registration, or authentication infrastructure.
+ * 
+ * This function serves multiple critical purposes:
+ * - Allows potential users to experience the application immediately without barriers
+ * - Provides a sandbox environment for showcasing features
+ * - Maintains consistent demo experiences across sessions by deterministically mapping
+ *   user IDs to specific demo personas
+ * 
+ * The demo names are inspired by the TV show "Severance" to create memorable,
+ * distinct personas that help differentiate between different demo user sessions
+ * while maintaining a cohesive thematic experience.
+ * 
+ * @param {string} [userId] - Optional user ID for consistent persona mapping
+ * @returns {Profile} A complete demo profile with deterministic persona assignment
+ */
 function generateDemoProfile(userId?: string): Profile {
   const demoNames: Pick<Profile, 'first_name' | 'last_name'>[] = [
     { first_name: 'Mark', last_name: 'S' },
@@ -18,12 +34,11 @@ function generateDemoProfile(userId?: string): Profile {
     { first_name: 'The', last_name: 'Board' },
   ];
 
-  // Use userId to consistently generate the same name for the same user
+  // Use userId to consistently generate the same persona for the same user
   const nameIndex = userId
     ? Math.abs(userId.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % demoNames.length
     : Math.floor(Math.random() * demoNames.length);
 
-  // Ensure we always have a valid name with fallback
   const selectedName = demoNames[nameIndex] || demoNames[0] as Pick<Profile, 'first_name' | 'last_name'>;
 
   return {
