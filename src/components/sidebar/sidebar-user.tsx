@@ -33,7 +33,7 @@ import {
   useSidebar,
 } from '@src/components/ui/sidebar'
 import { logOutAction } from '@app/actions';
-import { DemoAwareNav } from '@src/components/DemoAwareNav'
+import { DemoAwareNav } from '@/src/components/demo-aware-nav'
 import { Profile } from '@src/types'
 
 function SidebarUser({

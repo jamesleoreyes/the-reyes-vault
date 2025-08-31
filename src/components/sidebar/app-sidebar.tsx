@@ -12,10 +12,10 @@ import {
   Videotape,
 } from 'lucide-react'
 import { User } from '@supabase/supabase-js'
-import SidebarMain from './SidebarMain'
-import SidebarAlbums from './SidebarAlbums'
-import SidebarUser from './SidebarUser'
-import SidebarLogo from './SidebarLogo'
+import SidebarMain from './sidebar-main'
+import SidebarAlbums from './sidebar-albums'
+import SidebarUser from './sidebar-user'
+import SidebarLogo from './sidebar-logo'
 import {
   Sidebar,
   SidebarContent,

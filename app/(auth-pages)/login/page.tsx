@@ -1,4 +1,4 @@
-import LoginForm from '@app/(auth-pages)/login/components/Form';
+import LoginForm from '@/app/(auth-pages)/login/components/form';
 export { default as metadata } from './metadata';
 
 function LoginPage() {

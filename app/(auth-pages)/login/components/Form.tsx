@@ -3,8 +3,8 @@
 import { cn } from '@src/lib/styles';
 import { appConfig, cloudflareConfig } from '@src/configs/app';
 import { ActionState } from '@app/actions';
-import AnonymousLoginForm from './AnonymousForm';
-import DefaultLoginForm from './DefaultForm';
+import AnonymousLoginForm from './anonymous-form';
+import DefaultLoginForm from './default-form';
 
 type LoginFormProps = React.ComponentPropsWithoutRef<'div'>
 

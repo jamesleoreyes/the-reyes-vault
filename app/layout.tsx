@@ -3,8 +3,8 @@ import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css';
 import { Toaster } from '@src/components/ui/sonner';
-import { DynamicThemeColor } from '@src/components/DynamicThemeColor';
-import { DynamicViewport } from '@src/components/DynamicViewport';
+import { DynamicThemeColor } from '@/src/components/dynamic-theme-color';
+import { DynamicViewport } from '@/src/components/dynamic-viewport';
 export { viewport } from './(seo)/viewport';
 export { metadata } from './(seo)/metadata';
 

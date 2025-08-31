@@ -23,7 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@src/components/ui/sidebar'
-import { IAlbum } from './AppSidebar'
+import { IAlbum } from './app-sidebar'
 
 function SidebarAlbums({ albums }: { albums: IAlbum[] }) {
   const { isMobile } = useSidebar();

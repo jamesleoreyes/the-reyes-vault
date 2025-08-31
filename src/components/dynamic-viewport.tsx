@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePWAMode } from '@src/hooks/usePWAMode';
+import { usePWAMode } from '@/src/hooks/use-pwa-mode';
 
 function DynamicViewport() {
   const isPWA = usePWAMode();

@@ -12,7 +12,7 @@ import {
   CardFooter,
 } from '@src/components/ui/card';
 import { SubmitButton } from '@src/components/ui/submit-button';
-import { useTurnstile } from '@src/hooks/useTurnstile';
+import { useTurnstile } from '@/src/hooks/use-turnstile';
 
 interface AnonymousLoginFormProps {
   siteKey: string | undefined;

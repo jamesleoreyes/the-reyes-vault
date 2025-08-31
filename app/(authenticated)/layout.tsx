@@ -1,7 +1,7 @@
 import { createServerClient } from '@src/utils/supabase/server';
 import { appConfig } from '@src/configs/app';
 import { getUserProfile } from '@src/utils/utils';
-import AppSidebar from '@src/components/sidebar/AppSidebar';
+import AppSidebar from '@/src/components/sidebar/app-sidebar';
 import { Separator } from '@src/components/ui/separator';
 import {
   SidebarInset,

@@ -8,7 +8,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@src/components/ui/sidebar'
-import { INavMain } from './AppSidebar'
+import { INavMain } from './app-sidebar'
 import Link from 'next/link'
 
 function SidebarMain({ items }: { items: INavMain[] }) {

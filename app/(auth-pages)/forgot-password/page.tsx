@@ -1,4 +1,4 @@
-import { ForgotPasswordForm } from '@app/(auth-pages)/forgot-password/components/ForgotPasswordForm';
+import { ForgotPasswordForm } from '@/app/(auth-pages)/forgot-password/components/forgot-password-form';
 export { default as metadata } from './metadata';
 
 async function ForgotPasswordPage() {
