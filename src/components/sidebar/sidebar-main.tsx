@@ -1,5 +1,7 @@
 'use client'
 
+import { usePathname } from 'next/navigation';
+import Link from 'next/link'
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -8,11 +10,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@src/components/ui/sidebar'
-import { INavMain } from './app-sidebar'
-import Link from 'next/link'
+import { cn } from '@src/lib/styles';
+import MEMORIES_NAV from './sidebar-paths';
 
-function SidebarMain({ items }: { items: INavMain[] }) {
+function SidebarMain() {
   const { isMobile, setOpenMobile } = useSidebar();
+  const pathname = usePathname();
+  const isActive = (url: string) => pathname === url;
 
   const handleNavigationClick = () => {
     if (isMobile) {
@@ -24,12 +28,20 @@ function SidebarMain({ items }: { items: INavMain[] }) {
     <SidebarGroup>
       <SidebarGroupLabel>Memories</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => (
+        {Object.values(MEMORIES_NAV).map(item => (
           <SidebarMenuItem
-            key={item.title}
+            key={item.key}
           >
-            <Link href={item.url} onClick={handleNavigationClick}>
-              <SidebarMenuButton tooltip={item.title} className='cursor-pointer rounded-none'>
+            <Link
+              href={item.url}
+              onClick={handleNavigationClick}
+            >
+              <SidebarMenuButton
+                tooltip={item.title}
+                className={cn(
+                  'cursor-pointer rounded-none',
+                  isActive(item.url) && 'bg-accent'
+                )}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>

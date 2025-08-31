@@ -2,14 +2,8 @@
 
 import * as React from 'react'
 import {
-  AudioLines,
-  Image,
   Library,
   LucideIcon,
-  Music,
-  NotebookText,
-  Video,
-  Videotape,
 } from 'lucide-react'
 import { User } from '@supabase/supabase-js'
 import SidebarMain from './sidebar-main'
@@ -25,57 +19,11 @@ import {
 } from '@src/components/ui/sidebar'
 import { Profile } from '@src/types'
 
-export interface INavMain {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  isActive?: boolean;
-}
-
 export interface IAlbum {
   name: string;
   url: string;
   icon: LucideIcon;
 }
-
-const navMain: INavMain[] = [
-  {
-    title: 'Photos',
-    url: '/memories/photos',
-    icon: Image,
-    isActive: true,
-  },
-  {
-    title: 'Videos',
-    url: '/memories/videos',
-    icon: Video,
-    isActive: false,
-  },
-  {
-    title: 'VHS Tapes',
-    url: '/memories/vhs',
-    icon: Videotape,
-    isActive: false,
-  },
-  {
-    title: 'Music',
-    url: '/memories/music',
-    icon: Music,
-    isActive: false,
-  },
-  {
-    title: 'Audio',
-    url: '/memories/audio',
-    icon: AudioLines,
-    isActive: false,
-  },
-  {
-    title: 'Notes',
-    url: '/memories/notes',
-    icon: NotebookText,
-    isActive: false,
-  }
-]
 
 const albums: IAlbum[] = [
   {
@@ -113,7 +61,7 @@ function AppSidebar({
         <SidebarLogo />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMain items={navMain} />
+        <SidebarMain />
         <SidebarAlbums albums={albums} />
       </SidebarContent>
       <SidebarFooter>
