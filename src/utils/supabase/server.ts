@@ -1,7 +1,7 @@
 import { createServerClient as supaServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { supabaseConfig, urlConfig } from '@src/configs/app';
-import { Database } from '@src/types';
+import { Database } from '@supabase/types';
 
 /**
  * Creates a Supabase server client with cookie handling for SSR.

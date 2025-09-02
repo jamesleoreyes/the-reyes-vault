@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { appConfig } from '@src/configs/app';
-import { Database, Profile } from '@src/types';
+import { Database, Profile } from '@supabase/types';
 import { generateDemoProfile } from './demo';
 import { SupabaseClient } from '@supabase/supabase-js';
 

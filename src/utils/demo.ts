@@ -1,5 +1,5 @@
 import { appConfig } from '@src/configs/app';
-import { Profile } from '@src/types';
+import { Profile } from '@supabase/types';
 /**
  * Generates a consistent demo profile to enable application demonstration without requiring
  * database setup, user registration, or authentication infrastructure.

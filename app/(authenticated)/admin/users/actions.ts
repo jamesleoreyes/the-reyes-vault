@@ -1,7 +1,7 @@
 'use server';
 
 import { ActionState } from "@app/actions";
-import { Constants } from "@src/types";
+import { Constants } from "@supabase/types";
 import { createAdminClient } from "@src/utils/supabase/admin";
 import { createServerClient } from "@src/utils/supabase/server";
 import { revalidatePath } from "next/cache";
@@ -14,16 +14,16 @@ const UserSchema = z.object({
     .min(8, { message: 'Password must be at least 8 characters long.' }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.enum(Constants.public.Enums.roles),
-  family: z.enum(Constants.public.Enums.family),
+  role: z.enum(Constants.public.Enums.user_role),
+  family: z.enum(Constants.public.Enums.user_family),
 });
 
 const UpdateUserSchema = z.object({
   id: z.string().uuid({ message: "Invalid user ID." }),
   first_name: z.string().min(1, { message: 'First name is required.' }),
   last_name: z.string().min(1, { message: 'Last name is required.' }),
-  role: z.enum(Constants.public.Enums.roles),
-  family: z.enum(Constants.public.Enums.family),
+  role: z.enum(Constants.public.Enums.user_role),
+  family: z.enum(Constants.public.Enums.user_family),
 });
 
 export async function createUser(prevState: ActionState, formData: FormData) {

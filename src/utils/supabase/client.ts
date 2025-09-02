@@ -1,6 +1,6 @@
 import { createBrowserClient as supaBrowserClient } from '@supabase/ssr';
 import { urlConfig, supabaseConfig } from '@src/configs/app';
-import { Database } from '@src/types';
+import { Database } from '@supabase/types';
 
 /**
  * Creates a Supabase browser client using environment variables.

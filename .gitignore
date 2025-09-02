@@ -20,6 +20,8 @@
 # debug
 npm-debug.log*
 
+# supabase
+supabase/.temp
 
 # env files
 .env.local

@@ -34,7 +34,7 @@ import {
 } from '@src/components/ui/sidebar'
 import { logOutAction } from '@app/actions';
 import { DemoAwareNav } from '@/src/components/demo-aware-nav'
-import { Profile } from '@src/types'
+import { Profile } from '@supabase/types'
 import { usePathname } from 'next/navigation';
 import { APP_PATHS } from '@src/lib/paths';
 import { cn } from '@src/lib/styles';

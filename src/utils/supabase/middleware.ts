@@ -9,7 +9,7 @@ import {
 } from '@src/lib/paths';
 import { appConfig, supabaseConfig, urlConfig } from '@src/configs/app';
 import { getUserProfile } from '../utils';
-import { Database } from '@src/types';
+import { Database } from '@supabase/types';
 
 async function updateSession(request: NextRequest) {
   let response = NextResponse.next({

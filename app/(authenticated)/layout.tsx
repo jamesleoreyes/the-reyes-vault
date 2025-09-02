@@ -16,6 +16,7 @@ export default async function AuthenticatedLayout({
 }) {
   const supabase = await createServerClient();
   let { data: { user } } = await supabase.auth.getUser();
+  console.log(user)
 
   if (!user) {
     console.error('AuthenticationLayout: No user found - middleware should prevent this')
@@ -23,6 +24,7 @@ export default async function AuthenticatedLayout({
   }
 
   const profile = await getUserProfile(supabase, user.id)
+  console.log(profile)
 
   let isAdmin = false
   if (user) {
