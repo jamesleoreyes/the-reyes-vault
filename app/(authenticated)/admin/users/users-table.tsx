@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@src/components/ui/table';
-import { Profile } from '@src/types';
+import { Profile } from '@supabase/types';
 import { Badge } from '@src/components/ui/badge';
 import { UserActions } from './user-actions';
 
