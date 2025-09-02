@@ -17,7 +17,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@src/components/ui/sidebar'
-import { Profile } from '@src/types'
+import { Profile } from '@supabase/types'
 
 export interface IAlbum {
   name: string;

@@ -12,7 +12,8 @@
     "paths": {
       "@/*": ["./*"],
       "@app/*": ["./app/*"],
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
+      "@supabase/*": ["./supabase/*"]
     },
 
     // JavaScript Support
